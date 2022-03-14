@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:e_sante/Nausees_survey4.dart';
+import 'package:e_sante/Nausees_survey6.dart';
 
 class Nausees5 extends StatefulWidget {
   @override
@@ -215,6 +216,7 @@ class _Nausees5State extends State<Nausees5> {
                           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                       ),
                       onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees6()));
 
                       },
                       child: Text(

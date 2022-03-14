@@ -1,6 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Evaluation.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 class Registration extends StatefulWidget {
   @override
@@ -8,7 +13,19 @@ class Registration extends StatefulWidget {
 }
 
 class InitState extends State<Registration> {
+  TextEditingController _name = TextEditingController();
+  TextEditingController _age = TextEditingController();
+  TextEditingController _num = TextEditingController();
+  TextEditingController _sexe = TextEditingController();
   final _formkey = GlobalKey <FormState> ();
+   File ?_image;
+  final imagePicker = ImagePicker();
+  Future getImage() async{
+    final image = await imagePicker.getImage(source: ImageSource.gallery);
+    setState(() {
+      _image = File(image.path);
+    });
+  }
 
   @override
   Widget build(BuildContext context) => initWidget();
@@ -60,20 +77,23 @@ class InitState extends State<Registration> {
                 child: CircleAvatar(
                   backgroundColor: Colors.grey,
                   radius: 70.0,
-
+                  //child: Image.file(_image),
 
                 ),
               ),
               Positioned(
-                bottom: 20.0,
-                right: 20.0,
-                child: InkWell(
-                  child: Icon(
-                    Icons.camera_alt,
-                    color: Colors.teal,
-                    size: 28.0,
+                bottom: 7.0,
+                right: 7.0,
+                  child: IconButton(
+                    onPressed: getImage,
+                    icon: Icon(
+                        Icons.camera_alt,
+                        size: 28.0,
+                        color: Colors.teal,
+                    ),
+
                   ),
-                ),
+
               ),
             ]),
           ),
@@ -99,7 +119,8 @@ class InitState extends State<Registration> {
                           ],
                         ),
                         child: TextFormField(
-
+                          controller: _name,
+                          keyboardType: TextInputType.text,
                           cursorColor: Color(0xffF5591F),
                           decoration: InputDecoration(
                             icon: Icon(
@@ -136,7 +157,8 @@ class InitState extends State<Registration> {
                           ],
                         ),
                         child: TextFormField(
-
+                          controller: _age,
+                          keyboardType: TextInputType.number,
                           cursorColor: Color(0xffF5591F),
                           decoration: InputDecoration(
                             icon: Icon(
@@ -175,6 +197,8 @@ class InitState extends State<Registration> {
                           ],
                         ),
                         child: TextFormField(
+                          controller: _num,
+                          keyboardType: TextInputType.phone,
                           cursorColor: Color(0xffF5591F),
                           decoration: InputDecoration(
                             focusColor: Color(0xffF5591F),
@@ -212,6 +236,8 @@ class InitState extends State<Registration> {
                           ],
                         ),
                         child: TextFormField(
+                          controller: _sexe,
+                          keyboardType: TextInputType.text,
                           cursorColor: Color(0xffF5591F),
                           decoration: InputDecoration(
                             focusColor: Color(0xffF5591F),
@@ -255,6 +281,8 @@ class InitState extends State<Registration> {
                           child: TextButton(
                             onPressed: () {
                               if (_formkey.currentState!.validate()){
+                                RegistrationUser();
+                                print('Success');
                                 showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
                                   content: Text(
                                       'Vous allez repondre sur quelques questions pour savoir votre etat general',
@@ -291,6 +319,8 @@ class InitState extends State<Registration> {
                                 ),
                                   barrierDismissible: true,
                                 );
+                              }else{
+                                print('Unsuccess');
                               }
                             },
                             child: Text(
@@ -319,5 +349,20 @@ class InitState extends State<Registration> {
             )
         )
     );
+  }
+
+  Future RegistrationUser() async {
+    var APIURL = "http://127.0.0.1:3000/patients";
+    Map mapeddata = {
+      "name" : _name.text,
+      "age": _age.text,
+      "num": _num.text,
+      "sexe" : _sexe.text
+
+    };
+      http.Response reponse = await http.post(APIURL,body: mapeddata);
+      var data = jsonDecode(reponse.body);
+      print('DATA: ${data}');
+
   }
 }

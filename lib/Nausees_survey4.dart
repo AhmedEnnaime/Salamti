@@ -9,7 +9,7 @@ class Nausees4 extends StatefulWidget {
 }
 
 class _Nausees4State extends State<Nausees4> {
-  bool val=false;
+  String val3='';
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +50,19 @@ class _Nausees4State extends State<Nausees4> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Un seule repas',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
-                groupValue: val,
+                value: 'Un seule repas',
+                groupValue: val3,
                 onChanged: (value){
-                  val=value!;
+
                   setState(() {
+                    val3=value!;
 
                   });
 
@@ -75,18 +76,18 @@ class _Nausees4State extends State<Nausees4> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Entre deux et tois repas  ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
-                groupValue: val,
+                value: 'Entre deux et tois repas',
+                groupValue: val3,
                 onChanged: (value){
-                  val=value!;
                   setState(() {
+                    val3=value!;
 
                   });
 
@@ -100,18 +101,18 @@ class _Nausees4State extends State<Nausees4> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Plus que trois repas  ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
-                groupValue: val,
+                value: 'Plus que trois repas',
+                groupValue: val3,
                 onChanged: (value){
-                  val=value!;
                   setState(() {
+                    val3=value!;
 
                   });
 

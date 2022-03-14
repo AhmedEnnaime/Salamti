@@ -9,7 +9,7 @@ class Nausees3 extends StatefulWidget {
 }
 
 class _Nausees3State extends State<Nausees3> {
-  bool val=false;
+  String val2='';
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +50,19 @@ class _Nausees3State extends State<Nausees3> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Moins une heure',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
-                groupValue: val,
+                value: 'Moins une heure',
+                groupValue: val2,
                 onChanged: (value){
-                  val=value!;
+
                   setState(() {
+                    val2=value!;
 
                   });
 
@@ -75,18 +76,19 @@ class _Nausees3State extends State<Nausees3> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Entre deux et quatre heures  ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
-                groupValue: val,
+                value: 'Entre deux et quatre heures',
+                groupValue: val2,
                 onChanged: (value){
-                  val=value!;
+
                   setState(() {
+                    val2=value!;
 
                   });
 
@@ -100,19 +102,18 @@ class _Nausees3State extends State<Nausees3> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
-                  'Plus aue six heures   ',
+                  'Plus que quatre heures   ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
-                groupValue: val,
+                value: 'Plus que quatre heures',
+                groupValue: val2,
                 onChanged: (value){
-                  val=value!;
                   setState(() {
-
+                    val2=value!;
                   });
 
                 },

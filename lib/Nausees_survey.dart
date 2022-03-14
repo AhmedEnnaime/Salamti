@@ -9,8 +9,7 @@ class Nausees extends StatefulWidget {
 }
 
 class _NauseesState extends State<Nausees> {
-  bool val=false;
-
+  String val='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,18 +49,18 @@ class _NauseesState extends State<Nausees> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Avant la cure de la chimiotherapie',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
+                value: 'Anticipé',
                 groupValue: val,
                 onChanged: (value){
-                  val=value!;
                   setState(() {
+                    val=value!;
 
                   });
 
@@ -75,19 +74,18 @@ class _NauseesState extends State<Nausees> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Les 24h premières heures ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
+                value: 'Aigue',
                 groupValue: val,
                 onChanged: (value){
-                  val=value!;
                   setState(() {
-
+                    val=value!;
                   });
 
                 },
@@ -100,18 +98,19 @@ class _NauseesState extends State<Nausees> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Après les premières 24h sans limite de fin ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
+                value: 'retardés',
                 groupValue: val,
                 onChanged: (value){
-                  val=value!;
+
                   setState(() {
+                    val=value!;
 
                   });
 
@@ -125,18 +124,19 @@ class _NauseesState extends State<Nausees> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Persistants malgré un traitement bien mené  ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
+                value: 'réfractaires',
                 groupValue: val,
                 onChanged: (value){
-                  val=value!;
+
                   setState(() {
+                    val=value!;
 
                   });
 
@@ -186,9 +186,7 @@ class _NauseesState extends State<Nausees> {
 
                 ],
               ),
-            )
-
-
+            ),
           ],
         ),
       ),

@@ -9,7 +9,7 @@ class Nausees2 extends StatefulWidget {
 }
 
 class _Nausees2State extends State<Nausees2> {
-  bool val=false;
+  String val1='';
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +50,44 @@ class _Nausees2State extends State<Nausees2> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
                   'Moins de deux (<2)',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
-                groupValue: val,
+                value: 'Moins de deux',
+                groupValue: val1,
                 onChanged: (value){
-                  val=value!;
+
                   setState(() {
+                    val1=value!;
+                  });
+
+                },
+              ),
+            ),
+            SizedBox(height: 20,),
+            Card(
+              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
+              clipBehavior: Clip.antiAlias,
+              shape: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black,)
+              ),
+              child: RadioListTile<String>(
+                title: Text(
+                  'Entre deux et cinq  ',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                value: 'Entre deux et cinq',
+                groupValue: val1,
+                onChanged: (value){
+
+                  setState(() {
+                    val1=value!;
 
                   });
 
@@ -75,43 +101,19 @@ class _Nausees2State extends State<Nausees2> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: RadioListTile<bool>(
+              child: RadioListTile<String>(
                 title: Text(
-                  'Entre deux et quatre  ',
+                  'Plus que six (6<) ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-                value: false,
-                groupValue: val,
+                value: 'Plus que six',
+                groupValue: val1,
                 onChanged: (value){
-                  val=value!;
-                  setState(() {
 
-                  });
-
-                },
-              ),
-            ),
-            SizedBox(height: 20,),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<bool>(
-                title: Text(
-                  'Entre quatre et six   ',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                value: false,
-                groupValue: val,
-                onChanged: (value){
-                  val=value!;
                   setState(() {
+                    val1=value!;
 
                   });
 
