@@ -1,11 +1,9 @@
-import 'package:e_sante/Diarrhees_survey.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Acceuil.dart';
-import 'package:e_sante/Constipation_survey.dart';
 import 'package:e_sante/variables.dart';
-import 'package:e_sante/Digestive_survey.dart';
 
-class Nausees_advices extends StatelessWidget {
+
+class Constipation_advices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +41,7 @@ class Nausees_advices extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'aux vomissements et nausees',
+                      'a la constipation',
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -60,7 +58,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Favoriser l’hydratation ',
+                'Buvez de 6 à 8 verres par jour',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -73,7 +71,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Fractionner l’alimentation: 6 à 8 petits repas',
+                'Augmentez votre consommation d’aliments riches en fibres ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -86,7 +84,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Proposer des petits repas froids pour éviter les fortes odeurs',
+                'Céréales ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -99,46 +97,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Eviter aliments trop gras, frits et trop épicés',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            ListTile(
-              leading: Icon(
-                Icons.check_box,
-                size: 40,
-              ),
-              title: Text(
-                'Privilégier aliments faciles à digérer',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            ListTile(
-              leading: Icon(
-                Icons.check_box,
-                size: 40,
-              ),
-              title: Text(
-                'Proposer de manger lentement',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            ListTile(
-              leading: Icon(
-                Icons.check_box,
-                size: 40,
-              ),
-              title: Text(
-                'Utiliser si besoin, une paille dans une tasse fermée',
+                'Activités physiques de façon régulière)',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -154,13 +113,8 @@ class Nausees_advices extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10)
                 ),
                 onPressed: () {
-                  if (Diarrhees_value == true){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees()));
-
-                  }else if (Constipation_value == true){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation()));
-
-                  }else if (Mucite_value==true){
+                   if (Mucite_value==true){
+                     //Navigator.push(context, MaterialPageRoute(builder: (context)=>));
 
                   }else {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));

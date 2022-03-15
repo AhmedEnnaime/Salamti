@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:e_sante/Acceuil.dart';
 import 'package:e_sante/Constipation_survey.dart';
 import 'package:e_sante/variables.dart';
-import 'package:e_sante/Digestive_survey.dart';
 
-class Nausees_advices extends StatelessWidget {
+
+class Diarrhees_advices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class Nausees_advices extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'aux vomissements et nausees',
+                      'aux Diarrhees',
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Favoriser l’hydratation ',
+                'Mangez 5 à 6 petits repas légers plutôt que 3 repas gras par jour ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -73,7 +73,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Fractionner l’alimentation: 6 à 8 petits repas',
+                'Buvez 8 à 10 verres de liquide par jour (eau, boisson bouillon) sauf si votre médecin prescrit un régime limité en apports hydriques ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -86,7 +86,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Proposer des petits repas froids pour éviter les fortes odeurs',
+                'Diminuer la consommation des aliments et boissons contenant la caféine (café, thé, cola, chocolat)',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -99,7 +99,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Eviter aliments trop gras, frits et trop épicés',
+                'Diminuer la consommation d’aliments riches en fibres ( fruits et légumes crus, jus de fruits, céréales, noix, dates, salade verte..)',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -112,7 +112,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Privilégier aliments faciles à digérer',
+                'Limiter consommation des produits laitiers ( ou consommer produits sans lactose) ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -125,7 +125,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Proposer de manger lentement',
+                'Eviter aliments gras, très épicés, et les pruneaux',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -138,7 +138,7 @@ class Nausees_advices extends StatelessWidget {
                 size: 40,
               ),
               title: Text(
-                'Utiliser si besoin, une paille dans une tasse fermée',
+                'Banane, Riz, Compote de pomme',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -154,10 +154,7 @@ class Nausees_advices extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10)
                 ),
                 onPressed: () {
-                  if (Diarrhees_value == true){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees()));
-
-                  }else if (Constipation_value == true){
+                   if (Constipation_value == true){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation()));
 
                   }else if (Mucite_value==true){

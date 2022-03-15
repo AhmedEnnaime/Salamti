@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:e_sante/Nausees_advices.dart';
-import 'package:e_sante/Nausees_survey5.dart';
+import 'package:e_sante/Diarrhees_advices.dart';
+import 'package:e_sante/Diarrhees_survey4.dart';
 
-class Nausees6 extends StatefulWidget {
+class Fievre extends StatefulWidget {
 
   @override
-  State<Nausees6> createState() => _Nausees6State();
+  State<Fievre> createState() => _FievreState();
 }
 
-class _Nausees6State extends State<Nausees6> {
-  String val5='';
-  TextEditingController traitement = TextEditingController();
+class _FievreState extends State<Fievre> {
+  String val10='';
+  TextEditingController delai = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan[900],
         title: Text(
-          'Nausees/Vomissements',
+          'Fièvre',
           style: TextStyle(
             fontSize: 30,
           ),
@@ -34,9 +34,49 @@ class _Nausees6State extends State<Nausees6> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
+            Padding(
+              padding: EdgeInsets.only(left: 20,top: 30),
+              child: Text(
+                'Délai d’apparition depuis\n la dernière cure ',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             Card(
               margin: EdgeInsets.fromLTRB(15, 35, 16, 0),
+              clipBehavior: Clip.antiAlias,
+              shape: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black,)
+              ),
+              child: Padding(
+                padding:  EdgeInsets.only(left: 40),
+                child: TextFormField(
+                  controller: delai,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    hintText: "Délai d’apparition",
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                  ),
+                ),
+              ),
+
+            ),
+            SizedBox(height: 20,),
+            Padding(
+              padding: EdgeInsets.only(left: 20,top: 30),
+              child: Text(
+                'Mesure par thermomètre ',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Card(
+              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
               clipBehavior: Clip.antiAlias,
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
@@ -48,18 +88,11 @@ class _Nausees6State extends State<Nausees6> {
                     Column(
                       children: [
                         Text(
-                          'Est-ce qu’un traitement ',
+                          'Votre temperature est\n superieure a 38°C ? ',
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
-                        Text(
-                          'a été prescrit ? ',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-
                       ],
                     ),
 
@@ -72,10 +105,10 @@ class _Nausees6State extends State<Nausees6> {
                     ),
                     Radio<String>(
                       value: 'Oui',
-                      groupValue: val5,
+                      groupValue: val10,
                       onChanged: (value){
                         setState(() {
-                          val5=value!;
+                          val10=value!;
                         });
 
                       },
@@ -88,35 +121,18 @@ class _Nausees6State extends State<Nausees6> {
                     ),
                     Radio<String>(
                       value: 'Non',
-                      groupValue: val5,
+                      groupValue: val10,
                       onChanged: (value){
                         setState(() {
-                          val5=value!;
+                          val10=value!;
                         });
                       },
                     ),
                   ],
                 ),
-              ) ,
+              ),
             ),
             SizedBox(height: 20,),
-            Card(
-                  margin: EdgeInsets.fromLTRB(15, 35, 16, 0),
-                  clipBehavior: Clip.antiAlias,
-                  shape: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black,)
-                  ),
-                  child: TextFormField(
-                    controller: traitement,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      hintText: "Mentionnez le traitement et s'il ya une amelioration apres ce traitement",
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                    ),
-                  ),
-
-                ),
 
             Padding(
               padding:  EdgeInsets.only(left: 30,top: 50),
@@ -129,7 +145,7 @@ class _Nausees6State extends State<Nausees6> {
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees5()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees4()));
 
                     },
                     child: Text(
@@ -145,10 +161,10 @@ class _Nausees6State extends State<Nausees6> {
                     style: ElevatedButton.styleFrom(
                         primary: Colors.cyan[900],
                         minimumSize: Size(40, 40),
-                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
+                        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10)
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_advices()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_advices()));
 
                     },
                     child: Text(
@@ -162,8 +178,7 @@ class _Nausees6State extends State<Nausees6> {
 
                 ],
               ),
-            )
-
+            ),
 
           ],
         ),

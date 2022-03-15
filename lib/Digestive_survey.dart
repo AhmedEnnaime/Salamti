@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:e_sante/Nausees_survey.dart';
+import 'package:e_sante/variables.dart';
+import 'package:e_sante/Diarrhees_survey.dart';
+import 'package:e_sante/Constipation_survey.dart';
 class Digestive_survey extends StatefulWidget {
   @override
   State<Digestive_survey> createState() => _Digestive_surveyState();
 }
 
 class _Digestive_surveyState extends State<Digestive_survey> {
-  bool Nausees_value=false;
-  bool Diarrhees_value=false;
-  bool Vommissements_value=false;
-  bool Constipation_value=false;
-  bool Mucite_value=false;
-  bool Douleurs_value=false;
-  bool Gouts_value=false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -258,8 +255,10 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                       if(Nausees_value==true || Vommissements_value==true){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees()));
                       }else if (Diarrhees_value==true){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees()));
 
                       }else if(Constipation_value==true){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation()));
 
                       }else if(Mucite_value==true){
 
