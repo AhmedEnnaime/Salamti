@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_advices.dart';
+import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey2.dart';
 import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey4.dart';
 
-class Fievre extends StatefulWidget {
+class Diarrhees3 extends StatefulWidget {
 
   @override
-  State<Fievre> createState() => _FievreState();
+  State<Diarrhees3> createState() => _Diarrhees3State();
 }
 
-class _FievreState extends State<Fievre> {
-  String val10='';
-  TextEditingController delai = TextEditingController();
+class _Diarrhees3State extends State<Diarrhees3> {
+  String val9='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan[900],
         title: Text(
-          'Fièvre',
+          'Diarrhées',
           style: TextStyle(
             fontSize: 30,
           ),
@@ -37,7 +36,7 @@ class _FievreState extends State<Fievre> {
             Padding(
               padding: EdgeInsets.only(left: 20,top: 30),
               child: Text(
-                'Délai d’apparition depuis\n la dernière cure ',
+                'Aspect des selles',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -50,90 +49,75 @@ class _FievreState extends State<Fievre> {
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: Padding(
-                padding:  EdgeInsets.only(left: 40),
-                child: TextFormField(
-                  controller: delai,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    hintText: "Délai d’apparition",
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
+              child: RadioListTile<String>(
+                title: Text(
+                  'Liquidiennes',
+                  style: TextStyle(
+                    fontSize: 16,
                   ),
                 ),
-              ),
+                value: 'Liquidiennes',
+                groupValue: val9,
+                onChanged: (value){
 
+                  setState(() {
+                    val9=value!;
+
+                  });
+
+                },
+              ),
             ),
             SizedBox(height: 20,),
-            Padding(
-              padding: EdgeInsets.only(left: 20,top: 30),
-              child: Text(
-                'Mesure par thermomètre ',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
             Card(
               margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
               clipBehavior: Clip.antiAlias,
               shape: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black,)
               ),
-              child: Padding(
-                padding:  EdgeInsets.only(left: 20),
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          'Votre temperature est\n superieure a 38°C ? ',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    SizedBox(width: 35,),
-                    Text(
-                      'Oui',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Radio<String>(
-                      value: 'Oui',
-                      groupValue: val10,
-                      onChanged: (value){
-                        setState(() {
-                          val10=value!;
-                        });
-
-                      },
-                    ),
-                    Text(
-                      'Non',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Radio<String>(
-                      value: 'Non',
-                      groupValue: val10,
-                      onChanged: (value){
-                        setState(() {
-                          val10=value!;
-                        });
-                      },
-                    ),
-                  ],
+              child: RadioListTile<String>(
+                title: Text(
+                  'Glaireuses ',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
+                value: 'Glaireuses',
+                groupValue: val9,
+                onChanged: (value){
+
+                  setState(() {
+                    val9=value!;
+
+                  });
+
+                },
               ),
             ),
             SizedBox(height: 20,),
+            Card(
+              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
+              clipBehavior: Clip.antiAlias,
+              shape: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black,)
+              ),
+              child: RadioListTile<String>(
+                title: Text(
+                  'Glairo-sanglantes',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                value: 'Glairo-sanglantes',
+                groupValue: val9,
+                onChanged: (value){
+                  setState(() {
+                    val9=value!;
+                  });
 
+                },
+              ),
+            ),
             Padding(
               padding:  EdgeInsets.only(left: 30,top: 50),
               child: Row(
@@ -145,7 +129,7 @@ class _FievreState extends State<Fievre> {
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees4()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees2()));
 
                     },
                     child: Text(
@@ -164,11 +148,11 @@ class _FievreState extends State<Fievre> {
                         padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10)
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_advices()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees4()));
 
                     },
                     child: Text(
-                      'Terminer',
+                      'Suivant',
                       style: TextStyle(
                           fontSize: 22
                       ),
@@ -179,7 +163,6 @@ class _FievreState extends State<Fievre> {
                 ],
               ),
             ),
-
           ],
         ),
       ),

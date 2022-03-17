@@ -1,14 +1,15 @@
-import 'package:e_sante/Main_pages/Acceuil.dart';
+import 'package:e_sante/Toxicite_digestive/Constipation/Constipation_survey2.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/variables.dart';
+import 'package:e_sante/Fievre_survey.dart';
+import 'package:e_sante/Toxicite_digestive/Constipation/Constipation_advices.dart';
 
-
-class Evaluation extends StatefulWidget {
+class Constipation3 extends StatefulWidget {
   @override
-  State<Evaluation> createState() => _EvaluationState();
+  State<Constipation3> createState() => _Constipation3State();
 }
 
-class _EvaluationState extends State<Evaluation> {
+class _Constipation3State extends State<Constipation3> {
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class _EvaluationState extends State<Evaluation> {
       appBar: AppBar(
         backgroundColor: Colors.cyan[900],
         title: Text(
-          'Diarrhées',
+          'Constipation',
           style: TextStyle(
             fontSize: 30,
           ),
@@ -57,17 +58,17 @@ class _EvaluationState extends State<Evaluation> {
                 ),
                 child: CheckboxListTile(
                   title: Text(
-                    'Présence de plaintes',
+                    'Douleurs et crampes associées ',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
 
                     ),
                   ),
-                  value: plaintes_value,
+                  value: Crampes_value,
                   onChanged: (val){
                     setState(() {
-                      plaintes_value=val!;
+                      Crampes_value=val!;
                     });
                   },
                 ),
@@ -84,17 +85,17 @@ class _EvaluationState extends State<Evaluation> {
                   ),
                   child:CheckboxListTile(
                     title: Text(
-                      'Fatigue',
+                      'Saignement digestif associé',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
 
                       ),
                     ),
-                    value: ftg_value,
+                    value: Digestif_value,
                     onChanged: (val){
                       setState(() {
-                        ftg_value=val!;
+                        Digestif_value=val!;
                       });
                     },
                   ),
@@ -111,17 +112,17 @@ class _EvaluationState extends State<Evaluation> {
                   ),
                   child:CheckboxListTile(
                     title: Text(
-                      'Capacité de travail',
+                      'Vomissements',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
 
                       ),
                     ),
-                    value: travail_value,
+                    value: Vms_value,
                     onChanged: (val){
                       setState(() {
-                        travail_value=val!;
+                        Vms_value=val!;
                       });
                     },
                   ),
@@ -138,153 +139,73 @@ class _EvaluationState extends State<Evaluation> {
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      'Activités quotidiennes',
+                      'Fièvre',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
 
                       ),
                     ),
-                    value: quotidiennes_value,
+                    value: Fvr_value,
                     onChanged: (val){
                       setState(() {
-                        quotidiennes_value=val!;
+                        Fvr_value=val!;
                       });
                     },
                   ),
                 )
-            ),
-            SizedBox(height: 10,),
-            Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Card(
-                  margin: EdgeInsets.fromLTRB(15, 20, 16, 0),
-                  clipBehavior: Clip.antiAlias,
-                  shape: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black,)
-                  ),
-                  child: CheckboxListTile(
-                    title: Text(
-                      'Autonomie ',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-
-                      ),
-                    ),
-                    value: Autonomie_value,
-                    onChanged: (val){
-                      setState(() {
-                        Autonomie_value=val!;
-                      });
-                    },
-                  ),
-                ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Card(
-                margin: EdgeInsets.fromLTRB(15, 20, 16, 0),
-                clipBehavior: Clip.antiAlias,
-                shape: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black,)
-                ),
-                child: CheckboxListTile(
-                  title: Text(
-                    'Appétit  ',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-
-                    ),
-                  ),
-                  value: Apetit_value,
-                  onChanged: (val){
-                    setState(() {
-                      Apetit_value=val!;
-                    });
-                  },
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Card(
-                margin: EdgeInsets.fromLTRB(15, 20, 16, 0),
-                clipBehavior: Clip.antiAlias,
-                shape: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black,)
-                ),
-                child: CheckboxListTile(
-                  title: Text(
-                    'Douleur',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-
-                    ),
-                  ),
-                  value: Douleur_value,
-                  onChanged: (val){
-                    setState(() {
-                      Douleur_value=val!;
-                    });
-                  },
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Card(
-                margin: EdgeInsets.fromLTRB(15, 20, 16, 0),
-                clipBehavior: Clip.antiAlias,
-                shape: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black,)
-                ),
-                child: CheckboxListTile(
-                  title: Text(
-                    'Anxiété/dépression ',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-
-                    ),
-                  ),
-                  value: depression_value,
-                  onChanged: (val){
-                    setState(() {
-                      depression_value=val!;
-                    });
-                  },
-                ),
-              ),
             ),
             Padding(
               padding:  EdgeInsets.only(left: 30,top: 50),
-                  child:ElevatedButton(
+              child: Row(
+                children: [
+                  ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Colors.cyan[900],
                         minimumSize: Size(40, 40),
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation2()));
 
                     },
                     child: Text(
-                      'Confirmer',
+                      'Précedent',
                       style: TextStyle(
                           fontSize: 22
                       ),
                     ),
                   ),
-                ),
-            ]
-          ),
-        ),
+                  SizedBox(width: 50,),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.cyan[900],
+                        minimumSize: Size(40, 40),
+                        padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10)
+                    ),
+                    onPressed: () {
+                      if(Fvr_value == true){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Fievre()));
+                      }else{
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation_advices()));
+                      }
+
+                    },
+                    child: Text(
+                      'Suivant',
+                      style: TextStyle(
+                          fontSize: 22
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+          ],
+
+        ) ,
+      ),
     );
   }
 }

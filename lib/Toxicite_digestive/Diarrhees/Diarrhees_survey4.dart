@@ -1,14 +1,15 @@
-import 'package:e_sante/Main_pages/Acceuil.dart';
+import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_advices.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/variables.dart';
+import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey3.dart';
+import 'package:e_sante/Fievre_survey.dart';
 
-
-class Evaluation extends StatefulWidget {
+class Diarrhees4 extends StatefulWidget {
   @override
-  State<Evaluation> createState() => _EvaluationState();
+  State<Diarrhees4> createState() => _Diarrhees4State();
 }
 
-class _EvaluationState extends State<Evaluation> {
+class _Diarrhees4State extends State<Diarrhees4> {
 
   @override
   Widget build(BuildContext context) {
@@ -57,17 +58,17 @@ class _EvaluationState extends State<Evaluation> {
                 ),
                 child: CheckboxListTile(
                   title: Text(
-                    'Présence de plaintes',
+                    'Fatigue importante',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
 
                     ),
                   ),
-                  value: plaintes_value,
+                  value: Fatigue_value,
                   onChanged: (val){
                     setState(() {
-                      plaintes_value=val!;
+                      Fatigue_value=val!;
                     });
                   },
                 ),
@@ -84,17 +85,17 @@ class _EvaluationState extends State<Evaluation> {
                   ),
                   child:CheckboxListTile(
                     title: Text(
-                      'Fatigue',
+                      'Déshydratation, Dénutrition',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
 
                       ),
                     ),
-                    value: ftg_value,
+                    value: Denutrition_value,
                     onChanged: (val){
                       setState(() {
-                        ftg_value=val!;
+                        Denutrition_value=val!;
                       });
                     },
                   ),
@@ -111,17 +112,17 @@ class _EvaluationState extends State<Evaluation> {
                   ),
                   child:CheckboxListTile(
                     title: Text(
-                      'Capacité de travail',
+                      'Saignement digestif associé',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
 
                       ),
                     ),
-                    value: travail_value,
+                    value: Saignement_value,
                     onChanged: (val){
                       setState(() {
-                        travail_value=val!;
+                        Saignement_value=val!;
                       });
                     },
                   ),
@@ -138,17 +139,17 @@ class _EvaluationState extends State<Evaluation> {
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      'Activités quotidiennes',
+                      'Troubles neurologiques',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
 
                       ),
                     ),
-                    value: quotidiennes_value,
+                    value: neurologiques_value,
                     onChanged: (val){
                       setState(() {
-                        quotidiennes_value=val!;
+                        neurologiques_value=val!;
                       });
                     },
                   ),
@@ -165,126 +166,74 @@ class _EvaluationState extends State<Evaluation> {
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      'Autonomie ',
+                      'Fièvre',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
 
                       ),
                     ),
-                    value: Autonomie_value,
+                    value: Fievre_value,
                     onChanged: (val){
                       setState(() {
-                        Autonomie_value=val!;
+                        Fievre_value=val!;
                       });
                     },
                   ),
-                ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Card(
-                margin: EdgeInsets.fromLTRB(15, 20, 16, 0),
-                clipBehavior: Clip.antiAlias,
-                shape: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black,)
-                ),
-                child: CheckboxListTile(
-                  title: Text(
-                    'Appétit  ',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-
-                    ),
-                  ),
-                  value: Apetit_value,
-                  onChanged: (val){
-                    setState(() {
-                      Apetit_value=val!;
-                    });
-                  },
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Card(
-                margin: EdgeInsets.fromLTRB(15, 20, 16, 0),
-                clipBehavior: Clip.antiAlias,
-                shape: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black,)
-                ),
-                child: CheckboxListTile(
-                  title: Text(
-                    'Douleur',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-
-                    ),
-                  ),
-                  value: Douleur_value,
-                  onChanged: (val){
-                    setState(() {
-                      Douleur_value=val!;
-                    });
-                  },
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Card(
-                margin: EdgeInsets.fromLTRB(15, 20, 16, 0),
-                clipBehavior: Clip.antiAlias,
-                shape: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black,)
-                ),
-                child: CheckboxListTile(
-                  title: Text(
-                    'Anxiété/dépression ',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-
-                    ),
-                  ),
-                  value: depression_value,
-                  onChanged: (val){
-                    setState(() {
-                      depression_value=val!;
-                    });
-                  },
-                ),
-              ),
+                )
             ),
             Padding(
               padding:  EdgeInsets.only(left: 30,top: 50),
-                  child:ElevatedButton(
+              child: Row(
+                children: [
+                  ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Colors.cyan[900],
                         minimumSize: Size(40, 40),
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees3()));
 
                     },
                     child: Text(
-                      'Confirmer',
+                      'Précedent',
                       style: TextStyle(
                           fontSize: 22
                       ),
                     ),
                   ),
-                ),
-            ]
-          ),
-        ),
+                  SizedBox(width: 50,),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.cyan[900],
+                        minimumSize: Size(40, 40),
+                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
+                    ),
+                    onPressed: () {
+                      if(Fievre_value == true){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Fievre()));
+                      }else{
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_advices()));
+                      }
+
+
+                    },
+                    child: Text(
+                      'Suivant',
+                      style: TextStyle(
+                          fontSize: 22
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+          ],
+
+        ) ,
+      ),
     );
   }
 }

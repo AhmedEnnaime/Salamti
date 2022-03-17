@@ -16,3 +16,12 @@ bool Crampes_value=false;
 bool Digestif_value=false;
 bool Vms_value=false;
 bool Fvr_value=false;
+//////Evaluation///////
+bool plaintes_value=false;
+bool ftg_value=false;
+bool travail_value=false;
+bool quotidiennes_value=false;
+bool Autonomie_value=false;
+bool Apetit_value=false;
+bool Douleur_value=false;
+bool depression_value=false;
