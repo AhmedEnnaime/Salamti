@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:e_sante/Main_pages/rdv_confirm.dart';
+import 'package:e_sante/Rendez-vous/rdv_confirm.dart';
 
 class rdv extends StatefulWidget {
   @override

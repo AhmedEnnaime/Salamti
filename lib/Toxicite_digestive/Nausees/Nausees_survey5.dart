@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_survey4.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_survey6.dart';
+import 'package:e_sante/variables.dart';
 
 class Nausees5 extends StatefulWidget {
   @override
@@ -8,13 +9,7 @@ class Nausees5 extends StatefulWidget {
 }
 
 class _Nausees5State extends State<Nausees5> {
-  bool Troubles_value=false;
-  bool Moins_urines_value=false;
-  bool Plus_urines_value=false;
-  bool Deshydratation_value=false;
-  bool Poids_value=false;
-  bool Douleurs_value=false;
-  bool Gouts_value=false;
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:e_sante/Main_pages/Toxicity.dart';
-import 'package:e_sante/Main_pages/rdv.dart';
+import 'package:e_sante/Rendez-vous/rdv.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

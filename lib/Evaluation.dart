@@ -16,7 +16,7 @@ class _EvaluationState extends State<Evaluation> {
       appBar: AppBar(
         backgroundColor: Colors.cyan[900],
         title: Text(
-          'Diarrhées',
+          'Evaluation generale',
           style: TextStyle(
             fontSize: 30,
           ),

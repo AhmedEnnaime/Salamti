@@ -163,7 +163,7 @@ class Nausees_advices extends StatelessWidget {
                   }else if (Mucite_value==true){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite()));
                   }else {
-                    //Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
                   }
 
 

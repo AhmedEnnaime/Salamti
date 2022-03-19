@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Sidebar.dart';
+import 'package:e_sante/Evaluation.dart';
 import 'package:e_sante/Toxicite_digestive/Digestive_survey.dart';
 
 class Toxicity extends StatelessWidget {
@@ -137,6 +138,8 @@ class Toxicity extends StatelessWidget {
                                     children: [
                                       ElevatedButton(
                                         onPressed: () {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+
                                         },
                                         child: Text("Passer l'evaluation"),
                                       ),
@@ -193,7 +196,9 @@ class Toxicity extends StatelessWidget {
                                 Row(
                                   children: [
                                     ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                      },
                                       child: Text("Passer l'evaluation"),
                                     ),
                                     SizedBox(width: 50,),
@@ -255,7 +260,9 @@ class Toxicity extends StatelessWidget {
                                 Row(
                                   children: [
                                     ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                      },
                                       child: Text("Passer l'evaluation"),
                                     ),
                                     SizedBox(width: 50,),
@@ -311,7 +318,9 @@ class Toxicity extends StatelessWidget {
                                 Row(
                                   children: [
                                     ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                      },
                                       child: Text("Passer l'evaluation"),
                                     ),
                                     SizedBox(width: 50,),
@@ -371,7 +380,9 @@ class Toxicity extends StatelessWidget {
                                 Row(
                                   children: [
                                     ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                      },
                                       child: Text("Passer l'evaluation"),
                                     ),
                                     SizedBox(width: 50,),
@@ -427,7 +438,9 @@ class Toxicity extends StatelessWidget {
                                 Row(
                                   children: [
                                     ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                      },
                                       child: Text("Passer l'evaluation"),
                                     ),
                                     SizedBox(width: 50,),
