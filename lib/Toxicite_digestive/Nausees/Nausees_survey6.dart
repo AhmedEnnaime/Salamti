@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_advices.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_survey5.dart';
 import 'package:e_sante/variables.dart';
+import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_grade4.dart';
 
 class Nausees6 extends StatefulWidget {
@@ -152,9 +153,12 @@ class _Nausees6State extends State<Nausees6> {
                     onPressed: () {
                       if(Troubles_value==true || Moins_urines_value==true || Plus_urines_value==true || Deshydratation_value==true || Poids_value==true || douleurs_value==true || gouts_value==true){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
+                      }else if(val3=='Un seule repas' || val1=='Plus que six'){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
+                      }else if(val1=='Entre deux et cinq'){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
                       }else
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_advices()));
-
                     },
                     child: Text(
                       'Terminer',

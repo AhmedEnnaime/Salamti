@@ -2,6 +2,7 @@ import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:e_sante/Main_pages/Toxicity.dart';
 import 'package:e_sante/Rendez-vous/rdv.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:e_sante/Profile/Profile.dart';
 import 'package:flutter/material.dart';
 
 class NavigationDrawerWidget extends StatefulWidget {
@@ -188,7 +189,9 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
             title: Padding(
               padding:  EdgeInsets.fromLTRB(0, 0, 120, 0),
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                  },
                   child: Text(
                       'Mon profile',
                       style: TextStyle(

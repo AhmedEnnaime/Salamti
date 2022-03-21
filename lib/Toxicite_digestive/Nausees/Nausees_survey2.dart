@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:e_sante/variables.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_survey.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_survey3.dart';
 
@@ -9,7 +10,6 @@ class Nausees2 extends StatefulWidget {
 }
 
 class _Nausees2State extends State<Nausees2> {
-  String val1='';
 
   @override
   Widget build(BuildContext context) {
