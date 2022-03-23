@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_advices.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_survey5.dart';
 import 'package:e_sante/variables.dart';
-import 'package:e_sante/Main_pages/Acceuil.dart';
+import 'package:http/http.dart' as http;
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_grade4.dart';
 
 class Nausees6 extends StatefulWidget {
@@ -12,7 +14,7 @@ class Nausees6 extends StatefulWidget {
 }
 
 class _Nausees6State extends State<Nausees6> {
-  String val5='';
+
   TextEditingController traitement = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -153,12 +155,16 @@ class _Nausees6State extends State<Nausees6> {
                     onPressed: () {
                       if(Troubles_value==true || Moins_urines_value==true || Plus_urines_value==true || Deshydratation_value==true || Poids_value==true || douleurs_value==true || gouts_value==true){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
+                        Nausees_data();
                       }else if(val3=='Un seule repas' || val1=='Plus que six'){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
+                        Nausees_data();
                       }else if(val1=='Entre deux et cinq'){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
+                        Nausees_data();
                       }else
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_advices()));
+                      Nausees_data();
                     },
                     child: Text(
                       'Terminer',
@@ -178,5 +184,21 @@ class _Nausees6State extends State<Nausees6> {
         ),
       ),
     );
+  }
+  Future Nausees_data() async {
+    var APIURL = "http://10.0.2.2:3000/Patients";
+    Map mapeddata = {
+      "Moment d’apparition" : val,
+      "Nombre d’épisodes par 24h": val1,
+      "Durée par jours": val2,
+      "Nbr de repas par jour": val3,
+      //"Signe de gravite": Troubles_value,
+      "Est-ce qu’un traitement a été prescrit": val5,
+      "Description du traitememnt": traitement.text,
+    };
+    http.Response reponse = await http.post(APIURL,body: mapeddata);
+    var data = jsonDecode(reponse.body);
+    print('DATA: ${data}');
+
   }
 }

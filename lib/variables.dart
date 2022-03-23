@@ -6,6 +6,13 @@ bool Constipation_value=false;
 bool Mucite_value=false;
 bool Douleurs_value=false;
 bool Gouts_value=false;
+////////Nausees/////////
+String val='';
+////////Nausees_survey3///////
+String val2='';
+/////////Nausees_suervey6//////
+String val5='';
+String traitement='';
 ////////Nausees_survey4///////
 String val3='';
 ////////Nausees_survey2///////

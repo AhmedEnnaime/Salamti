@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-//import 'package:e_sante/Main_pages/Acceuil.dart';
+import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -118,7 +118,7 @@ class _Login_medecinState extends State<Login_medecin> {
                                             if(_formkey.currentState!.validate()){
                                               RegistrationUser();
                                               print('Success');
-                                              //Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil_medecin()));
                                             }else{
                                               print('Unsuccess');
                                             }

@@ -10,7 +10,6 @@ class Nausees5 extends StatefulWidget {
 
 class _Nausees5State extends State<Nausees5> {
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

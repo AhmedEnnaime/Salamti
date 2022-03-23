@@ -28,7 +28,7 @@ class Toxicity extends StatelessWidget {
           title: Row(
             children: [
               Padding(
-                padding:  EdgeInsets.fromLTRB(30, 0, 0, 10),
+                padding:  EdgeInsets.fromLTRB(30, 3, 0, 10),
                 child: Image.asset('assets/Logo circle.png'),
               ),
               SizedBox(width: 20,),
@@ -84,401 +84,403 @@ class Toxicity extends StatelessWidget {
           )
       ),
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 40, 60, 0),
-              child: Text(
-                  'Choisissez votre toxicité',
-                  style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.bold,
-                  )
 
-              ),
-            ),
-            SizedBox(height: 6,),
-            Padding(
-              padding:  EdgeInsets.fromLTRB(20, 0, 10, 0),
-              child: Text(
-                'Vous serez redirigé vers une liste de questions en fonction de votre sélection.',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey[600],
+          child: Container(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 40, 60, 0),
+                  child: Text(
+                      'Choisissez votre toxicité',
+                      style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
+                      )
 
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(height: 13,),
-            Padding(
-              padding:  EdgeInsets.fromLTRB(20, 0, 0, 0),
-              child: Row(
-                children: [
-                  Padding(
-                    padding:  EdgeInsets.fromLTRB(6, 0, 0, 0),
-                    child: Card(
-                      color: Colors.grey[300],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding:  EdgeInsets.fromLTRB(20, 16, 20, 15),
-                            child: Image.asset('assets/Gastroenterology.png'),
+                SizedBox(height: 6,),
+                Padding(
+                  padding:  EdgeInsets.fromLTRB(20, 0, 10, 0),
+                  child: Text(
+                    'Vous serez redirigé vers une liste de questions en fonction de votre sélection.',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey[600],
+
+                    ),
+                  ),
+                ),
+                SizedBox(height: 13,),
+                Padding(
+                  padding:  EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding:  EdgeInsets.fromLTRB(6, 0, 0, 0),
+                        child: Card(
+                          color: Colors.grey[300],
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)
                           ),
-                          Padding(
-                            padding:  EdgeInsets.fromLTRB(35, 0, 35,0),
-                            child: TextButton(
-                              onPressed: () {
-                                showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
-                                  title: Text('Attention'),
-                                  content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
-                                  actions: [
-                                    Row(
-                                      children: [
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding:  EdgeInsets.fromLTRB(20, 16, 20, 15),
+                                child: Image.asset('assets/Gastroenterology.png'),
+                              ),
+                              Padding(
+                                padding:  EdgeInsets.fromLTRB(35, 0, 35,0),
+                                child: TextButton(
+                                  onPressed: () {
+                                    showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
+                                      title: Text('Attention'),
+                                      content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
+                                      actions: [
+                                        Row(
+                                          children: [
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
 
-                                          },
-                                          child: Text("Passer l'evaluation"),
-                                        ),
-                                        SizedBox(width: 50,),
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Digestive_survey()));
-                                          },
-                                          child: Text("Continuer"),
+                                              },
+                                              child: Text("Passer l'evaluation"),
+                                            ),
+                                            SizedBox(width: 50,),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Digestive_survey()));
+                                              },
+                                              child: Text("Continuer"),
+                                            )
+                                          ],
                                         )
-                                      ],
-                                    )
 
-                                  ],
+                                      ],
+
+                                    ),
+                                      barrierDismissible: true,
+                                    );
+                                  },
+                                  child: Text(
+                                      'Digestive',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      )
+                                  ),
 
                                 ),
-                                  barrierDismissible: true,
-                                );
-                              },
-                              child: Text(
-                                  'Digestive',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                  )
-                              ),
+                              )
 
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10,),
+                      Card(
+                        color: Colors.grey[300],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(17, 20, 17, 20),
+                              child: Image.asset('assets/Frame.png'),
                             ),
-                          )
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(1, 0, 1, 0),
+                              child: TextButton(
+                                onPressed: () {
+                                  showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
+                                    title: Text('Attention'),
+                                    content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
+                                    actions: [
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                            },
+                                            child: Text("Passer l'evaluation"),
+                                          ),
+                                          SizedBox(width: 50,),
+                                          ElevatedButton(
+                                            onPressed: () {},
+                                            child: Text("Continuer"),
+                                          )
+                                        ],
+                                      )
 
-                        ],
+                                    ],
+
+                                  ),
+                                    barrierDismissible: true,
+                                  );
+                                },
+                                child: Text(
+                                    ' Arthromyalgique',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    )
+                                ),
+
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+
+
+
+                    ],
+                  ),
+                ),
+                Row(
+
+                  children: [
+                    Padding(
+                      padding:  EdgeInsets.fromLTRB(28, 0, 0, 0),
+                      child: Card(
+                        color: Colors.grey[300],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(20, 17, 20, 17),
+                              child: Image.asset('assets/Nephrology.png'),
+                            ),
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(12, 0, 12,0),
+                              child: TextButton(
+                                onPressed: () {
+                                  showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
+                                    title: Text('Attention'),
+                                    content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
+                                    actions: [
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                            },
+                                            child: Text("Passer l'evaluation"),
+                                          ),
+                                          SizedBox(width: 50,),
+                                          ElevatedButton(
+                                            onPressed: () {},
+                                            child: Text("Continuer"),
+                                          )
+                                        ],
+                                      )
+
+                                    ],
+
+                                  ),
+                                    barrierDismissible: true,
+                                  );
+                                },
+                                child: Text(
+                                    ' Neurologique',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    )
+                                ),
+
+                              ),
+                            )
+
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(width: 10,),
-                  Card(
-                    color: Colors.grey[300],
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(17, 20, 17, 20),
-                          child: Image.asset('assets/Frame.png'),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding:  EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: Card(
+                        color: Colors.grey[300],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)
                         ),
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(1, 0, 1, 0),
-                          child: TextButton(
-                            onPressed: () {
-                              showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
-                                title: Text('Attention'),
-                                content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
-                                actions: [
-                                  Row(
-                                    children: [
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
-                                        },
-                                        child: Text("Passer l'evaluation"),
-                                      ),
-                                      SizedBox(width: 50,),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text("Continuer"),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(20, 17, 20, 17),
+                              child: Image.asset('assets/Obstetrics _ Gynecology.png'),
+                            ),
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(25, 0, 25,0),
+                              child: TextButton(
+                                onPressed: () {
+                                  showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
+                                    title: Text('Attention'),
+                                    content: Text("Ne continuez que si vous avez passé évaluation de l'état général"),
+                                    actions: [
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                            },
+                                            child: Text("Passer l'evaluation"),
+                                          ),
+                                          SizedBox(width: 50,),
+                                          ElevatedButton(
+                                            onPressed: () {},
+                                            child: Text("Continuer"),
+                                          )
+                                        ],
                                       )
-                                    ],
-                                  )
 
-                                ],
+                                    ],
+
+                                  ),
+                                    barrierDismissible: true,
+                                  );
+                                },
+                                child: Text(
+                                    ' Gonadique',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    )
+                                ),
 
                               ),
-                                barrierDismissible: true,
-                              );
-                            },
-                            child: Text(
-                                ' Arthromyalgique',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                )
-                            ),
+                            )
 
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-
-
-
-                ],
-              ),
-            ),
-            Row(
-
-              children: [
-                Padding(
-                  padding:  EdgeInsets.fromLTRB(28, 0, 0, 0),
-                  child: Card(
-                    color: Colors.grey[300],
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(20, 17, 20, 17),
-                          child: Image.asset('assets/Nephrology.png'),
+                          ],
                         ),
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(12, 0, 12,0),
-                          child: TextButton(
-                            onPressed: () {
-                              showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
-                                title: Text('Attention'),
-                                content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
-                                actions: [
-                                  Row(
-                                    children: [
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
-                                        },
-                                        child: Text("Passer l'evaluation"),
-                                      ),
-                                      SizedBox(width: 50,),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text("Continuer"),
-                                      )
-                                    ],
-                                  )
-
-                                ],
-
-                              ),
-                                barrierDismissible: true,
-                              );
-                            },
-                            child: Text(
-                                ' Neurologique',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                )
-                            ),
-
-                          ),
-                        )
-
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
+
                 ),
-                SizedBox(width: 15,),
-                Padding(
-                  padding:  EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: Card(
-                    color: Colors.grey[300],
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(20, 17, 20, 17),
-                          child: Image.asset('assets/Obstetrics _ Gynecology.png'),
+                Row(
+                  children: [
+                    Padding(
+                      padding:  EdgeInsets.fromLTRB(30, 0, 0, 20),
+                      child: Card(
+                        color: Colors.grey[300],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)
                         ),
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(25, 0, 25,0),
-                          child: TextButton(
-                            onPressed: () {
-                              showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
-                                title: Text('Attention'),
-                                content: Text("Ne continuez que si vous avez passé évaluation de l'état général"),
-                                actions: [
-                                  Row(
-                                    children: [
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
-                                        },
-                                        child: Text("Passer l'evaluation"),
-                                      ),
-                                      SizedBox(width: 50,),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text("Continuer"),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(20, 17, 20, 17),
+                              child: Image.asset('assets/oculaire.png'),
+                            ),
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(35, 0, 35,0),
+                              child: TextButton(
+                                onPressed: () {
+                                  showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
+                                    title: Text('Attention'),
+                                    content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
+                                    actions: [
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                            },
+                                            child: Text("Passer l'evaluation"),
+                                          ),
+                                          SizedBox(width: 50,),
+                                          ElevatedButton(
+                                            onPressed: () {},
+                                            child: Text("Continuer"),
+                                          )
+                                        ],
                                       )
-                                    ],
-                                  )
 
-                                ],
+                                    ],
+
+                                  ),
+                                    barrierDismissible: true,
+                                  );
+                                },
+                                child: Text(
+                                    ' Oculaire',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    )
+                                ),
 
                               ),
-                                barrierDismissible: true,
-                              );
-                            },
-                            child: Text(
-                                ' Gonadique',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                )
-                            ),
+                            )
 
-                          ),
-                        )
-
-                      ],
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding:  EdgeInsets.fromLTRB(0, 0, 0, 18),
+                      child: Card(
+                        color: Colors.grey[300],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(20, 17, 20, 17),
+                              child: Image.asset('assets/Dermatology.png'),
+                            ),
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(35, 0, 35,0),
+                              child: TextButton(
+                                onPressed: () {
+                                  showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
+                                    title: Text('Attention'),
+                                    content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
+                                    actions: [
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
+                                            },
+                                            child: Text("Passer l'evaluation"),
+                                          ),
+                                          SizedBox(width: 50,),
+                                          ElevatedButton(
+                                            onPressed: () {},
+                                            child: Text("Continuer"),
+                                          )
+                                        ],
+                                      )
+
+                                    ],
+
+                                  ),
+                                    barrierDismissible: true,
+                                  );
+                                },
+                                child: Text(
+                                    'Cutanée',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    )
+
+                                ),
+
+                              ),
+                            )
+
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
               ],
-
             ),
-            Row(
-              children: [
-                Padding(
-                  padding:  EdgeInsets.fromLTRB(30, 0, 0, 20),
-                  child: Card(
-                    color: Colors.grey[300],
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(20, 17, 20, 17),
-                          child: Image.asset('assets/oculaire.png'),
-                        ),
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(35, 0, 35,0),
-                          child: TextButton(
-                            onPressed: () {
-                              showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
-                                title: Text('Attention'),
-                                content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
-                                actions: [
-                                  Row(
-                                    children: [
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
-                                        },
-                                        child: Text("Passer l'evaluation"),
-                                      ),
-                                      SizedBox(width: 50,),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text("Continuer"),
-                                      )
-                                    ],
-                                  )
+          ),
 
-                                ],
-
-                              ),
-                                barrierDismissible: true,
-                              );
-                            },
-                            child: Text(
-                                ' Oculaire',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                )
-                            ),
-
-                          ),
-                        )
-
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(width: 15,),
-                Padding(
-                  padding:  EdgeInsets.fromLTRB(0, 0, 0, 18),
-                  child: Card(
-                    color: Colors.grey[300],
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(20, 17, 20, 17),
-                          child: Image.asset('assets/Dermatology.png'),
-                        ),
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(35, 0, 35,0),
-                          child: TextButton(
-                            onPressed: () {
-                              showCupertinoDialog(context: context, builder:  (_) =>AlertDialog(
-                                title: Text('Attention'),
-                                content: Text('Ne continuez que si vous avez passé évaluation de l’état général'),
-                                actions: [
-                                  Row(
-                                    children: [
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
-                                        },
-                                        child: Text("Passer l'evaluation"),
-                                      ),
-                                      SizedBox(width: 50,),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text("Continuer"),
-                                      )
-                                    ],
-                                  )
-
-                                ],
-
-                              ),
-                                barrierDismissible: true,
-                              );
-                            },
-                            child: Text(
-                                'Cutanée',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                )
-
-                            ),
-
-                          ),
-                        )
-
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
       ),
 
 

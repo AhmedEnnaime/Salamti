@@ -12,10 +12,12 @@ class Introduction extends StatelessWidget {
           children: [
             Padding(
               padding:  EdgeInsets.fromLTRB(0, 150, 0, 0),
-              child: Image.asset(
-                  'assets/Logo circle.png',
-                    width: 100,
-                    height: 100,
+              child: Center(
+                child: Image.asset(
+                    'assets/Logo circle.png',
+                      width: 100,
+                      height: 100,
+                ),
               ),
             ),
             SizedBox(height: 20,),
