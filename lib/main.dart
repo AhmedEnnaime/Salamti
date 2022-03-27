@@ -4,7 +4,7 @@ import 'package:e_sante/Main_pages/Splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(DevicePreview(builder: (context)=>MyApp()));
 }
 
 class MyApp extends StatelessWidget {

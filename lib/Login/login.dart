@@ -19,8 +19,6 @@ class _LoginState extends State<Login> {
     double widthScreen=MediaQuery.of(context).size.width;
     double heightScreen=MediaQuery.of(context).size.height;
     return Container(
-      width: widthScreen,
-      height: heightScreen,
       decoration: BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/login.png'), fit: BoxFit.cover),
@@ -38,12 +36,11 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
+                height: heightScreen/1,
                 child: SingleChildScrollView(
                   child: Container(
                     padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.5),
+                        top: MediaQuery.of(context).size.height * 0.43),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -104,7 +101,7 @@ class _LoginState extends State<Login> {
                                   height: 40,
                                 ),
                                 Container(
-                                  width: MediaQuery.of(context).size.width,
+                                  width: widthScreen/1.3,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
@@ -139,7 +136,7 @@ class _LoginState extends State<Login> {
                                 ),
 
                                     Container(
-                                      width: MediaQuery.of(context).size.width,
+                                      width: widthScreen/1.2,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
