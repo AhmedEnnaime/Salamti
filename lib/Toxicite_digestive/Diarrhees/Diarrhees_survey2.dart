@@ -14,239 +14,249 @@ class _Diarrhees2State extends State<Diarrhees2> {
   TextEditingController duree = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.cyan[900],
-        title: Text(
-          'Diarrhées',
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: Container(
-
-          ),
-
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 20,top: 30),
-              child: Text(
-                'Durée de survenue',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 35, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: Padding(
-                padding:  EdgeInsets.only(left: 40),
-                child: TextFormField(
-                  controller: duree,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    hintText: "Durée de survenue",
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
+            Container(
+              width: WidthScreen,
+              height:
+              HeightScreen/3.8,
+              color: Colors.cyan[900],
+              child: Center(
+                child: Text(
+                  'Diarrhées',
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-
             ),
-            SizedBox(height: 20,),
-            Padding(
-              padding: EdgeInsets.only(left: 20,top: 30),
-              child: Text(
-                'Douleurs abdominales associées ',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: Padding(
-                padding:  EdgeInsets.only(left: 20),
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          'Vous avez des douleurs \n abdominales associes ? ',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    SizedBox(width: 35,),
-                    Text(
-                      'Oui',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Radio<String>(
-                      value: 'Oui',
-                      groupValue: val7,
-                      onChanged: (value){
-                        setState(() {
-                          val7=value!;
-                        });
-
-                      },
-                    ),
-                    Text(
-                      'Non',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Radio<String>(
-                      value: 'Non',
-                      groupValue: val7,
-                      onChanged: (value){
-                        setState(() {
-                          val7=value!;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Padding(
-              padding: EdgeInsets.only(left: 20,top: 30),
-              child: Text(
-                'Interférent avec la prise alimentaire ',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: Padding(
-                padding:  EdgeInsets.only(left: 30),
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          'Cette diarrhees gene \n votre alimentation ? ',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    SizedBox(width: 30,),
-                    Text(
-                      'Oui',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Radio<String>(
-                      value: 'Oui',
-                      groupValue: val8,
-                      onChanged: (value){
-                        setState(() {
-                          val8=value!;
-                        });
-
-                      },
-                    ),
-                    Text(
-                      'Non',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Radio<String>(
-                      value: 'Non',
-                      groupValue: val8,
-                      onChanged: (value){
-                        setState(() {
-                          val8=value!;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding:  EdgeInsets.only(left: 30,top: 50),
-              child: Row(
+            Container(
+              width: WidthScreen,
+              child: Column(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.cyan[900],
-                        minimumSize: Size(40, 40),
-                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees()));
-
-                    },
+                  Padding(
+                    padding: EdgeInsets.only(left: WidthScreen/20,top: HeightScreen/30),
                     child: Text(
-                      'Précedent',
+                      'Durée de survenue',
                       style: TextStyle(
-                          fontSize: 22
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  SizedBox(width: 50,),
-
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.cyan[900],
-                        minimumSize: Size(40, 40),
-                        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10)
+                  SizedBox(height: 30,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
                     ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees3()));
+                    child: Padding(
+                      padding:  EdgeInsets.only(left: 40),
+                      child: TextFormField(
+                        controller: duree,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintText: "Durée de survenue",
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                        ),
+                      ),
+                    ),
 
-                    },
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: EdgeInsets.only(left: WidthScreen/70,top: HeightScreen/30),
                     child: Text(
-                      'Suivant',
+                      'Douleurs abdominales associées ',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 22
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/40,top:HeightScreen/25,right: WidthScreen/40),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Padding(
+                      padding:  EdgeInsets.only(left: WidthScreen/50),
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                'Vous avez des douleurs \n abdominales associes ? ',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Text(
+                            'Oui',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          Radio<String>(
+                            value: 'Oui',
+                            groupValue: val7,
+                            onChanged: (value){
+                              setState(() {
+                                val7=value!;
+                              });
+
+                            },
+                          ),
+                          Text(
+                            'Non',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          Radio<String>(
+                            value: 'Non',
+                            groupValue: val7,
+                            onChanged: (value){
+                              setState(() {
+                                val7=value!;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: EdgeInsets.only(left: WidthScreen/70,top: HeightScreen/30),
+                    child: Text(
+                      'Interférent avec la prise alimentaire ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/40,top:HeightScreen/25,right: WidthScreen/40),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Padding(
+                      padding:  EdgeInsets.only(left: WidthScreen/50),
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                'Cette diarrhees gene\n votre alimentation ? ',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          SizedBox(width: 20,),
+                          Text(
+                            'Oui',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          Radio<String>(
+                            value: 'Oui',
+                            groupValue: val8,
+                            onChanged: (value){
+                              setState(() {
+                                val8=value!;
+                              });
+
+                            },
+                          ),
+                          Text(
+                            'Non',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          Radio<String>(
+                            value: 'Non',
+                            groupValue: val8,
+                            onChanged: (value){
+                              setState(() {
+                                val8=value!;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 35,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.cyan[900],
+                              minimumSize: Size(40, 40),
+                              padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees()));
+
+                          },
+                          child: Text(
+                            'Précedent',
+                            style: TextStyle(
+                                fontSize: 22
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 50,),
+
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.cyan[900],
+                              minimumSize: Size(40, 40),
+                              padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees3()));
+
+                          },
+                          child: Text(
+                            'Suivant',
+                            style: TextStyle(
+                                fontSize: 22
+                            ),
+                          ),
+                        ),
+
+
+                      ],
+                    ),
 
 
                 ],
               ),
             ),
-
           ],
         ),
       ),

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class Roles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children:[
@@ -18,11 +20,12 @@ class Roles extends StatelessWidget {
           ),
           SizedBox(height: 70,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
                 children: [
                   Card(
-                    margin: EdgeInsets.fromLTRB(45, 0, 40, 0) ,
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20) ,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -42,9 +45,10 @@ class Roles extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(height: 10,),
 
                   Padding(
-                    padding:  EdgeInsets.fromLTRB(0, 6, 10, 0),
+                    padding:  EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
                     child: Text(
                       'Patient',
                       style: TextStyle(
@@ -61,7 +65,7 @@ class Roles extends StatelessWidget {
               Column(
                 children: [
                   Card(
-                    margin: EdgeInsets.fromLTRB(25, 0, 40, 0) ,
+                    margin: EdgeInsets.only(right: WidthScreen/15) ,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -81,9 +85,10 @@ class Roles extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(height: 10,),
 
                   Padding(
-                    padding:  EdgeInsets.fromLTRB(0, 6, 10, 0),
+                    padding:  EdgeInsets.only(right: WidthScreen/15),
                     child: Text(
                       'Medecin',
                       style: TextStyle(

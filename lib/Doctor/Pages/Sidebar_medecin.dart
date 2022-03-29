@@ -1,6 +1,7 @@
 import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:e_sante/Doctor/Pages/rdv_medecin.dart';
 
 class Sidebar extends StatefulWidget {
   @override
@@ -181,7 +182,7 @@ class _SidebarState extends State<Sidebar> {
               padding:  EdgeInsets.fromLTRB(0, 0, 50, 0),
               child: TextButton(
                 onPressed: () {
-                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>rdv()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>rdv_medecin()));
                 },
                 child: Text(
                   "Rendez-vous d'urgence",

@@ -16,26 +16,29 @@ class _Login_medecinState extends State<Login_medecin> {
   final _formkey = GlobalKey <FormState> ();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/login.png'), fit: BoxFit.cover),
-      ),
-      child: Scaffold(
+    double widthScreen=MediaQuery.of(context).size.width;
+    double heightScreen=MediaQuery.of(context).size.height;
+    return Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-            Container(),
             Container(
-              padding: EdgeInsets.only(left: 35, top: 130),
+              width: widthScreen,
+              height: heightScreen/0.7,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/login.png'), fit: BoxFit.cover),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: widthScreen/20, top: heightScreen/6),
               child: Text(
                 'Bienvenue',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              height: heightScreen/1,
               child: SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.only(
@@ -46,7 +49,7 @@ class _Login_medecinState extends State<Login_medecin> {
                       Form(
                         key:_formkey,
                         child: Container(
-                          margin: EdgeInsets.only(left: 35, right: 35),
+                          margin: EdgeInsets.only(left: widthScreen/15.5, right: widthScreen/15.5),
                           child: Column(
                             children: [
                               TextFormField(
@@ -100,7 +103,8 @@ class _Login_medecinState extends State<Login_medecin> {
                                 height: 40,
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.width,
+                                width: widthScreen/1.3,
+                                height: heightScreen/12,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
@@ -135,14 +139,16 @@ class _Login_medecinState extends State<Login_medecin> {
                               ),
 
                               Container(
-                                width: MediaQuery.of(context).size.width,
+                                height: heightScreen/10,
+                                width: widthScreen/0.4,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     TextButton(
                                       onPressed: () {},
                                       child: Text(
-                                        'Mot de passe oublie?',
+                                        'Mot de passe\noublie?',
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           decoration: TextDecoration.underline,
                                           color: Color(0xff4c505b),
@@ -176,8 +182,8 @@ class _Login_medecinState extends State<Login_medecin> {
             ),
           ],
         ),
-      ),
-    );
+      );
+
   }
   Future RegistrationUser() async {
     var APIURL = "http://10.0.2.2:3000/patients";

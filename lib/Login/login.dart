@@ -18,18 +18,20 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     double widthScreen=MediaQuery.of(context).size.width;
     double heightScreen=MediaQuery.of(context).size.height;
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/login.png'), fit: BoxFit.cover),
-      ),
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
             children: [
-              Container(),
               Container(
-                padding: EdgeInsets.only(left: 35, top: 130),
+                width: widthScreen,
+                height: heightScreen/0.7,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/login.png'), fit: BoxFit.cover),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: widthScreen/20, top: heightScreen/6),
                 child: Text(
                   'Bienvenue',
                   style: TextStyle(color: Colors.white, fontSize: 33),
@@ -40,14 +42,14 @@ class _LoginState extends State<Login> {
                 child: SingleChildScrollView(
                   child: Container(
                     padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.43),
+                        top: heightScreen * 0.5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Form(
                           key:_formkey,
                           child: Container(
-                            margin: EdgeInsets.only(left: 35, right: 35),
+                            margin: EdgeInsets.only(left: widthScreen/15.5, right: widthScreen/15.5),
                             child: Column(
                               children: [
                                 TextFormField(
@@ -102,6 +104,7 @@ class _LoginState extends State<Login> {
                                 ),
                                 Container(
                                   width: widthScreen/1.3,
+                                  height: heightScreen/12,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
@@ -136,14 +139,17 @@ class _LoginState extends State<Login> {
                                 ),
 
                                     Container(
-                                      width: widthScreen/1.2,
+                                      height: heightScreen/10,
+                                      width: widthScreen/0.4,
+
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           TextButton(
                                               onPressed: () {},
                                               child: Text(
-                                                'Mot de passe oublie?',
+                                                'Mot de passe\n oublie?',
+                                                textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   decoration: TextDecoration.underline,
                                                   color: Color(0xff4c505b),
@@ -152,6 +158,7 @@ class _LoginState extends State<Login> {
                                               ),
                                             style: ButtonStyle(),
                                           ),
+                                          SizedBox(width: 4,),
                                           TextButton(
                                               onPressed: () {},
                                               child: Text(
@@ -178,8 +185,8 @@ class _LoginState extends State<Login> {
             ],
           ),
 
-      ),
-    );
+      );
+
   }
   Future RegistrationUser() async {
     var APIURL = "http://10.0.2.2:3000/patients";

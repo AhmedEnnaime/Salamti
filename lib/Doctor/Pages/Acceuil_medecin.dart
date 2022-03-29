@@ -11,8 +11,8 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
 
    @override
    Widget build(BuildContext context) {
-     final WidthScreen=MediaQuery.of(context).size.width;
-     final HeightScreen=MediaQuery.of(context).size.height;
+     double WidthScreen=MediaQuery.of(context).size.width;
+     double HeightScreen=MediaQuery.of(context).size.height;
      return Scaffold(
          drawer: Sidebar(),
        appBar:AppBar(
@@ -52,8 +52,9 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
 
                    ],
                  ),
+               SizedBox(height: 27,),
                Card(
-                 margin: EdgeInsets.fromLTRB(20, 30, 30, 0),
+                 margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/10),
                  clipBehavior: Clip.antiAlias,
                  shape: OutlineInputBorder(
                    borderSide: BorderSide(color: Colors.white,),
@@ -67,7 +68,7 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
 
                        ),
                      ),
-                     SizedBox(width: 30,),
+                     SizedBox(width: 20,),
                      TextButton(
                        onPressed: (){},
                        child: Text(
@@ -79,7 +80,7 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
                        ),
 
                      ),
-                     SizedBox(width: 100,),
+                     SizedBox(width: 40,),
                      Icon(
                        Icons.chat,
                        size: 30,
@@ -88,8 +89,9 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
                  ),
 
                ),
+               SizedBox(height: 27,),
                Card(
-                 margin: EdgeInsets.fromLTRB(20, 30, 30, 0),
+                 margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/10),
                  clipBehavior: Clip.antiAlias,
                  shape: OutlineInputBorder(
                    borderSide: BorderSide(color: Colors.white,),
@@ -103,7 +105,7 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
 
                        ),
                      ),
-                     SizedBox(width: 30,),
+                     SizedBox(width: 20,),
                      TextButton(
                        onPressed: (){},
                        child: Text(
@@ -115,7 +117,7 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
                        ),
                        ),
 
-                     SizedBox(width: 100,),
+                     SizedBox(width: 40,),
                      Icon(
                        Icons.chat,
                        size: 30,
@@ -124,12 +126,6 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
                  ),
 
                ),
-
-
-
-
-
-
              ],
            ),
          ),
@@ -141,170 +137,174 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
          ),
 
        ),
-       body: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-         return Container(
-           width: WidthScreen,
-           height: HeightScreen/2,
-           child: Column(
-             children: [
-               Card(
-                 margin: EdgeInsets.fromLTRB(30, 30,40, 0),
-                 clipBehavior: Clip.antiAlias,
-                 shape: OutlineInputBorder(
+       body: SingleChildScrollView(
+         child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+           return Container(
+             width: WidthScreen,
+             height: HeightScreen/2,
+             child: Column(
+               children: [
+                 Card(
+                   margin: EdgeInsets.only(left: WidthScreen/15,right: WidthScreen/15,top: HeightScreen/20),
+                   clipBehavior: Clip.antiAlias,
+                   shape: OutlineInputBorder(
+                       borderSide: BorderSide(color: Colors.red,),
+                      borderRadius: BorderRadius.circular(12),
+                   ),
+                   color: Colors.red[300],
+                   child: Row(
+                     children: [
+                       Padding(
+                         padding:  EdgeInsets.fromLTRB(30, 10, 0, 10),
+                         child: Icon(
+                             Icons.supervised_user_circle_outlined,
+                            size: 40,
+                           color: Colors.white,
+                         ),
+                       ),
+                       SizedBox(width: 30,),
+                       TextButton(
+                         onPressed: (){},
+                         child: Text(
+                           'Mes Patients',
+                           style: TextStyle(
+                             fontSize: 18,
+                             color: Colors.white,
+                           ),
+
+                         ),
+
+                       )
+                     ],
+                   ),
+
+                 ),
+                 SizedBox(height: 30,),
+                 Card(
+                   margin: EdgeInsets.only(left: WidthScreen/15,right: WidthScreen/15),
+                   clipBehavior: Clip.antiAlias,
+                   shape: OutlineInputBorder(
                      borderSide: BorderSide(color: Colors.red,),
-                    borderRadius: BorderRadius.circular(12),
-                 ),
-                 color: Colors.red[300],
-                 child: Row(
-                   children: [
-                     Padding(
-                       padding:  EdgeInsets.fromLTRB(30, 10, 0, 10),
-                       child: Icon(
-                           Icons.supervised_user_circle_outlined,
-                          size: 40,
-                         color: Colors.white,
-                       ),
-                     ),
-                     SizedBox(width: 30,),
-                     TextButton(
-                       onPressed: (){},
-                       child: Text(
-                         'Mes Patients',
-                         style: TextStyle(
-                           fontSize: 18,
-                           color: Colors.white,
-                         ),
-
-                       ),
-
-                     )
-                   ],
-                 ),
-
-               ),
-
-               Card(
-                 margin: EdgeInsets.fromLTRB(30, 30, 40, 0),
-                 clipBehavior: Clip.antiAlias,
-                 shape: OutlineInputBorder(
-                   borderSide: BorderSide(color: Colors.red,),
-                   borderRadius: BorderRadius.circular(12),
-                 ),
-                 color: Colors.red[300],
-                 child: Row(
-                   children: [
-                     Padding(
-                       padding:  EdgeInsets.fromLTRB(30, 10, 0, 10),
-                       child: Icon(
-                         Icons.list,
-                         size: 40,
-                         color: Colors.white,
-                       ),
-                     ),
-                     SizedBox(width: 30,),
-                     TextButton(
-                       onPressed: (){},
-                       child: Text(
-                           'Liste des rendez-vous',
-                         style: TextStyle(
-                           fontSize: 18,
+                     borderRadius: BorderRadius.circular(12),
+                   ),
+                   color: Colors.red[300],
+                   child: Row(
+                     children: [
+                       Padding(
+                         padding:  EdgeInsets.fromLTRB(30, 10, 0, 10),
+                         child: Icon(
+                           Icons.list,
+                           size: 40,
                            color: Colors.white,
                          ),
                        ),
+                       SizedBox(width: 30,),
+                       TextButton(
+                         onPressed: (){},
+                         child: Text(
+                             'Liste des rendez-vous',
+                           style: TextStyle(
+                             fontSize: 18,
+                             color: Colors.white,
+                           ),
+                         ),
 
-                     ),
-                   ],
+                       ),
+                     ],
+                   ),
+
                  ),
+                SizedBox(height: 40,),
 
-               ),
-
-              Row(
-                children: [
-                  Card(
-                    margin: EdgeInsets.fromLTRB(30, 35, 0, 0),
-                    clipBehavior: Clip.antiAlias,
-                    shape: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red,),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    color: Colors.red[300],
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(2, 15, 3, 0),
-                          child: Icon(
-                            Icons.person_add,
-                            size: 30,
-                            color: Colors.white,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      margin: EdgeInsets.only(left: WidthScreen/25,right: WidthScreen/45),
+                      clipBehavior: Clip.antiAlias,
+                      shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red,),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      color: Colors.red[300],
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding:  EdgeInsets.fromLTRB(2, 15, 3, 0),
+                            child: Icon(
+                              Icons.person_add,
+                              size: 30,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                       SizedBox(height: 5,),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(27, 0, 27, 10),
-                          child: TextButton(
-                            onPressed: (){},
-                            child: Text(
-                              '   Ajouter\n un patient',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
+                         SizedBox(height: 5,),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(27, 0, 27, 10),
+                            child: TextButton(
+                              onPressed: (){},
+                              child: Text(
+                                '   Ajouter\n un patient',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+
                               ),
 
                             ),
-
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
 
-                  ),
-                  SizedBox(width: 15,),
-                  Card(
-                    margin: EdgeInsets.fromLTRB(30, 35, 0, 0),
-                    clipBehavior: Clip.antiAlias,
-                    shape: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red,),
-                      borderRadius: BorderRadius.circular(12),
                     ),
-                    color: Colors.red[300],
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.fromLTRB(7, 10, 7, 0),
-                          child: Icon(
-                            Icons.bookmark_add_outlined,
-                            size: 30,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(15, 0, 17, 10),
-                          child: TextButton(
-                            onPressed: (){},
-                            child: Text(
-                                '     Ajouter\nRendez-vous',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
+                    SizedBox(width: 15,),
+                    Card(
+                      margin: EdgeInsets.only(right: WidthScreen/60),
+                      clipBehavior: Clip.antiAlias,
+                      shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red,),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      color: Colors.red[300],
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding:  EdgeInsets.fromLTRB(7, 10, 7, 0),
+                            child: Icon(
+                              Icons.bookmark_add_outlined,
+                              size: 30,
+                              color: Colors.white,
                             ),
-
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 10,),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(15, 0, 17, 10),
+                            child: TextButton(
+                              onPressed: (){},
+                              child: Text(
+                                  '     Ajouter\nRendez-vous',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
+
+                            ),
+                          ),
+                        ],
+                      ),
+
                     ),
 
-                  ),
+                  ],
+                )
+               ],
+             ),
 
-                ],
-              )
-             ],
-           ),
+           );
 
-         );
-
-       },
+         },
+         ),
        ),
 
 

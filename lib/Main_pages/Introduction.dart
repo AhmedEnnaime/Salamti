@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 class Introduction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
+      body:Column(
           children: [
             Padding(
               padding:  EdgeInsets.fromLTRB(0, 150, 0, 0),
@@ -30,59 +29,17 @@ class Introduction extends StatelessWidget {
             ),
             SizedBox(height: 30,),
             Padding(
-              padding:  EdgeInsets.fromLTRB(50, 0, 50, 0),
+              padding:  EdgeInsets.only(left: WidthScreen/25,right: WidthScreen/25),
               child: Text(
-                  'Cette application a comme but ',
+                  'Cette application a comme but\nd’accompagner les patients\nprésentant une toxicité sous\nchimiothérapie et proposer une\nconduite à tenir ',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
 
                 ),
               ),
             ),
-            SizedBox(height: 7,),
-            Padding(
-              padding:  EdgeInsets.fromLTRB(50, 0, 50, 0),
-              child: Text(
-                'd’accompagner les patients  ',
-                style: TextStyle(
-                  fontSize: 20,
 
-                ),
-              ),
-            ),
-            SizedBox(height: 7,),
-            Padding(
-              padding:  EdgeInsets.fromLTRB(50, 0, 50, 0),
-              child: Text(
-                'présentant une toxicité sous ',
-                style: TextStyle(
-                  fontSize: 20,
-
-                ),
-              ),
-            ),
-            SizedBox(height: 7,),
-            Padding(
-              padding:  EdgeInsets.fromLTRB(50, 0, 50, 0),
-              child: Text(
-                'chimiothérapie et proposer une ',
-                style: TextStyle(
-                  fontSize: 20,
-
-                ),
-              ),
-            ),
-            SizedBox(height: 7,),
-            Padding(
-              padding:  EdgeInsets.fromLTRB(50, 0, 50, 0),
-              child: Text(
-                'conduite à tenir ',
-                style: TextStyle(
-                  fontSize: 20,
-
-                ),
-              ),
-            ),
             SizedBox(height: 40,),
 
             ElevatedButton(
@@ -103,7 +60,7 @@ class Introduction extends StatelessWidget {
             )
           ],
         ),
-      ),
+
 
 
     );

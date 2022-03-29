@@ -3,12 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Rendez-vous/rdv_confirm.dart';
 
-class rdv extends StatefulWidget {
+class rdv_medecin extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _rdv();
+  State<StatefulWidget> createState() => _rdv_medecin();
 }
 
-class _rdv extends State<rdv> {
+class _rdv_medecin extends State<rdv_medecin> {
   @override
   Widget build(BuildContext context) {
     return initWidget(context);
@@ -46,20 +46,20 @@ class _rdv extends State<rdv> {
                 child: Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: CircleAvatar(
-                        child: ClipOval(
-                          child: Image.asset(
+                        margin: EdgeInsets.only(bottom: 20),
+                        child: CircleAvatar(
+                          child: ClipOval(
+                            child: Image.asset(
                               'assets/dr.png',
                               fit: BoxFit.cover,
                               width: 100,
                               height: 100,
+                            ),
                           ),
-                        ),
-                        radius: 50,
-                        backgroundColor: Colors.white,
+                          radius: 50,
+                          backgroundColor: Colors.white,
 
-                      )
+                        )
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 20),
@@ -133,11 +133,11 @@ class _rdv extends State<rdv> {
                 childAspectRatio: 2.7,
                 children: [
                   doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("09:00 AM", false),
-                  doctorTimingsData("09:30 AM", false),
-                  doctorTimingsData("10:00 AM", false),
-                  doctorTimingsData("10:30 AM", false),
-                  doctorTimingsData("11:00 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
                 ],
               ),
             ),
@@ -191,7 +191,7 @@ class _rdv extends State<rdv> {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>rdv_confirm()));
                 },
                 child: Text(
-                    'Prendre rendez-vous',
+                  'Ajouter horraires',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

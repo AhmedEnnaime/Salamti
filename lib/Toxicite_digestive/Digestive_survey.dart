@@ -41,7 +41,7 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                       ),
                       SizedBox(height: 10 ,),
                       Text(
-                        'Repondez aux questions hennetement',
+                        'Repondez aux questions honnetement',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,

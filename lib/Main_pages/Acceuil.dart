@@ -13,6 +13,8 @@ class Acceuil extends StatefulWidget {
 class _AcceuilState extends State<Acceuil> {
   @override
   Widget build(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
     return Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
@@ -35,7 +37,7 @@ class _AcceuilState extends State<Acceuil> {
             children: [
 
               Padding(
-                padding:  EdgeInsets.fromLTRB(60, 20, 50, 0),
+                padding:  EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
                 child: Text(
                   'Bonjour Name',
                   style: TextStyle(
@@ -60,7 +62,7 @@ class _AcceuilState extends State<Acceuil> {
           ],
           centerTitle: true,
           bottom: PreferredSize(
-              preferredSize: Size.fromHeight(60),
+              preferredSize: Size.fromHeight(HeightScreen/14),
               child: Container(
 
               )
@@ -68,8 +70,6 @@ class _AcceuilState extends State<Acceuil> {
           )
       ),
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -85,7 +85,7 @@ class _AcceuilState extends State<Acceuil> {
               ),
               Container(
                 margin: EdgeInsets.only(left: 20, top: 20, right: 20),
-                height: 140,
+                height: HeightScreen/5.3,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -108,17 +108,13 @@ class _AcceuilState extends State<Acceuil> {
                         Column(
                           children: [
                             Text(
-                              'Cessez de',
+                              'Cessez de\nfumer',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
-                            Text(
-                              'fumer',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            )
+
                           ],
                         )
 
@@ -144,17 +140,12 @@ class _AcceuilState extends State<Acceuil> {
                         Column(
                           children: [
                             Text(
-                              'Evitez le',
+                              'Evitez le\nsurpoids',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
-                            Text(
-                              'surpoids',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            )
                           ],
                         )
 
@@ -180,17 +171,12 @@ class _AcceuilState extends State<Acceuil> {
                         Column(
                           children: [
                             Text(
-                              'Evitez de',
+                              'Evitez de\nl alcol',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
-                            Text(
-                              'l alcol',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            )
                           ],
                         )
 
@@ -218,17 +204,12 @@ class _AcceuilState extends State<Acceuil> {
                         Column(
                           children: [
                             Text(
-                              'Consommez les',
+                              'Consommez les\nfruits et legumes',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
-                            Text(
-                              'fruits et legumes',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            )
                           ],
                         )
 
@@ -254,17 +235,13 @@ class _AcceuilState extends State<Acceuil> {
                         Column(
                           children: [
                             Text(
-                              'Soyez active',
+                              'Soyez active\nau quotidien',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
-                            Text(
-                              'au quotidien',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            )
+
                           ],
                         )
 
@@ -278,11 +255,12 @@ class _AcceuilState extends State<Acceuil> {
                 ),
               ),
               SizedBox(height: 20,),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 10, 0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
+
+              Container(
+                  width: WidthScreen/1.1,
+                  height: HeightScreen/4,
                   child: Card(
+                    margin: EdgeInsets.only(left: WidthScreen/30,right: WidthScreen/60),
 
                     color: Colors.cyan[100],
                     shape: RoundedRectangleBorder(
@@ -292,37 +270,20 @@ class _AcceuilState extends State<Acceuil> {
                     child: Row(
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                          child: Padding(
-                            padding:  EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            padding:  EdgeInsets.only(left: WidthScreen/70,top: HeightScreen/60),
                             child: Image.asset(
                               'assets/nurse.png',
-                              width: 120,
-                              height: 120,
-
+                              width: 100,
+                              height: 100,
                             ),
                           ),
-                        ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0, 20, 0, 30),
-                          child: Padding(
-                            padding:  EdgeInsets.fromLTRB(70, 10, 20, 0),
+                            padding:  EdgeInsets.only(top: HeightScreen/20,left: WidthScreen/20),
                             child: Column(
                               children: [
                                 Text(
-                                  'N oubliez pas de passer ',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  'l evaluation general le  ',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  'debut de chaque mois ',
+                                  'N oubliez pas de passer \nl evaluation general le\ndebut de chaque mois',
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -348,15 +309,15 @@ class _AcceuilState extends State<Acceuil> {
                               ],
                             ),
                           ),
-                        )
+
                       ],
                     )
                   ),
                 ),
-              ),
+
               SizedBox(height: 10,),
               Padding(
-                padding:  EdgeInsets.only(right: 120),
+                padding:  EdgeInsets.only(left: WidthScreen/90,right:WidthScreen/4 ),
                 child: Text(
                   'Prochain rendez-vous',
                   style: TextStyle(
@@ -365,126 +326,127 @@ class _AcceuilState extends State<Acceuil> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20, 15, 20, 20),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    color: Colors.cyan[100],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                  Container(
+                    width: WidthScreen/1.2,
+                    height: HeightScreen/2.5,
+                    child: Card(
+                      color: Colors.cyan[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
 
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 10,right: 170),
-                          child: Text(
-                            'Temps restant : 3 jours ',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 10),
-                          child: Text(
-                            'Consultation avec Dr Fred',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.red[400]
-                            ),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding:  EdgeInsets.only(left: 30,top: 20,bottom: 15),
-                              child: Icon(
-                                Icons.calendar_today_rounded,
-                                size: 25,
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            Text(
-                              '10 Septembre',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                            SizedBox(width: 50,),
-                            Icon(
-                              Icons.schedule,
-                              size: 25,
-                            ),
-                            SizedBox(width: 10,),
-                            Text(
-                              '3:00 PM',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 14,),
-                        Row(
-                          children: [
-                            Padding(
-                              padding:  EdgeInsets.only(left: 30,bottom: 15),
-                              child: Icon(
-                                Icons.local_hospital,
-                                size: 30,
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            Padding(
-                              padding:  EdgeInsets.only(bottom: 14),
-                              child: Text(
-                                'Hopital Marrakech',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 30,),
-                            Padding(
-                              padding:  EdgeInsets.only(bottom: 15),
-                              child: Icon(
-                                Icons.phone,
-                                size: 25,
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Text(
-                                '0682622717',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-
-                          ],
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.red[400]
-                          ),
-                            onPressed: () {},
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: HeightScreen/30,left: WidthScreen/90,right: WidthScreen/3),
                             child: Text(
-                              'Annulez rendez-vous',
+                              'Temps restant : 3 jours ',
                               style: TextStyle(
-                                fontSize: 16
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
-                            )
-                        )
-                      ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: HeightScreen/30),
+                            child: Text(
+                              'Consultation avec Dr Fred',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.red[400]
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding:  EdgeInsets.only(left: WidthScreen/20,top: HeightScreen/30,bottom: HeightScreen/40),
+                                child: Icon(
+                                  Icons.calendar_today_rounded,
+                                  size: 25,
+                                ),
+                              ),
+                              SizedBox(width: 10,),
+                              Text(
+                                '10 Septembre',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(width: 50,),
+                              Icon(
+                                Icons.schedule,
+                                size: 25,
+                              ),
+                              SizedBox(width: 10,),
+                              Text(
+                                '3:00 PM',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 14,),
+                          Row(
+                            children: [
+                              Padding(
+                                padding:  EdgeInsets.only(left: WidthScreen/30,bottom: HeightScreen/50),
+                                child: Icon(
+                                  Icons.local_hospital,
+                                  size: 30,
+                                ),
+                              ),
+                              SizedBox(width: 10,),
+                              Padding(
+                                padding:  EdgeInsets.only(bottom: 14),
+                                child: Text(
+                                  'Hopital \nMarrakech',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 30,),
+                              Padding(
+                                padding:  EdgeInsets.only(bottom: HeightScreen/40,left: WidthScreen/10),
+                                child: Icon(
+                                  Icons.phone,
+                                  size: 25,
+                                ),
+                              ),
+                              SizedBox(width: 10,),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: HeightScreen/40),
+                                child: Text(
+                                  '0682622717',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.red[400]
+                            ),
+                              onPressed: () {},
+                              child: Text(
+                                'Annulez rendez-vous',
+                                style: TextStyle(
+                                  fontSize: 16
+                                ),
+                              )
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              )
+
+
 
             ],
           ),

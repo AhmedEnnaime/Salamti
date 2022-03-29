@@ -12,6 +12,8 @@ class _EvaluationState extends State<Evaluation> {
 
   @override
   Widget build(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan[900],

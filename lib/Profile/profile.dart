@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Profile extends StatefulWidget {
@@ -33,9 +34,22 @@ class _ProfileState extends State<Profile> {
               color: Colors.blue[800],
               child: Column(
                 children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: WidthScreen/1.4),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        size: 25,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                      },
+                    ),
+                  ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(top: HeightScreen/10),
+                      padding: EdgeInsets.only(top: HeightScreen/40),
                       child: Stack(children: <Widget>[
                          CircleAvatar(
                           child: ClipOval(
