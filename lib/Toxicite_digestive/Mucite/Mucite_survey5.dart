@@ -12,159 +12,165 @@ class _Mucite5State extends State<Mucite5> {
   String val17='';
   @override
   Widget build(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.cyan[900],
-        title: Text(
-          'Mucite',
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: Container(
-
-          ),
-
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 20,top: 30),
-              child: Text(
-                'Les muqueuses ',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 35, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Rose et humide',
+            Container(
+              width: WidthScreen,
+              height: HeightScreen/3.8,
+              color: Colors.cyan[900],
+              child: Center(
+                child: Text(
+                  'Mucite',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                value: 'humide',
-                groupValue: val17,
-                onChanged: (value){
-
-                  setState(() {
-                    val17=value!;
-
-                  });
-
-                },
               ),
             ),
-            SizedBox(height: 20,),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Inflammation',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                value: 'Inflammation',
-                groupValue: val17,
-                onChanged: (value){
-
-                  setState(() {
-                    val17=value!;
-
-                  });
-
-                },
-              ),
-            ),
-            SizedBox(height: 20,),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Ulcération/saignement',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                value: 'saignement',
-                groupValue: val17,
-                onChanged: (value){
-
-                  setState(() {
-                    val17=value!;
-
-                  });
-
-                },
-              ),
-            ),
-            SizedBox(height: 20,),
-            Padding(
-              padding:  EdgeInsets.only(left: 30,top: 50),
-              child: Row(
+            Container(
+              child: Column(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.cyan[900],
-                        minimumSize: Size(40, 40),
-                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite4()));
-
-                    },
+                  Padding(
+                    padding: EdgeInsets.only(left: WidthScreen/20,top: HeightScreen/30),
                     child: Text(
-                      'Précedent',
+                      'Les muqueuses ',
                       style: TextStyle(
-                          fontSize: 22
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  SizedBox(width: 50,),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.cyan[900],
-                        minimumSize: Size(40, 40),
-                        padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10)
+                  SizedBox(height: 30,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
                     ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite6()));
-
-                    },
-                    child: Text(
-                      'Suivant',
-                      style: TextStyle(
-                          fontSize: 22
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Rose et humide',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
                       ),
+                      value: 'humide',
+                      groupValue: val17,
+                      onChanged: (value){
+
+                        setState(() {
+                          val17=value!;
+
+                        });
+
+                      },
                     ),
                   ),
+                  SizedBox(height: 35,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Inflammation',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      value: 'Inflammation',
+                      groupValue: val17,
+                      onChanged: (value){
 
+                        setState(() {
+                          val17=value!;
+
+                        });
+
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 35,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Ulcération/saignement',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      value: 'saignement',
+                      groupValue: val17,
+                      onChanged: (value){
+
+                        setState(() {
+                          val17=value!;
+
+                        });
+
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 35,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.cyan[900],
+                              minimumSize: Size(40, 40),
+                              padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite4()));
+
+                          },
+                          child: Text(
+                            'Précedent',
+                            style: TextStyle(
+                                fontSize: 22
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 50,),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.cyan[900],
+                              minimumSize: Size(40, 40),
+                              padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite6()));
+
+                          },
+                          child: Text(
+                            'Suivant',
+                            style: TextStyle(
+                                fontSize: 22
+                            ),
+                          ),
+                        ),
+
+
+                      ],
+                    ),
 
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -21,7 +21,7 @@ class Nausees_advices extends StatelessWidget {
               color: Colors.cyan[900],
               child: Center(
                 child: Text(
-                  'Nausees/Vomissements',
+                  'Conseils aux paients',
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.white,

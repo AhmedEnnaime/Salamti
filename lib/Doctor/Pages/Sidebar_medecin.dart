@@ -1,6 +1,7 @@
 import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:e_sante/Doctor/Pages/Profile_medecin.dart';
 import 'package:e_sante/Doctor/Pages/rdv_medecin.dart';
 
 class Sidebar extends StatefulWidget {
@@ -154,7 +155,7 @@ class _SidebarState extends State<Sidebar> {
               padding:  EdgeInsets.fromLTRB(0, 0, 120, 0),
               child: TextButton(
                 onPressed: () {
-                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile_medecin()));
                 },
                 child: Text(
                   'Mon profile',

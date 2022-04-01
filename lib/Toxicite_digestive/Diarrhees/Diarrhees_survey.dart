@@ -134,24 +134,6 @@ class _DiarrheesState extends State<Diarrhees> {
                                   padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Digestive_survey()));
-
-                              },
-                              child: Text(
-                                'Precedent',
-                                style: TextStyle(
-                                    fontSize: 22
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 50,),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.cyan[900],
-                                  minimumSize: Size(40, 40),
-                                  padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
-                              ),
-                              onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees2()));
 
                               },

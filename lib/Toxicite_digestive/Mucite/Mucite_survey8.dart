@@ -12,159 +12,166 @@ class _Mucite8State extends State<Mucite8> {
   String val20='';
   @override
   Widget build(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.cyan[900],
-        title: Text(
-          'Mucite',
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: Container(
-
-          ),
-
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 20,top: 30),
-              child: Text(
-                'Les lèvres ',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 35, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Roses et lises ',
+            Container(
+              width: WidthScreen,
+              height: HeightScreen/3.8,
+              color: Colors.cyan[900],
+              child: Center(
+                child: Text(
+                  'Mucite',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                value: 'lises',
-                groupValue: val20,
-                onChanged: (value){
-
-                  setState(() {
-                    val20=value!;
-
-                  });
-
-                },
               ),
             ),
-            SizedBox(height: 20,),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Sèches et fissurés',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                value: 'Seches',
-                groupValue: val20,
-                onChanged: (value){
-
-                  setState(() {
-                    val20=value!;
-
-                  });
-
-                },
-              ),
-            ),
-            SizedBox(height: 20,),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Ulcérations, saignement',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                value: 'Ulcerations',
-                groupValue: val20,
-                onChanged: (value){
-
-                  setState(() {
-                    val20=value!;
-
-                  });
-
-                },
-              ),
-            ),
-            SizedBox(height: 20,),
-            Padding(
-              padding:  EdgeInsets.only(left: 30,top: 50),
-              child: Row(
+            Container(
+              width: WidthScreen,
+              child: Column(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.cyan[900],
-                        minimumSize: Size(40, 40),
-                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite7()));
-
-                    },
+                  Padding(
+                    padding: EdgeInsets.only(left: WidthScreen/20,top: HeightScreen/30),
                     child: Text(
-                      'Précedent',
+                      'Les lèvres ',
                       style: TextStyle(
-                          fontSize: 22
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  SizedBox(width: 50,),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.cyan[900],
-                        minimumSize: Size(40, 40),
-                        padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10)
+                  SizedBox(height: 30,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
                     ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite_advices()));
-
-                    },
-                    child: Text(
-                      'Terminer',
-                      style: TextStyle(
-                          fontSize: 22
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Roses et lises ',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
                       ),
+                      value: 'lises',
+                      groupValue: val20,
+                      onChanged: (value){
+
+                        setState(() {
+                          val20=value!;
+
+                        });
+
+                      },
                     ),
                   ),
+                  SizedBox(height: 35,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Sèches et fissurés',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      value: 'Seches',
+                      groupValue: val20,
+                      onChanged: (value){
 
+                        setState(() {
+                          val20=value!;
+
+                        });
+
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 35,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Ulcérations, saignement',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      value: 'Ulcerations',
+                      groupValue: val20,
+                      onChanged: (value){
+
+                        setState(() {
+                          val20=value!;
+
+                        });
+
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 35,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.cyan[900],
+                              minimumSize: Size(40, 40),
+                              padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite7()));
+
+                          },
+                          child: Text(
+                            'Précedent',
+                            style: TextStyle(
+                                fontSize: 22
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 50,),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.cyan[900],
+                              minimumSize: Size(40, 40),
+                              padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite_advices()));
+
+                          },
+                          child: Text(
+                            'Terminer',
+                            style: TextStyle(
+                                fontSize: 22
+                            ),
+                          ),
+                        ),
+
+
+                      ],
+                    ),
 
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

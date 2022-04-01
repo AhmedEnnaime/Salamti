@@ -11,130 +11,138 @@ class _MuciteState extends State<Mucite> {
   String val13='';
   @override
   Widget build(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.cyan[900],
-        title: Text(
-          'Mucite',
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: Container(
-
-          ),
-
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 20,top: 30),
-              child: Text(
-                'La voix',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 35, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Normale',
+            Container(
+              width: WidthScreen,
+              height: HeightScreen/3.8,
+              color: Colors.cyan[900],
+              child: Center(
+                child: Text(
+                  'Mucite',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                value: 'Normale',
-                groupValue: val13,
-                onChanged: (value){
-
-                  setState(() {
-                    val13=value!;
-
-                  });
-
-                },
               ),
             ),
-            SizedBox(height: 20,),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Sèche/Rauque',
-                  style: TextStyle(
-                    fontSize: 16,
+            Container(
+              width: WidthScreen,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: WidthScreen/20,top: HeightScreen/30),
+                    child: Text(
+                      'La voix',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
-                value: 'Seche_Rauque',
-                groupValue: val13,
-                onChanged: (value){
+                  SizedBox(height: 30,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Normale',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      value: 'Normale',
+                      groupValue: val13,
+                      onChanged: (value){
 
-                  setState(() {
-                    val13=value!;
+                        setState(() {
+                          val13=value!;
 
-                  });
+                        });
 
-                },
-              ),
-            ),
-            SizedBox(height: 20,),
-            Card(
-              margin: EdgeInsets.fromLTRB(15, 25, 16, 0),
-              clipBehavior: Clip.antiAlias,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,)
-              ),
-              child: RadioListTile<String>(
-                title: Text(
-                  'Difficulté à parler ',
-                  style: TextStyle(
-                    fontSize: 16,
+                      },
+                    ),
                   ),
-                ),
-                value: 'Difficile',
-                groupValue: val13,
-                onChanged: (value){
+                  SizedBox(height: 35,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Sèche/Rauque',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      value: 'Seche_Rauque',
+                      groupValue: val13,
+                      onChanged: (value){
 
-                  setState(() {
-                    val13=value!;
+                        setState(() {
+                          val13=value!;
 
-                  });
+                        });
 
-                },
-              ),
-            ),
-            SizedBox(height: 60,),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.cyan[900],
-                  minimumSize: Size(40, 40),
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
-              ),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite2()));
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 35,),
+                  Card(
+                    margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
+                    clipBehavior: Clip.antiAlias,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: RadioListTile<String>(
+                      title: Text(
+                        'Difficulté à parler ',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      value: 'Difficile',
+                      groupValue: val13,
+                      onChanged: (value){
 
-              },
-              child: Text(
-                'Continuer',
-                style: TextStyle(
-                    fontSize: 22
-                ),
+                        setState(() {
+                          val13=value!;
+
+                        });
+
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 60,),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.cyan[900],
+                        minimumSize: Size(40, 40),
+                        padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
+                    ),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite2()));
+
+                    },
+                    child: Text(
+                      'Continuer',
+                      style: TextStyle(
+                          fontSize: 22
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
