@@ -1,5 +1,7 @@
+import 'package:e_sante/Doctor/Pages/Ajouter_patient.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
+import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
 
  class Acceuil_medecin extends StatefulWidget {
 
@@ -241,7 +243,9 @@ import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
                           Padding(
                             padding: EdgeInsets.fromLTRB(27, 0, 27, 10),
                             child: TextButton(
-                              onPressed: (){},
+                              onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Ajouter_patient()));
+                              },
                               child: Text(
                                 '   Ajouter\n un patient',
                                 style: TextStyle(

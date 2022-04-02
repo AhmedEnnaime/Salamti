@@ -46,4 +46,5 @@ bool Autonomie_value=false;
 bool Apetit_value=false;
 bool Douleur_value=false;
 bool depression_value=false;
-///////
+///////Ajouter_patient/////
+String sex_val='';
