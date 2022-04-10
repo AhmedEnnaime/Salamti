@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Sidebar.dart';
 import 'package:e_sante/Evaluation.dart';
+import 'package:http/http.dart' as http;
+import 'package:e_sante/Data/User.dart';
 
 class Acceuil extends StatefulWidget {
 

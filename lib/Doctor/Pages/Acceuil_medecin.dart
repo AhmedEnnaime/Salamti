@@ -1,7 +1,7 @@
 import 'package:e_sante/Doctor/Pages/Ajouter_patient.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
-import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
+import 'package:e_sante/Doctor/Pages/Ajouter_rdv.dart';
 
  class Acceuil_medecin extends StatefulWidget {
 
@@ -284,7 +284,9 @@ import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
                           Padding(
                             padding: EdgeInsets.fromLTRB(15, 0, 17, 10),
                             child: TextButton(
-                              onPressed: (){},
+                              onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Ajouter_rdv()));
+                              },
                               child: Text(
                                   '     Ajouter\nRendez-vous',
                                 style: TextStyle(

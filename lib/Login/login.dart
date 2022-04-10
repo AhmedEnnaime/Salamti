@@ -120,8 +120,7 @@ class _LoginState extends State<Login> {
                                             color: Colors.white,
                                             onPressed: () {
                                               if(_formkey.currentState!.validate()){
-                                                RegistrationUser();
-                                                print('Success');
+
                                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
                                               }else{
                                                 print('Unsuccess');
@@ -188,16 +187,6 @@ class _LoginState extends State<Login> {
       );
 
   }
-  Future RegistrationUser() async {
-    var APIURL = "http://10.0.2.2:3000/patients";
-    Map mapeddata = {
-      "Ip" : IP.text,
-      "Mot de passe": Mp.text,
-    };
-    http.Response reponse = await http.post(APIURL,body: mapeddata);
-    var data = jsonDecode(reponse.body);
-    print('DATA: ${data}');
 
-  }
 }
 

@@ -40,6 +40,8 @@ dependencies:
   path_provider: ^2.0.9
   device_preview: ^1.0.0
   sizer: ^2.0.15
+  get: ^4.6.1
+  syncfusion_flutter_datepicker: ^20.1.47
 
 dev_dependencies:
   flutter_test:

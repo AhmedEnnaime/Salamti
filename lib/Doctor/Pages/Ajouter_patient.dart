@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:e_sante/variables.dart';
+import 'package:http/http.dart' as http;
+import 'package:e_sante/Data/User.dart';
+
 
 class Ajouter_patient extends StatefulWidget {
 
@@ -8,6 +13,7 @@ class Ajouter_patient extends StatefulWidget {
 }
 
 class _Ajouter_patientState extends State<Ajouter_patient> {
+
   final _formkey1 = GlobalKey <FormState> ();
   TextEditingController Nom = TextEditingController();
   TextEditingController Ip = TextEditingController();
@@ -289,6 +295,7 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
               SizedBox(height: 30,),
               ElevatedButton(
                   onPressed: (){
+                    adduser();
                   },
                   child: Text(
                     'Confirmer',
@@ -305,5 +312,20 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
       ),
     );
 
+  }
+  Future adduser() async {
+    var APIURL = "http://10.0.2.2:3000/patients";
+    Map mapeddata = {
+      "Ip" : Ip.text,
+      "Nom":Nom.text,
+      "Sexe":sex_val,
+      "Age":Age.text,
+      "Mail":Mail.text,
+      "Tel":Tel.text,
+      "Password": Password.text,
+    };
+    http.Response reponse = await http.post(APIURL,body: mapeddata);
+    var data = jsonDecode(reponse.body);
+    print('DATA: ${data}');
   }
 }

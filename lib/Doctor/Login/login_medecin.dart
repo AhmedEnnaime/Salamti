@@ -120,7 +120,7 @@ class _Login_medecinState extends State<Login_medecin> {
                                           color: Colors.white,
                                           onPressed: () {
                                             if(_formkey.currentState!.validate()){
-                                              RegistrationUser();
+                                              //RegistrationUser();
                                               print('Success');
                                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil_medecin()));
                                             }else{
@@ -185,7 +185,7 @@ class _Login_medecinState extends State<Login_medecin> {
       );
 
   }
-  Future RegistrationUser() async {
+  /*Future RegistrationUser() async {
     var APIURL = "http://10.0.2.2:3000/patients";
     Map mapeddata = {
       "Num" : tel.text,
@@ -195,6 +195,6 @@ class _Login_medecinState extends State<Login_medecin> {
     var data = jsonDecode(reponse.body);
     print('DATA: ${data}');
 
-  }
+  }*/
 }
 
