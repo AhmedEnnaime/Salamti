@@ -58,13 +58,31 @@ class _EvaluationState extends State<Evaluation> {
                     borderSide: BorderSide(color: Colors.black,)
                 ),
                 child: CheckboxListTile(
-                  title: Text(
-                    'Présence de plaintes',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  title: TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context)=>AlertDialog(
 
+                          content: Image.asset(
+                            'assets/plainte.jpg',
+                            fit: BoxFit.cover,
+
+                          ),
+                        ),
+                        barrierDismissible: true,
+                      );
+                    },
+                    child: Text(
+                      'Présence de plaintes',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black
+
+                      ),
                     ),
+
                   ),
                   value: plaintes_value,
                   onChanged: (val){
@@ -85,13 +103,31 @@ class _EvaluationState extends State<Evaluation> {
                       borderSide: BorderSide(color: Colors.black,)
                   ),
                   child:CheckboxListTile(
-                    title: Text(
-                      'Fatigue',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    title: TextButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context)=>AlertDialog(
 
+                            content: Image.asset(
+                              'assets/Fatigue.jpg',
+                              fit: BoxFit.cover,
+
+                            ),
+                          ),
+                          barrierDismissible: true,
+                        );
+                      },
+                      child: Text(
+                        'Fatigue',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+
+                        ),
                       ),
+
                     ),
                     value: ftg_value,
                     onChanged: (val){
@@ -112,13 +148,31 @@ class _EvaluationState extends State<Evaluation> {
                       borderSide: BorderSide(color: Colors.black,)
                   ),
                   child:CheckboxListTile(
-                    title: Text(
-                      'Capacité de travail',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    title: TextButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context)=>AlertDialog(
 
+                            content: Image.asset(
+                              'assets/travail.jpg',
+                              fit: BoxFit.cover,
+
+                            ),
+                          ),
+                          barrierDismissible: true,
+                        );
+                      },
+                      child: Text(
+                        'Capacité de travail',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+
+                        ),
                       ),
+
                     ),
                     value: travail_value,
                     onChanged: (val){
@@ -139,13 +193,31 @@ class _EvaluationState extends State<Evaluation> {
                       borderSide: BorderSide(color: Colors.black,)
                   ),
                   child: CheckboxListTile(
-                    title: Text(
-                      'Activités quotidiennes',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    title: TextButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context)=>AlertDialog(
 
+                            content: Image.asset(
+                              'assets/activites.jpg',
+                              fit: BoxFit.cover,
+
+                            ),
+                          ),
+                          barrierDismissible: true,
+                        );
+                      },
+                      child: Text(
+                        'Activités quotidiennes',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+
+                        ),
                       ),
+
                     ),
                     value: quotidiennes_value,
                     onChanged: (val){
@@ -166,13 +238,31 @@ class _EvaluationState extends State<Evaluation> {
                       borderSide: BorderSide(color: Colors.black,)
                   ),
                   child: CheckboxListTile(
-                    title: Text(
-                      'Autonomie ',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    title: TextButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context)=>AlertDialog(
 
+                            content: Image.asset(
+                              'assets/autonomie.jpg',
+                              fit: BoxFit.cover,
+
+                            ),
+                          ),
+                          barrierDismissible: true,
+                        );
+                      },
+                      child: Text(
+                        'Autonomie ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+
+                        ),
                       ),
+
                     ),
                     value: Autonomie_value,
                     onChanged: (val){
@@ -193,13 +283,31 @@ class _EvaluationState extends State<Evaluation> {
                     borderSide: BorderSide(color: Colors.black,)
                 ),
                 child: CheckboxListTile(
-                  title: Text(
-                    'Appétit  ',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  title: TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context)=>AlertDialog(
 
+                          content: Image.asset(
+                            'assets/apetit.jpg',
+                            fit: BoxFit.cover,
+
+                          ),
+                        ),
+                        barrierDismissible: true,
+                      );
+                    },
+                    child: Text(
+                      'Appétit  ',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black
+
+                      ),
                     ),
+
                   ),
                   value: Apetit_value,
                   onChanged: (val){
@@ -220,13 +328,31 @@ class _EvaluationState extends State<Evaluation> {
                     borderSide: BorderSide(color: Colors.black,)
                 ),
                 child: CheckboxListTile(
-                  title: Text(
-                    'Douleur',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  title: TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context)=>AlertDialog(
 
+                          content: Image.asset(
+                            'assets/douleur.jpg',
+                            fit: BoxFit.cover,
+
+                          ),
+                        ),
+                        barrierDismissible: true,
+                      );
+                    },
+                    child: Text(
+                      'Douleur',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black
+
+                      ),
                     ),
+
                   ),
                   value: Douleur_value,
                   onChanged: (val){
@@ -247,13 +373,31 @@ class _EvaluationState extends State<Evaluation> {
                     borderSide: BorderSide(color: Colors.black,)
                 ),
                 child: CheckboxListTile(
-                  title: Text(
-                    'Anxiété/dépression ',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  title: TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context)=>AlertDialog(
 
+                          content: Image.asset(
+                            'assets/depression.jpg',
+                            fit: BoxFit.cover,
+
+                          ),
+                        ),
+                        barrierDismissible: true,
+                      );
+                    },
+                    child: Text(
+                      'Anxiété/dépression ',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black
+
+                      ),
                     ),
+
                   ),
                   value: depression_value,
                   onChanged: (val){

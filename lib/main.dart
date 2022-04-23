@@ -1,4 +1,3 @@
-import 'package:e_sante/Controller_bindings.dart';
 import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Splash_screen.dart';
@@ -13,8 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialBinding: ControllerBindings(),
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
         '/':(context)=>SplashScreen(),

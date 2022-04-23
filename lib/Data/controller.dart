@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'package:e_sante/Data/User.dart';
+import 'package:e_sante/Data/Patient_Data/User.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-class Controller extends GetxController{
+/*class Controller extends GetxController{
   var patientList=<Patient>[].obs;
   var isLoading = true.obs;
   @override
@@ -12,7 +12,7 @@ class Controller extends GetxController{
     fetchPatientData();
   }
   Future<void> fetchPatientData() async{
-    final response= await http.get(Uri.parse('http://10.0.2.2:3000/patients?Ip=C123456'));
+    final response= await http.get(Uri.parse('http://10.0.2.2:3000/patients'));
     if(response.statusCode==200){
 
       for(var i = 0; i < response.body.length; i++){
@@ -35,4 +35,4 @@ class Controller extends GetxController{
     }
 
   }
-}
+}*/

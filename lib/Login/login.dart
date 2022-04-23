@@ -3,6 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:http/http.dart' as http;
+import 'package:e_sante/Data/Patient_Data/User.dart';
+import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
+import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Login extends StatefulWidget {
@@ -11,9 +15,33 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var patientcontroller= Patientcontroller(Patients_data());
   TextEditingController IP = TextEditingController();
   TextEditingController Mp = TextEditingController();
   final _formkey = GlobalKey <FormState> ();
+  bool isLoading=false;
+  Login_patient() async{
+    if(IP.text.isNotEmpty && Mp.text.isNotEmpty){
+      var response= await http.post(Uri.parse('http://10.0.2.2:3000/patients'),
+          body:({
+            "Ip":IP.text,
+            "Password":Mp.text
+          })
+      );
+
+      if(response.statusCode == 201){
+        print('Login token'+response.toString());
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+      }else{
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Ip ou mot de passe invalides')));
+      }
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Entrez votre Ip et mot de passe')));
+
+    }
+
+
+  }
   @override
   Widget build(BuildContext context) {
     double widthScreen=MediaQuery.of(context).size.width;
@@ -119,12 +147,13 @@ class _LoginState extends State<Login> {
                                         child: IconButton(
                                             color: Colors.white,
                                             onPressed: () {
-                                              if(_formkey.currentState!.validate()){
-
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                                              Login_patient();
+                                              /*if(_formkey.currentState!.validate()){
                                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
                                               }else{
                                                 print('Unsuccess');
-                                              }
+                                              }*/
                                             },
                                             icon: Icon(
                                               Icons.arrow_forward,

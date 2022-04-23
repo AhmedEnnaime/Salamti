@@ -1,9 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:e_sante/variables.dart';
-import 'package:http/http.dart' as http;
-import 'package:e_sante/Data/User.dart';
+import 'package:e_sante/Data/Patient_Data/User.dart';
+import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
+import 'package:e_sante/Data/Patient_Data/Patient.dart';
+import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
 
 
 class Ajouter_patient extends StatefulWidget {
@@ -18,14 +18,17 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
   TextEditingController Nom = TextEditingController();
   TextEditingController Ip = TextEditingController();
   TextEditingController Age = TextEditingController();
+  TextEditingController Sexe = TextEditingController();
   TextEditingController Tel = TextEditingController();
   TextEditingController Mail = TextEditingController();
   TextEditingController Password = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
     double WidthScreen=MediaQuery.of(context).size.width;
     double HeightScreen=MediaQuery.of(context).size.height;
+    var patientcontroller= Patientcontroller(Patients_data());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[800],
@@ -92,10 +95,10 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
                            SizedBox(width: 10,),
                            Radio<String>(
                              value: 'Homme',
-                             groupValue: sex_val,
+                             groupValue: Sexe.text,
                              onChanged: (value){
                                setState(() {
-                                 sex_val=value!;
+                                 Sexe.text=value!;
                                });
 
                              },
@@ -124,10 +127,10 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
                            ),
                            Radio<String>(
                              value: 'Femme',
-                             groupValue: sex_val,
+                             groupValue: Sexe.text,
                              onChanged: (value){
                                setState(() {
-                                 sex_val=value!;
+                                 Sexe.text=value!;
                                });
 
                              },
@@ -294,8 +297,10 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
               ),
               SizedBox(height: 30,),
               ElevatedButton(
-                  onPressed: (){
-                    adduser();
+                  onPressed: ()  {
+                    Patient patient = Patient(Ip: Ip.text,Nom: Nom.text,Age: Age.text,Sexe:Sexe.text,Mail: Mail.text,Tel: Tel.text,Password: Password.text );
+                    patientcontroller.postPatient(patient);
+                    //adduser();
                   },
                   child: Text(
                     'Confirmer',
@@ -313,19 +318,19 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
     );
 
   }
-  Future adduser() async {
+  /*Future adduser() async {
     var APIURL = "http://10.0.2.2:3000/patients";
     Map mapeddata = {
-      "Ip" : Ip.text,
-      "Nom":Nom.text,
-      "Sexe":sex_val,
-      "Age":Age.text,
-      "Mail":Mail.text,
-      "Tel":Tel.text,
-      "Password": Password.text,
+      "Ip" : patient.Ip,
+      "Nom":patient.Nom,
+      "Age":patient.Age,
+      "Sexe":patient.Sexe,
+      "Mail":patient.Mail,
+      "Tel":patient.Tel,
+      "Password": patient.Password,
     };
     http.Response reponse = await http.post(APIURL,body: mapeddata);
     var data = jsonDecode(reponse.body);
     print('DATA: ${data}');
-  }
+  }*/
 }

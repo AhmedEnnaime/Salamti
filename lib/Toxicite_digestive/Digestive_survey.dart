@@ -73,13 +73,31 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                               borderSide: BorderSide(color: Colors.black,)
                           ),
                           child: CheckboxListTile(
-                            title: Text(
-                              'Nausées',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            title: TextButton(
+                              onPressed: () { 
+                                showDialog(
+                                    context: context,
+                                    builder: (context)=>AlertDialog(
 
+                                      content: Image.asset(
+                                        'assets/nausees.jpg',
+                                        fit: BoxFit.cover,
+
+                                      ),
+                                    ),
+                                  barrierDismissible: true,
+                                );
+                              },
+                              child: Text(
+                                  'Nausées',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+
+                                ),
                               ),
+                              
                             ),
                             value: Nausees_value,
                             onChanged: (val){
@@ -100,13 +118,31 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                                borderSide: BorderSide(color: Colors.black,)
                            ),
                            child:CheckboxListTile(
-                             title: Text(
-                               'Vomissements',
-                               style: TextStyle(
-                                 fontSize: 20,
-                                 fontWeight: FontWeight.bold,
+                             title: TextButton(
+                               onPressed: () {
+                                 showDialog(
+                                   context: context,
+                                   builder: (context)=>AlertDialog(
 
+                                     content: Image.asset(
+                                       'assets/vomiss.jpg',
+                                       fit: BoxFit.cover,
+
+                                     ),
+                                   ),
+                                   barrierDismissible: true,
+                                 );
+                               },
+                               child: Text(
+                                   'Vomissements',
+                                 style: TextStyle(
+                                   fontSize: 20,
+                                   fontWeight: FontWeight.bold,
+                                   color: Colors.black,
+
+                                 ),
                                ),
+
                              ),
                              value: Vommissements_value,
                              onChanged: (val){
@@ -127,13 +163,32 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                               borderSide: BorderSide(color: Colors.black,)
                           ),
                           child:CheckboxListTile(
-                            title: Text(
-                              'Diarrhées',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            title: TextButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context)=>AlertDialog(
+
+                                    content: Image.asset(
+                                      'assets/diarr.jpg',
+                                      fit: BoxFit.cover,
+
+                                    ),
+                                  ),
+                                  barrierDismissible: true,
+                                );
+                              },
+                              child: Text(
+                                'Diarrhées',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black
+
+                                ),
 
                               ),
+
                             ),
                             value: Diarrhees_value,
                             onChanged: (val){
@@ -154,13 +209,31 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                               borderSide: BorderSide(color: Colors.black,)
                           ),
                           child: CheckboxListTile(
-                            title: Text(
-                              'Constipation',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            title: TextButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context)=>AlertDialog(
 
+                                    content: Image.asset(
+                                      'assets/consti.jpg',
+                                      fit: BoxFit.cover,
+
+                                    ),
+                                  ),
+                                  barrierDismissible: true,
+                                );
+                              },
+                              child: Text(
+                                'Constipation',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black
+
+                                ),
                               ),
+
                             ),
                             value: Constipation_value,
                             onChanged: (val){
@@ -181,13 +254,31 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                               borderSide: BorderSide(color: Colors.black,)
                           ),
                           child: CheckboxListTile(
-                            title: Text(
-                              'Mucite',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            title: TextButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context)=>AlertDialog(
 
+                                    content: Image.asset(
+                                      'assets/muci.jpg',
+                                      fit: BoxFit.cover,
+
+                                    ),
+                                  ),
+                                  barrierDismissible: true,
+                                );
+                              },
+                              child: Text(
+                                'Mucite',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black
+
+                                ),
                               ),
+
                             ),
                             value: Mucite_value,
                             onChanged: (val){
@@ -208,13 +299,31 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                               borderSide: BorderSide(color: Colors.black,)
                           ),
                           child:CheckboxListTile(
-                            title: Text(
-                              'Douleurs abdominales ',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            title: TextButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context)=>AlertDialog(
 
+                                    content: Image.asset(
+                                      'assets/abdo.jpg',
+                                      fit: BoxFit.cover,
+
+                                    ),
+                                  ),
+                                  barrierDismissible: true,
+                                );
+                              },
+                              child: Text(
+                                'Douleurs abdominales',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black
+
+                                ),
                               ),
+
                             ),
                             value: Douleurs_value,
                             onChanged: (val){
@@ -235,13 +344,32 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                                 borderSide: BorderSide(color: Colors.black,)
                             ),
                           child: CheckboxListTile(
-                            title: Text(
-                              'Modification des gouts des aliments ',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            title: TextButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context)=>AlertDialog(
 
+                                    content: Image.asset(
+                                      'assets/gouts.jpg',
+                                      fit: BoxFit.cover,
+
+                                    ),
+                                  ),
+                                  barrierDismissible: true,
+                                );
+                              },
+                              child: Text(
+                                'Modification des gouts des aliments',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black
+
+                                ),
                               ),
+
                             ),
                             value: Gouts_value,
                             onChanged: (val){

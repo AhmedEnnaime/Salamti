@@ -3,7 +3,9 @@ import 'package:e_sante/Main_pages/Toxicity.dart';
 import 'package:e_sante/Rendez-vous/rdv.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:e_sante/Profile/profile.dart';
+import 'package:e_sante/Main_pages/Cures.dart';
 import 'package:flutter/material.dart';
+import 'package:e_sante/Profile/prfl.dart';
 
 class NavigationDrawerWidget extends StatefulWidget {
   @override
@@ -112,6 +114,31 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
             leading: CircleAvatar(
               backgroundColor: Colors.white,
               child: Image.asset(
+                'assets/Treatment.png',
+                fit: BoxFit.cover,
+                width: 30,
+                height: 30,
+              ),
+            ),
+            title: TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Cures()));
+              },
+              child: Padding(
+                padding:  EdgeInsets.fromLTRB(0, 0, 130, 0),
+                child: Text(
+                  'Cures',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Image.asset(
                 'assets/Notifications.png',
                 fit: BoxFit.cover,
                 width: 30,
@@ -190,7 +217,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               padding:  EdgeInsets.fromLTRB(0, 0, 120, 0),
               child: TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>prfl()));
 
                   },
                   child: Text(

@@ -204,7 +204,7 @@ import 'package:e_sante/Doctor/Pages/Ajouter_rdv.dart';
                        TextButton(
                          onPressed: (){},
                          child: Text(
-                             'Liste des rendez-vous',
+                             'Liste des Cures',
                            style: TextStyle(
                              fontSize: 18,
                              color: Colors.white,
@@ -275,7 +275,7 @@ import 'package:e_sante/Doctor/Pages/Ajouter_rdv.dart';
                           Padding(
                             padding:  EdgeInsets.fromLTRB(7, 10, 7, 0),
                             child: Icon(
-                              Icons.bookmark_add_outlined,
+                              Icons.bookmark_outlined,
                               size: 30,
                               color: Colors.white,
                             ),
@@ -288,7 +288,7 @@ import 'package:e_sante/Doctor/Pages/Ajouter_rdv.dart';
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Ajouter_rdv()));
                               },
                               child: Text(
-                                  '     Ajouter\nRendez-vous',
+                                  '     Liste des\nRendez-vous',
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.white,

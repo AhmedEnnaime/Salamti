@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:e_sante/variables.dart';
 import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey3.dart';
 import 'package:e_sante/Fievre_survey.dart';
+import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey2.dart';
+import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Diarrhees_Data/Diarrhees_controller.dart';
+import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Diarrhees_Data/Implement_Diarrhees.dart';
+import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Diarrhees_Data/Diarrhees_Model.dart';
 
 class Diarrhees4 extends StatefulWidget {
   @override
@@ -15,6 +19,7 @@ class _Diarrhees4State extends State<Diarrhees4> {
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
+    var diarrheescontroller = Diarrheescontroller(Diarrhees_Data());
     return Scaffold(
       body: SingleChildScrollView(
         child:Column(
@@ -213,16 +218,18 @@ class _Diarrhees4State extends State<Diarrhees4> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
+                            Diarrhees diarrhees = Diarrhees(Nbr_selles: val6,Duree_survenue: duree.text ,Douleurs_abdo: val7,Prise_alimentaire: val8,Aspect_selles: val9,Patient_Ip: patient.Ip );
                             if(Fievre_value == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Fievre()));
                             }else{
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_advices()));
+                              diarrheescontroller.postDiarrhees(diarrhees);
                             }
 
 
                           },
                           child: Text(
-                            'Suivant',
+                            'Terminer',
                             style: TextStyle(
                                 fontSize: 22
                             ),

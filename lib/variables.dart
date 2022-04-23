@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 ///////Digestive_survey////////
 bool Nausees_value=false;
 bool Diarrhees_value=false;
@@ -48,3 +50,16 @@ bool Douleur_value=false;
 bool depression_value=false;
 ///////Ajouter_patient/////
 String sex_val='';
+///////Cures//////
+String cure_val='';
+////////Diarrhees_survey/////
+String val6='';
+////////Diarrhes_survey2/////
+TextEditingController duree = TextEditingController();
+String val7='';
+String val8='';
+//////Diarrhees_survey3/////
+String val9='';
+///////Fievere_survey/////
+String val10='';
+TextEditingController delai = TextEditingController();

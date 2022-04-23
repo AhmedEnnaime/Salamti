@@ -1,10 +1,13 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Sidebar.dart';
 import 'package:e_sante/Evaluation.dart';
-import 'package:http/http.dart' as http;
-import 'package:e_sante/Data/User.dart';
+import 'package:e_sante/Conseils generaux/Fumer.dart';
+import 'package:e_sante/Conseils generaux/Active.dart';
+import 'package:e_sante/Conseils generaux/Alcol.dart';
+import 'package:e_sante/Conseils generaux/Fruits.dart';
+import 'package:e_sante/Conseils generaux/Surpoids.dart';
+
 
 class Acceuil extends StatefulWidget {
 
@@ -106,15 +109,21 @@ class _AcceuilState extends State<Acceuil> {
                           radius: 40,
                           backgroundColor: Colors.pink[50],
                         ),
-                        SizedBox(height: 15,),
                         Column(
                           children: [
-                            Text(
-                              'Cessez de\nfumer',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16,
+                            TextButton(
+                              child: Text(
+                                  'Cessez de\nfumer',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+
                               ),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Fumer()));
+                              },
                             ),
 
                           ],
@@ -138,15 +147,19 @@ class _AcceuilState extends State<Acceuil> {
                           radius: 40,
                           backgroundColor: Colors.pink[50],
                         ),
-                        SizedBox(height: 15,),
                         Column(
                           children: [
-                            Text(
-                              'Evitez le\nsurpoids',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16,
+                            TextButton(
+                              onPressed: () {  },
+                              child: Text(
+                                  'Evitez le\nsurpoids',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black
+                                ),
                               ),
+
                             ),
                           ],
                         )
@@ -169,15 +182,20 @@ class _AcceuilState extends State<Acceuil> {
                           radius: 40,
                           backgroundColor: Colors.pink[50],
                         ),
-                        SizedBox(height: 15,),
+
                         Column(
                           children: [
-                            Text(
-                              'Evitez de\nl alcol',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16,
+                            TextButton(
+                              onPressed: () {  },
+                              child: Text(
+                                  'Evitez de\nl alcol',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black
+                                ),
                               ),
+
                             ),
                           ],
                         )
@@ -186,7 +204,7 @@ class _AcceuilState extends State<Acceuil> {
 
                     ),
 
-                    SizedBox(width: 20,),
+                    SizedBox(width: 10,),
                     Column(
                       children: [
                         CircleAvatar(
@@ -202,15 +220,20 @@ class _AcceuilState extends State<Acceuil> {
                           radius: 40,
                           backgroundColor: Colors.pink[50],
                         ),
-                        SizedBox(height: 15,),
+
                         Column(
                           children: [
-                            Text(
-                              'Consommez les\nfruits et legumes',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16,
+                            TextButton(
+                              onPressed: () {  },
+                              child: Text(
+                                'Consommez les\nfruits et legumes',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black
+                                ),
                               ),
+
                             ),
                           ],
                         )
@@ -219,7 +242,7 @@ class _AcceuilState extends State<Acceuil> {
 
                     ),
 
-                    SizedBox(width: 20,),
+                    SizedBox(width: 10,),
                     Column(
                       children: [
                         CircleAvatar(
@@ -233,15 +256,20 @@ class _AcceuilState extends State<Acceuil> {
                           radius: 40,
                           backgroundColor: Colors.pink[50],
                         ),
-                        SizedBox(height: 15,),
+
                         Column(
                           children: [
-                            Text(
-                              'Soyez active\nau quotidien',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16,
+                            TextButton(
+                              onPressed: () {  },
+                              child: Text(
+                                'Soyez active\nau quotidien',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black
+                                ),
                               ),
+
                             ),
 
                           ],

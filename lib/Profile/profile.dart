@@ -1,13 +1,17 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:e_sante/Data/controller.dart';
+
+import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/instance_manager.dart';
-import 'package:e_sante/Data/User.dart';
+import 'package:e_sante/Data/Patient_Data/User.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
+
+
 
 class Profile extends StatefulWidget {
 
@@ -16,6 +20,23 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  var patientcontroller= Patientcontroller(Patients_data());
+  Map ?mapResponse;
+  Map ?dataResponse;
+  List ?listResponse;
+  http.Response ?response;
+  Future getdata() async{
+
+    response = await http.get(Uri.parse("http://10.0.2.2:3000/patients"));
+    if (response?.statusCode ==200){
+      setState(() {
+        mapResponse =jsonDecode(response!.body);
+        listResponse = mapResponse?['patients'];
+      });
+    }
+
+
+  }
 
   File ?_image;
   final imagePicker = ImagePicker();
@@ -25,90 +46,87 @@ class _ProfileState extends State<Profile> {
       _image = File(image.path);
     });
   }
+  @override
+  void initState() {
+    getdata();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final _controller = Get.find<Controller>();
     double WidthScreen=MediaQuery.of(context).size.width;
     double HeightScreen=MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Obx(()=>_controller.isLoading.value? Center(child: const CircularProgressIndicator()):
-         SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                width: WidthScreen,
-                height: HeightScreen/2.8,
-                color: Colors.blue[800],
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(right: WidthScreen/1.4),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 25,
+      body:SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: WidthScreen,
+                  height: HeightScreen/2.8,
+                  color: Colors.blue[800],
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: WidthScreen/1.4),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_back,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                          },
+                        ),
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: HeightScreen/40),
+                          child: Stack(children: <Widget>[
+                            CircleAvatar(
+                              child: ClipOval(
+                                child: Image.asset(
+                                  'assets/User.jpg',
+                                  width: 90,
+                                  height: 90,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              radius: 50,
+                            ),
+                            Positioned(
+                              bottom: 0.0,
+                              right: 0,
+                              child: IconButton(
+                                onPressed: getImage,
+                                icon: Icon(
+                                  Icons.camera_alt,
+                                  size: 28.0,
+                                  color: Colors.black,
+                                ),
+
+                              ),
+
+                            ),
+                          ]),
+                        ),
+                      ),
+
+                      SizedBox(height: 10,),
+                      listResponse!=null ?listResponse![0]['Ip']:Text('loading'),
+                      SizedBox(height: 4,),
+                      Text(
+                        'ahmedennaime20@gmail.com',
+                        style: TextStyle(
                           color: Colors.white,
                         ),
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
-                        },
-                      ),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(top: HeightScreen/40),
-                        child: Stack(children: <Widget>[
-                           CircleAvatar(
-                            child: ClipOval(
-                              child: Image.asset(
-                                'assets/User.jpg',
-                                width: 90,
-                                height: 90,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            radius: 50,
-                          ),
-                          Positioned(
-                            bottom: 0.0,
-                            right: 0,
-                            child: IconButton(
-                              onPressed: getImage,
-                              icon: Icon(
-                                Icons.camera_alt,
-                                size: 28.0,
-                                color: Colors.black,
-                              ),
 
-                            ),
-
-                          ),
-                        ]),
-                      ),
-                    ),
-
-                    SizedBox(height: 10,),
-                    Text(
-                      "${_controller.patientList[0].Nom}",
-                      style: TextStyle(
-                        fontSize: 22,
-
-                      ),
-                    ),
-                    SizedBox(height: 4,),
-                    Text(
-                      'ahmedennaime20@gmail.com',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
 
-                 Container(
+                Container(
                   color: Colors.grey[300],
                   width: WidthScreen,
 
@@ -146,17 +164,23 @@ class _ProfileState extends State<Profile> {
                                   SizedBox(width: 10,),
                                   Column(
                                     children: [
-                                      Text(
-                                        'Nom et Prenom',
-                                        style: TextStyle(
-                                          fontSize: 18,
+                                      TextButton(
+                                        onPressed: () {
+                                          print('body: [${response?.body}]');
+                                        },
+                                        child: Text(
+                                          'Nom et Prenom',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
                                         ),
+
                                       ),
                                       SizedBox(height: 5,),
                                       Text(
                                         'Ahmed Ennaime',
                                         style: TextStyle(
-                                          color: Colors.grey
+                                            color: Colors.grey
 
                                         ),
                                       ),
@@ -453,11 +477,9 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
 
-            ],
+              ],
+            ),
           ),
-        ),
-      ) ,
-
     );
   }
 }

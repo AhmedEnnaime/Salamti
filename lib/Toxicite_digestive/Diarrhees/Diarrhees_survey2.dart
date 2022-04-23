@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:e_sante/variables.dart';
 import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey.dart';
 import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey3.dart';
 
@@ -9,9 +10,7 @@ class Diarrhees2 extends StatefulWidget {
 }
 
 class _Diarrhees2State extends State<Diarrhees2> {
-  String val7='';
-  String val8='';
-  TextEditingController duree = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
