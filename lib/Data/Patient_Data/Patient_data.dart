@@ -1,10 +1,7 @@
-import 'package:e_sante/Main_pages/Acceuil.dart';
-import 'package:flutter/material.dart';
 import 'package:e_sante/Data/Patient_Data/Patient.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:e_sante/Login/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Patients_data implements Patient_data{
@@ -85,6 +82,19 @@ class Patients_data implements Patient_data{
     } else {
       throw Exception('Failed to load data!');
     }
+  }
+
+  @override
+  Future<List<Patient>> getPatientList() async {
+    List<Patient> patientList=[];
+    var url=Uri.parse('$dataUrl/patients');
+    var response= await http.get(url);
+    print('status code : ${response.statusCode}');
+    var body = json.decode(response.body);
+    for (var i=0; i <body.length;i++){
+      patientList.add(Patient.fromJson(body[i]));
+    }
+    return patientList;
   }
 }
 

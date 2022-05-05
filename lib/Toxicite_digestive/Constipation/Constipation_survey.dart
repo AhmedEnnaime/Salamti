@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:e_sante/variables.dart';
 import 'package:e_sante/Toxicite_digestive/Constipation/Constipation_survey2.dart';
 
 class Constipation extends StatefulWidget {
@@ -8,7 +9,7 @@ class Constipation extends StatefulWidget {
 }
 
 class _ConstipationState extends State<Constipation> {
-  String val11='';
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;

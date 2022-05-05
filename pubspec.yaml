@@ -49,6 +49,9 @@ dependencies:
   json_serializable: ^6.1.6
   dio: ^3.0.10
   intl: ^0.17.0
+  carousel_slider: ^4.1.1
+  video_player: ^2.2.19
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:

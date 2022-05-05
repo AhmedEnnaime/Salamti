@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:e_sante/variables.dart';
 import 'package:e_sante/Toxicite_digestive/Constipation/Constipation_survey.dart';
 import 'package:e_sante/Toxicite_digestive/Constipation/Constipation_survey3.dart';
 
@@ -9,7 +10,7 @@ class Constipation2 extends StatefulWidget {
 }
 
 class _Constipation2State extends State<Constipation2> {
-  String val12='';
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
@@ -87,7 +88,7 @@ class _Constipation2State extends State<Constipation2> {
                           fontSize: 16,
                         ),
                       ),
-                      value: 'Persistante plus de 3 jours ',
+                      value: 'Persistante plus de 3 jours',
                       groupValue: val12,
                       onChanged: (value){
 

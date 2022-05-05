@@ -2,6 +2,8 @@ import 'package:e_sante/Doctor/Pages/Ajouter_patient.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
 import 'package:e_sante/Doctor/Pages/Ajouter_rdv.dart';
+import 'package:e_sante/Doctor/Pages/Mes patients.dart';
+import 'package:e_sante/Doctor/Pages/Liste_cures.dart';
 
  class Acceuil_medecin extends StatefulWidget {
 
@@ -166,7 +168,9 @@ import 'package:e_sante/Doctor/Pages/Ajouter_rdv.dart';
                        ),
                        SizedBox(width: 30,),
                        TextButton(
-                         onPressed: (){},
+                         onPressed: (){
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Mes_patients()));
+                         },
                          child: Text(
                            'Mes Patients',
                            style: TextStyle(
@@ -202,7 +206,9 @@ import 'package:e_sante/Doctor/Pages/Ajouter_rdv.dart';
                        ),
                        SizedBox(width: 30,),
                        TextButton(
-                         onPressed: (){},
+                         onPressed: (){
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Liste_cures()));
+                         },
                          child: Text(
                              'Liste des Cures',
                            style: TextStyle(

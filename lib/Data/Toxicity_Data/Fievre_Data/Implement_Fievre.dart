@@ -13,7 +13,7 @@ class Fievre_Data implements Fievr_Data{
   @override
   Future<String> postFievre(Fievre_Model fievre) async {
     print("${fievre.toJson()}");
-    var url = Uri.parse('$dataUrl/patients/');
+    var url = Uri.parse('$dataUrl/Fievre/');
     var result='';
     var response = await http.post(url, body: fievre.toJson());
     print(response.statusCode);

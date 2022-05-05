@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:e_sante/variables.dart';
 import 'package:e_sante/Toxicite_digestive/Mucite/Mucite_survey.dart';
 import 'package:e_sante/Toxicite_digestive/Mucite/Mucite_survey3.dart';
 
@@ -9,11 +10,12 @@ class Mucite2 extends StatefulWidget {
 }
 
 class _Mucite2State extends State<Mucite2> {
-  String val14='';
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
+
     return Scaffold(
 
       body: SingleChildScrollView(
@@ -156,7 +158,7 @@ class _Mucite2State extends State<Mucite2> {
                           ),
                           onPressed: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite3()));
-
+                            mucite_deglutition();
                           },
                           child: Text(
                             'Suivant',

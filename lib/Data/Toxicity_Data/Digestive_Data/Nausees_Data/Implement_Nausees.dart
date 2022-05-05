@@ -13,7 +13,7 @@ class Nausees_Data implements Nausee_Data{
   @override
   Future<String> postNausees(Nausees nausees) async {
     print("${nausees.toJson()}");
-    var url = Uri.parse('$dataUrl/patients/');
+    var url = Uri.parse('$dataUrl/Nausees/');
     var result='';
     var response = await http.post(url, body: nausees.toJson());
     print(response.statusCode);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
 import 'package:e_sante/Data/Patient_Data/Patient.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:convert';
 import 'dart:io';
@@ -15,6 +16,21 @@ class prfl extends StatefulWidget {
 }
 
 class _prflState extends State<prfl> {
+  File ?image;
+  Future pickimage() async{
+    try{
+      final image = await ImagePicker().getImage(source: ImageSource.gallery);
+      if(image==null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+      });
+    }on PlatformException catch(e){
+      print('failed to pick image:$e');
+
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     TextEditingController new_Nom= TextEditingController();
@@ -25,14 +41,7 @@ class _prflState extends State<prfl> {
     var patientcontroller= Patientcontroller(Patients_data());
     double WidthScreen=MediaQuery.of(context).size.width;
     double HeightScreen=MediaQuery.of(context).size.height;
-    File ?_image;
-    final imagePicker = ImagePicker();
-    Future getImage() async{
-      final image = await imagePicker.getImage(source: ImageSource.gallery);
-      setState(() {
-        _image = File(image.path);
-      });
-    }
+
 
     return Scaffold(
       appBar: AppBar(
@@ -65,24 +74,17 @@ class _prflState extends State<prfl> {
                                   padding: EdgeInsets.only(top: HeightScreen/40),
                                   child: Stack(children: <Widget>[
                                     CircleAvatar(
-                                      child: ClipOval(
-                                        child: Image.asset(
-                                          'assets/User.jpg',
-                                          width: 90,
-                                          height: 90,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
                                       radius: 50,
+                                      backgroundImage: image==null ?null:FileImage(image!) ,
                                     ),
                                     Positioned(
                                       bottom: 0.0,
                                       right: 0,
                                       child: IconButton(
-                                        onPressed: getImage,
+                                        onPressed: pickimage,
                                         icon: Icon(
                                           Icons.camera_alt,
-                                          size: 28.0,
+                                          size: 30.0,
                                           color: Colors.black,
                                         ),
 

@@ -6,6 +6,7 @@ import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey4.dart';
 import 'package:e_sante/Data/Toxicity_Data/Fievre_Data/Fievre_Model.dart';
 import 'package:e_sante/Data/Toxicity_Data/Fievre_Data/Fievre_controller.dart';
 import 'package:e_sante/Data/Toxicity_Data/Fievre_Data/Implement_Fievre.dart';
+import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_grade3.dart';
 
 class Fievre extends StatefulWidget {
 
@@ -171,8 +172,8 @@ class _FievreState extends State<Fievre> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Fievre_Model fievre = Fievre_Model(Delai_apparition: delai.text,Mesure:val10,Patient_Ip: patient.Ip);
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_advices()));
+                            Fievre_Model fievre = Fievre_Model(Delai_apparition: delai.text,Mesure:val10,Patient_Ip:IP.text);
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_grade3()));
                             fievrecontroller.postFievre(fievre);
 
                           },

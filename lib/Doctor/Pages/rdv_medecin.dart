@@ -1,7 +1,10 @@
 import 'dart:ui';
-
+import 'package:e_sante/variables.dart';
 import 'package:flutter/material.dart';
-import 'package:e_sante/Rendez-vous/rdv_confirm.dart';
+import 'package:e_sante/Data/Rdv_medecin_Data/Rdv_medecin_Model.dart';
+import 'package:e_sante/Data/Rdv_medecin_Data/Implement_Rdv_medecin.dart';
+import 'package:e_sante/Data/Rdv_medecin_Data/Rdv_medecin_controller.dart';
+
 
 class rdv_medecin extends StatefulWidget {
   @override
@@ -9,12 +12,44 @@ class rdv_medecin extends StatefulWidget {
 }
 
 class _rdv_medecin extends State<rdv_medecin> {
+  DateTime ?_dateTime;
   @override
   Widget build(BuildContext context) {
     return initWidget(context);
   }
 
+  String _getMonthDate(int month) {
+    if (month == 01) {
+      return 'Janvier';
+    } else if (month == 02) {
+      return 'Février';
+    } else if (month == 03) {
+      return 'Mars';
+    } else if (month == 04) {
+      return 'Avril';
+    } else if (month == 05) {
+      return 'Mai';
+    } else if (month == 06) {
+      return 'Juin';
+    } else if (month == 07) {
+      return 'Juillet';
+    } else if (month == 08) {
+      return 'Aout';
+    } else if (month == 09) {
+      return 'Septembre';
+    } else if (month == 10) {
+      return 'Octobre';
+    } else if (month == 11) {
+      return 'Novembre';
+    } else {
+      return 'Decembre';
+    }
+  }
+
   Widget initWidget(BuildContext context) {
+    double WidthScreen =MediaQuery.of(context).size.width;
+    double HeightScreen =MediaQuery.of(context).size.height;
+    var rdv_medecincontroller = Rdv_medecincontroller(Rdv_medecin_Data());
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -86,30 +121,48 @@ class _rdv_medecin extends State<rdv_medecin> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 20, top: 30),
-              child: Text('Avril 2022',
-                style: TextStyle(
-                  color: Color(0xff363636),
-                  fontSize: 25,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            Container(
               margin: EdgeInsets.only(left: 20, top: 20, right: 20),
               height: 90,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  demoDates("Mon", "21", true),
-                  demoDates("Tue", "22", false),
-                  demoDates("Wed", "23", false),
-                  demoDates("Thur", "24", false),
-                  demoDates("Fri", "25", false),
-                  demoDates("Sat", "26", false),
-                  demoDates("Sun", "27", false),
-                  demoDates("Mon", "28", false),
+                  Container(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: (){
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2022),
+                                lastDate: DateTime(2060),
+                              ).then((date) {
+                                setState(() {
+                                  _dateTime = date;
+                                });
+                              });
+
+
+                            },
+                            icon: Icon(
+                              Icons.calendar_today_rounded,
+                              size: 40,
+                              color: Colors.blue[800],
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          Text(
+                            _dateTime==null ? "Aucune date n'a ete selectionne":"${_dateTime?.day} ${_getMonthDate(_dateTime!.month)} ${_dateTime?.year}",
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -125,19 +178,151 @@ class _rdv_medecin extends State<rdv_medecin> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(right: 13),
+              margin: EdgeInsets.only(right: 10),
               child: GridView.count(
                 shrinkWrap: true,
                 crossAxisCount: 3,
                 physics: NeverScrollableScrollPhysics(),
                 childAspectRatio: 2.7,
                 children: [
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('9:00 AM'),
+                        Checkbox(
+                          value: medeci_matin1,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_matin1=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('9:30 AM'),
+                        Checkbox(
+                          value: medeci_matin2,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_matin2=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('10:00 AM'),
+                        Checkbox(
+                          value: medeci_matin3,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_matin3=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('10:30 AM'),
+                        Checkbox(
+                          value: medeci_matin4,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_matin4=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('11:00 AM'),
+                        Checkbox(
+                          value: medeci_matin5,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_matin5=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('11:30 AM'),
+                        Checkbox(
+                          value: medeci_matin6,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_matin6=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -153,19 +338,151 @@ class _rdv_medecin extends State<rdv_medecin> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(right: 13),
+              margin: EdgeInsets.only(right: 10),
               child: GridView.count(
                 shrinkWrap: true,
                 crossAxisCount: 3,
                 physics: NeverScrollableScrollPhysics(),
                 childAspectRatio: 2.6,
                 children: [
-                  doctorTimingsData("08:30 AM", true),
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
-                  doctorTimingsData("08:30 AM", false),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('3:00 PM'),
+                        Checkbox(
+                          value: medeci_midi1,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_midi1=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('3:30 PM'),
+                        Checkbox(
+                          value: medeci_midi2,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_midi2=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('4:00 AM'),
+                        Checkbox(
+                          value: medeci_midi3,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_midi3=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('4:30 PM'),
+                        Checkbox(
+                          value: medeci_midi4,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_midi4=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('5:00 PM'),
+                        Checkbox(
+                          value: medeci_midi5,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_midi5=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[200],
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black,)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('5:30 PM'),
+                        Checkbox(
+                          value: medeci_midi6,
+                          onChanged: (val) {
+                            setState(() {
+                              medeci_midi6=val!;
+                            });
+
+                          },
+
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -188,7 +505,9 @@ class _rdv_medecin extends State<rdv_medecin> {
               ),
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>rdv_confirm()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>rdv_confirm()));
+                  Rdv_medecin rdv_medecin = Rdv_medecin(Day: _dateTime,medecin_matin1: medeci_matin1,medecin_matin2: medeci_matin2,medecin_matin3: medeci_matin3,medecin_matin4: medeci_matin4,medecin_matin5: medeci_matin5,medecin_matin6: medeci_matin6,medecin_midi1: medeci_midi1,medecin_midi2: medeci_midi2,medecin_midi3: medeci_midi3,medecin_midi4: medeci_midi4,medecin_midi5: medeci_midi5,medecin_midi6: medeci_midi6);
+                  rdv_medecincontroller.postRdv_medecin(rdv_medecin);
                 },
                 child: Text(
                   'Ajouter horraires',
@@ -208,143 +527,4 @@ class _rdv_medecin extends State<rdv_medecin> {
     );
   }
 
-  Widget demoDates(String day, String date, bool isSelected) {
-    return isSelected ? Container(
-      width: 70,
-      margin: EdgeInsets.only(right: 15),
-      decoration: BoxDecoration(
-        color: Color(0xff107163),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Text(
-              day,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.all(7),
-            child: Text(
-              date,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.bold
-              ),
-            ),
-          ),
-        ],
-      ),
-    ) : Container(
-      width: 70,
-      margin: EdgeInsets.only(right: 15),
-      decoration: BoxDecoration(
-        color: Color(0xffEEEEEE),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Text(
-              day,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.all(7),
-            child: Text(
-              date,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.bold
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget doctorTimingsData(String time, bool isSelected) {
-    return isSelected ? Container(
-      margin: EdgeInsets.only(left: 20, top: 10),
-      decoration: BoxDecoration(
-        color: Color(0xff107163),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.only(right: 2),
-            child: Icon(
-              Icons.access_time,
-              color: Colors.white,
-              size: 18,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 2),
-            child: Text('08:30 AM',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17,
-                fontFamily: 'Roboto',
-              ),
-            ),
-          ),
-        ],
-      ),
-    ) : Container(
-      margin: EdgeInsets.only(left: 20, top: 10),
-      decoration: BoxDecoration(
-        color: Color(0xffEEEEEE),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.only(right: 2),
-            child: Icon(
-              Icons.access_time,
-              color: Colors.black,
-              size: 18,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 2),
-            child: Text('08:30 AM',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 17,
-                fontFamily: 'Roboto',
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }

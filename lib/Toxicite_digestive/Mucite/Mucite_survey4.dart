@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:e_sante/Toxicite_digestive/Mucite/Mucite_survey3.dart';
 import 'package:e_sante/Toxicite_digestive/Mucite/Mucite_survey5.dart';
+import 'package:e_sante/variables.dart';
 
 class Mucite4 extends StatefulWidget {
 
@@ -9,7 +10,7 @@ class Mucite4 extends StatefulWidget {
 }
 
 class _Mucite4State extends State<Mucite4> {
-  String val16='';
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
@@ -156,6 +157,7 @@ class _Mucite4State extends State<Mucite4> {
                           ),
                           onPressed: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Mucite5()));
+                            mucite_salive();
 
                           },
                           child: Text(

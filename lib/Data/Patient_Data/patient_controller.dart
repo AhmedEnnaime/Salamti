@@ -20,4 +20,8 @@ class Patientcontroller{
     return _patient_data.patchPatient(patient);
   }
 
+  Future<List<Patient>> getPatientList() async{
+    return _patient_data.getPatientList();
+  }
+
 }

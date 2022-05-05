@@ -1,4 +1,5 @@
 import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_advices.dart';
+import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_grade2.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/variables.dart';
 import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey3.dart';
@@ -7,6 +8,7 @@ import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey2.dart';
 import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Diarrhees_Data/Diarrhees_controller.dart';
 import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Diarrhees_Data/Implement_Diarrhees.dart';
 import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Diarrhees_Data/Diarrhees_Model.dart';
+import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_grade3.dart';
 
 class Diarrhees4 extends StatefulWidget {
   @override
@@ -218,9 +220,18 @@ class _Diarrhees4State extends State<Diarrhees4> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Diarrhees diarrhees = Diarrhees(Nbr_selles: val6,Duree_survenue: duree.text ,Douleurs_abdo: val7,Prise_alimentaire: val8,Aspect_selles: val9,Patient_Ip: patient.Ip );
+                            Diarrhees diarrhees = Diarrhees(Nbr_selles: val6,Duree_survenue: duree.text ,Douleurs_abdo: val7,Prise_alimentaire: val8,Aspect_selles: val9,Fatigue:Fatigue_value,Denutrition:Denutrition_value,Saignement:Saignement_value,Trbl_neuro:neurologiques_value,Fievre_diarr:Fievre_value,Patient_Ip: IP.text );
                             if(Fievre_value == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Fievre()));
+                              diarrheescontroller.postDiarrhees(diarrhees);
+                            }else if(val6 == 'Plus que sept selles par jour' || Fatigue_value == true || Denutrition_value == true || Saignement_value == true || neurologiques_value == true){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_grade3()));
+                              diarrheescontroller.postDiarrhees(diarrhees);
+
+                            }else if(val6 == 'Entre quatre et six selles par jour'){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_grade2()));
+                              diarrheescontroller.postDiarrhees(diarrhees);
+
                             }else{
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_advices()));
                               diarrheescontroller.postDiarrhees(diarrhees);

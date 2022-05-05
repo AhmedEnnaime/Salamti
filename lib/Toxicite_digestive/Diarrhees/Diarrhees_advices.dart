@@ -48,7 +48,7 @@ class Diarrhees_advices extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'aux Diarrhees_Data',
+                            'aux Diarrhees',
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:http/http.dart' as http;
+import 'package:e_sante/variables.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
 import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
 import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
@@ -16,10 +17,9 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   var patientcontroller= Patientcontroller(Patients_data());
-  TextEditingController IP = TextEditingController();
+
   TextEditingController Mp = TextEditingController();
   final _formkey = GlobalKey <FormState> ();
-  bool isLoading=false;
   Login_patient() async{
     if(IP.text.isNotEmpty && Mp.text.isNotEmpty){
       var response= await http.post(Uri.parse('http://10.0.2.2:3000/patients'),
@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
           })
       );
 
-      if(response.statusCode == 201){
+      if(response.statusCode == 200) {
         print('Login token'+response.toString());
         Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
       }else{
@@ -147,8 +147,9 @@ class _LoginState extends State<Login> {
                                         child: IconButton(
                                             color: Colors.white,
                                             onPressed: () {
+                                              Patient patient = Patient();
                                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
-                                              Login_patient();
+                                              //Login_patient();
                                               /*if(_formkey.currentState!.validate()){
                                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
                                               }else{

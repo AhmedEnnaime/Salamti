@@ -125,7 +125,7 @@ class _SidebarState extends State<Sidebar> {
               ),
             ),
             title: Padding(
-              padding:  EdgeInsets.fromLTRB(0, 0, 50, 0),
+              padding:  EdgeInsets.fromLTRB(0, 0, 130, 0),
               child: TextButton(
                 onPressed: () {},
                 child: Text(
@@ -135,9 +135,6 @@ class _SidebarState extends State<Sidebar> {
                   ),
                 ),
               ),
-            ),
-            trailing: Container(
-              child: buildSwitch(),
             ),
           ),
           SizedBox(height: 20,),

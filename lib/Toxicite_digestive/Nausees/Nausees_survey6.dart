@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_grade2.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_advices.dart';
 import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_survey5.dart';
@@ -173,7 +174,7 @@ class _Nausees6State extends State<Nausees6> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Nausees nausees = Nausees(Moment_apparition: val,Nbr_ep: val1,Duree_par_jours: val2,Nbr_repas: val3,Traitement: val5,Traitement_desc: traitement.text,Patient_Ip: patient.Ip);
+                            Nausees nausees = Nausees(Moment_apparition: val,Nbr_ep: val1,Duree_par_jours: val2,Nbr_repas: val3,Troubles_neurologiques:Troubles_value,Moins_frequente:Moins_urines_value,Urines_fonces:Plus_urines_value,Deshydratation:Deshydratation_value,Perte_poids:Poids_value,Traitement: val5,Traitement_desc: traitement.text,Patient_Ip: IP.text);
                             if(Troubles_value==true || Moins_urines_value==true || Plus_urines_value==true || Deshydratation_value==true || Poids_value==true || douleurs_value==true || gouts_value==true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
                               nauseescontroller.postNausees(nausees);
@@ -181,7 +182,7 @@ class _Nausees6State extends State<Nausees6> {
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
                               nauseescontroller.postNausees(nausees);
                             }else if(val1=='Entre deux et cinq'){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade2()));
                               nauseescontroller.postNausees(nausees);
                             }else
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_advices()));

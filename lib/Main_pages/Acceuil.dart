@@ -1,4 +1,7 @@
 import 'dart:ui';
+import 'package:e_sante/Data/Patient_Data/User.dart';
+import 'package:e_sante/Data/Toxicity_Data/Fievre_Data/Fievre_Model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Sidebar.dart';
 import 'package:e_sante/Evaluation.dart';
@@ -7,6 +10,16 @@ import 'package:e_sante/Conseils generaux/Active.dart';
 import 'package:e_sante/Conseils generaux/Alcol.dart';
 import 'package:e_sante/Conseils generaux/Fruits.dart';
 import 'package:e_sante/Conseils generaux/Surpoids.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_sante/Data/Question_Libre_Data/Question_Model.dart';
+import 'package:e_sante/Data/Question_Libre_Data/Implement_Question.dart';
+import 'package:e_sante/Data/Question_Libre_Data/Question_controller.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import '../Data/Patient_Data/Patient_data.dart';
+import '../Data/Patient_Data/patient_controller.dart';
+import 'package:e_sante/Data/Cures_Data/Cures_controller.dart';
+import 'package:e_sante/Data/Cures_Data/Implement_cures.dart';
+import 'package:e_sante/Data/Cures_Data/Cures_Model.dart';
 
 
 class Acceuil extends StatefulWidget {
@@ -16,10 +29,49 @@ class Acceuil extends StatefulWidget {
 }
 
 class _AcceuilState extends State<Acceuil> {
+  var patientcontroller= Patientcontroller(Patients_data());
+  TextEditingController question_controller = TextEditingController();
+  var questioncontroller = Questioncontroller(Question_Data());
+
+  late YoutubePlayerController _controller;
+  late YoutubePlayerController _controller1;
+  late YoutubePlayerController _controller2;
+  void runYoutubePlayer(){
+    _controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=Vl-wmC4Hs-w')!,
+        flags: YoutubePlayerFlags(
+          enableCaption: false,
+          isLive: false,
+          autoPlay: false,
+        )
+    );
+  }
+  @override
+  void initState() {
+    runYoutubePlayer();
+    super.initState();
+    _controller = new YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=Vl-wmC4Hs-w')!,);
+    _controller1 = new YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=MuXVu1KBxN8')!,);
+    _controller2 = new YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=HPFZkSr04Rk')!,);
+  }
+
+  @override
+  void deactivate() {
+    _controller.pause();
+    super.deactivate();
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
+    var curecontroller = Curescontroller(Cures_Data());
+
     return Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
@@ -38,22 +90,38 @@ class _AcceuilState extends State<Acceuil> {
               color: Color(0xFFEF5350),
             ),
           ),
-          title: Row(
-            children: [
+          title: FutureBuilder<List<Patient>>(
+            future: patientcontroller.fetchPatientList(),
+              builder: (context,snapshot){
+                if(snapshot.connectionState == ConnectionState.waiting){
+                  return Center(child: CircularProgressIndicator(),);
+                }
+                if (snapshot.hasError){
+                  return Center(child: Text('${snapshot.error}'),);
+                }
+                return ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: ( context, index) {
+                    var patient = snapshot.data?[index];
+                    return Text(
+                            'Bonjour ${patient?.Nom}',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          );
+                  },
+                  itemCount:  snapshot.data?.length ?? 0, separatorBuilder: ( context,  index) {
+                    return  Divider(
+                      //thickness:0.5 ,
+                      //height: 0.5,
+                    );
+                },
 
-              Padding(
-                padding:  EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
-                child: Text(
-                  'Bonjour Name',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-
-            ],
+                );
+              }
           ),
 
           actions: [
@@ -122,7 +190,25 @@ class _AcceuilState extends State<Acceuil> {
 
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Fumer()));
+                                //Navigator.push(context, MaterialPageRoute(builder: (context)=>Fumer()));
+                                showDialog(context: context, builder: (context)=>AlertDialog(
+                                  actions: [
+                                    Container(
+                                      child: YoutubePlayerBuilder(
+                                        player: YoutubePlayer(controller: _controller2),
+                                        builder: (context,player){
+                                          return player;
+                                        },
+                                      ),
+                                      width: WidthScreen,
+                                      height: HeightScreen/3,
+                                    ),
+                                  ],
+
+                                ),
+                                  barrierDismissible: true
+                                );
+
                               },
                             ),
 
@@ -150,7 +236,27 @@ class _AcceuilState extends State<Acceuil> {
                         Column(
                           children: [
                             TextButton(
-                              onPressed: () {  },
+                              onPressed: () {
+                                //Navigator.push(context, MaterialPageRoute(builder: (context)=>Surpoids()));
+                                showDialog(context: context, builder: (context)=>AlertDialog(
+                                  actions: [
+                                    Container(
+                                      child: YoutubePlayerBuilder(
+                                        player: YoutubePlayer(controller: _controller1),
+                                        builder: (context,player){
+                                          return player;
+                                        },
+                                      ),
+                                      width: WidthScreen,
+                                      height: HeightScreen/3,
+                                    ),
+                                  ],
+
+                                ),
+                                  barrierDismissible: true
+                                );
+
+                              },
                               child: Text(
                                   'Evitez le\nsurpoids',
                                 textAlign: TextAlign.center,
@@ -186,7 +292,26 @@ class _AcceuilState extends State<Acceuil> {
                         Column(
                           children: [
                             TextButton(
-                              onPressed: () {  },
+                              onPressed: () {
+                                showDialog(context: context, builder: (context)=>AlertDialog(
+                                  actions: [
+                                Container(
+                                  child: YoutubePlayerBuilder(
+                                  player: YoutubePlayer(controller: _controller),
+                                    builder: (context,player){
+                                      return player;
+                                    },
+                                  ),
+                                  width: WidthScreen,
+                                  height: HeightScreen/3,
+                                ),
+                                  ],
+
+                                ),
+                                  barrierDismissible: true
+                                );
+
+                              },
                               child: Text(
                                   'Evitez de\nl alcol',
                                 textAlign: TextAlign.center,
@@ -224,7 +349,9 @@ class _AcceuilState extends State<Acceuil> {
                         Column(
                           children: [
                             TextButton(
-                              onPressed: () {  },
+                              onPressed: () {
+
+                              },
                               child: Text(
                                 'Consommez les\nfruits et legumes',
                                 textAlign: TextAlign.center,
@@ -286,198 +413,429 @@ class _AcceuilState extends State<Acceuil> {
               ),
               SizedBox(height: 20,),
 
-              Container(
-                  width: WidthScreen/1.1,
-                  height: HeightScreen/4,
-                  child: Card(
-                    margin: EdgeInsets.only(left: WidthScreen/30,right: WidthScreen/60),
+              CarouselSlider(
+                items: [
+                  Container(
+                    width: WidthScreen/1.1,
+                    height: HeightScreen/4,
+                    child: Card(
+                        margin: EdgeInsets.only(left: WidthScreen/120,right: WidthScreen/100),
 
-                    color: Colors.cyan[100],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                        color: Colors.cyan[100],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
 
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                            padding:  EdgeInsets.only(left: WidthScreen/70,top: HeightScreen/60),
-                            child: Image.asset(
-                              'assets/nurse.png',
-                              width: 100,
-                              height: 100,
+                        ),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.only(left: WidthScreen/190,top: HeightScreen/60),
+                              child: Image.asset(
+                                'assets/nurse.png',
+                                width: 100,
+                                height: 100,
+                              ),
                             ),
-                          ),
-                        Padding(
-                            padding:  EdgeInsets.only(top: HeightScreen/20,left: WidthScreen/20),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'N oubliez pas de passer \nl evaluation general le\ndebut de chaque mois',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 16,
+                            Padding(
+                              padding:  EdgeInsets.only(top: HeightScreen/30,left: WidthScreen/120),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'N oubliez pas de\n passer l evaluation\n general le debut de\n chaque mois',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 15,),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.green[400],
-                                  ),
+                                  SizedBox(height: 2,),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.green[400],
+                                    ),
                                     onPressed: (){
                                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Evaluation()));
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Text(
-                                          'Passer',
+                                        'Passer',
                                         style: TextStyle(
                                           fontSize: 15,
                                         ),
                                       ),
                                     ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                      ],
-                    )
-                  ),
-                ),
-
-              SizedBox(height: 10,),
-              Padding(
-                padding:  EdgeInsets.only(left: WidthScreen/90,right:WidthScreen/4 ),
-                child: Text(
-                  'Prochain rendez-vous',
-                  style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-                  Container(
-                    width: WidthScreen/1.2,
-                    height: HeightScreen/2.5,
-                    child: Card(
-                      color: Colors.cyan[100],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: HeightScreen/30,left: WidthScreen/90,right: WidthScreen/3),
-                            child: Text(
-                              'Temps restant : 3 jours ',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: HeightScreen/30),
-                            child: Text(
-                              'Consultation avec Dr Fred',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.red[400]
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding:  EdgeInsets.only(left: WidthScreen/20,top: HeightScreen/30,bottom: HeightScreen/40),
-                                child: Icon(
-                                  Icons.calendar_today_rounded,
-                                  size: 25,
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Text(
-                                '10 Septembre',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              SizedBox(width: 50,),
-                              Icon(
-                                Icons.schedule,
-                                size: 25,
-                              ),
-                              SizedBox(width: 10,),
-                              Text(
-                                '3:00 PM',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 14,),
-                          Row(
-                            children: [
-                              Padding(
-                                padding:  EdgeInsets.only(left: WidthScreen/30,bottom: HeightScreen/50),
-                                child: Icon(
-                                  Icons.local_hospital,
-                                  size: 30,
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Padding(
-                                padding:  EdgeInsets.only(bottom: 14),
-                                child: Text(
-                                  'Hopital \nMarrakech',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 16,
                                   ),
-                                ),
+                                ],
                               ),
-                              SizedBox(width: 30,),
-                              Padding(
-                                padding:  EdgeInsets.only(bottom: HeightScreen/40,left: WidthScreen/10),
-                                child: Icon(
-                                  Icons.phone,
-                                  size: 25,
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Padding(
-                                padding: EdgeInsets.only(bottom: HeightScreen/40),
-                                child: Text(
-                                  '0682622717',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-
-                            ],
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.red[400]
                             ),
-                              onPressed: () {},
-                              child: Text(
-                                'Annulez rendez-vous',
-                                style: TextStyle(
-                                  fontSize: 16
-                                ),
-                              )
-                          )
-                        ],
-                      ),
+
+                          ],
+                        )
                     ),
                   ),
+                  Container(
+                    width: WidthScreen/1.1,
+                    height: HeightScreen/4,
+                    child: Card(
+                        margin: EdgeInsets.only(left: WidthScreen/120,right: WidthScreen/100),
+
+                        color: Colors.cyan[100],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+
+                        ),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.only(left: WidthScreen/190,top: HeightScreen/60),
+                              child: Image.asset(
+                                'assets/question_doctor.png',
+                                width: 100,
+                                height: 120,
+                              ),
+                            ),
+                            Padding(
+                              padding:  EdgeInsets.only(top: HeightScreen/30,left: WidthScreen/120),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Vous avez une \nquestion ? N'hésitez\n pas a  demander \nà votre medecin",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  SizedBox(height: 2,),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.yellow,
+                                    ),
+                                    onPressed: (){
+                                      showDialog(context: context, builder: (context)=>AlertDialog(
+                                        title: Text('Poser votre question '),
+                                        actions: [
+                                          Card(
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: TextFormField(
+                                                controller: question_controller,
+                                                keyboardType: TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  hintText: 'Poser votre question',
+                                                  enabledBorder: InputBorder.none,
+                                                  focusedBorder: InputBorder.none,
+                                                ),
+
+                                              ),
+                                            ),
+                                            shape: OutlineInputBorder(
+                                                borderSide: BorderSide(color: Colors.black,),
+                                                borderRadius: BorderRadius.circular(14)
+                                            ),
+                                          ),
+                                          ElevatedButton(
+                                            onPressed: (){
+                                              Question question = Question(Question_contenu:question_controller.text);
+                                              questioncontroller.postQuestion(question);
+                                            },
+                                            child: Text(
+                                              'Envoyer',
+                                              style: TextStyle(
+                                                  fontSize: 18
+                                              ),
+                                            ),
+                                          )
+                                        ],
 
 
+                                      ));
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Text(
+                                        'Poser question',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.black
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
 
+                          ],
+                        )
+                    ),
+                  ),
+                ],
+                options: CarouselOptions(
+                  height: 180,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  aspectRatio: 16/9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  viewportFraction: 0.8,
+
+                ),
+
+              ),
+
+              SizedBox(height: 30,),
+
+
+                CarouselSlider(
+                             items: [
+                               Column(
+                                 children: [
+                                   Padding(
+                                     padding:  EdgeInsets.only(right: WidthScreen/5),
+                                     child: Text(
+                                       'Prochaine Cure',
+                                       style: TextStyle(
+                                           fontSize: 18,
+                                           fontWeight: FontWeight.bold
+                                       ),
+                                     ),
+                                   ),
+                                   Container(
+                                     child: Card(
+                                       color: Colors.cyan[100],
+                                       shape: RoundedRectangleBorder(
+                                         borderRadius: BorderRadius.circular(20),
+
+                                       ),
+                                       child: Column(
+                                         children: [
+                                           Padding(
+                                             padding:  EdgeInsets.only(top: HeightScreen/50),
+                                             child: Text(
+                                               'Temps restant : 15 jours',
+                                               style: TextStyle(
+                                                   fontSize: 17,
+                                                   fontWeight: FontWeight.bold
+                                               ),
+                                             ),
+                                           ),
+                                           SizedBox(height: 30,),
+                                           Row(
+                                             children: [
+                                               Padding(
+                                                 padding:  EdgeInsets.only(left: WidthScreen/40),
+                                                 child: Icon(
+                                                   Icons.calendar_today_rounded,
+                                                   size: 25,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 10,),
+                                               Text(
+                                                 '12/4/2022',
+                                                 style: TextStyle(
+                                                   fontSize: 16,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 30,),
+                                               Icon(
+                                                 Icons.schedule,
+                                                 size: 25,
+                                               ),
+                                               SizedBox(width: 10,),
+                                               Padding(
+                                                 padding:  EdgeInsets.only(right: WidthScreen/50),
+                                                 child: Text(
+                                                   '3:00 PM',
+                                                   style: TextStyle(
+                                                     fontSize: 16,
+                                                   ),
+                                                 ),
+                                               ),
+
+                                             ],
+                                           ),
+                                           SizedBox(height: 40,),
+                                           Row(
+                                             children: [
+                                               Padding(
+                                                 padding:  EdgeInsets.only(left: WidthScreen/50),
+                                                 child: Icon(
+                                                   Icons.local_hospital,
+                                                   size: 30,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 10,),
+                                               Text(
+                                                 'Hopital \nMarrakech',
+                                                 textAlign: TextAlign.center,
+                                                 style: TextStyle(
+                                                   fontSize: 16,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 25,),
+                                               Icon(
+                                                 Icons.phone,
+                                                 size: 25,
+                                               ),
+                                               SizedBox(width: 10,),
+                                               Text(
+                                                 '0682622717',
+                                                 style: TextStyle(
+                                                   fontSize: 16,
+                                                 ),
+                                               ),
+
+                                             ],
+                                           ),
+                                           SizedBox(height: 40,),
+                                         ],
+                                       ),
+                                     ),
+                                   ),
+                                 ],
+                               ),
+                               Column(
+                                 children: [
+                                   Padding(
+                                     padding:  EdgeInsets.only(right: WidthScreen/5),
+                                     child: Text(
+                                       'Prochain rendez-vous',
+                                       style: TextStyle(
+                                           fontSize: 18,
+                                           fontWeight: FontWeight.bold
+                                       ),
+                                     ),
+                                   ),
+                                   Container(
+                                     child: Card(
+                                       color: Colors.cyan[100],
+                                       shape: RoundedRectangleBorder(
+                                         borderRadius: BorderRadius.circular(20),
+
+                                       ),
+                                       child: Column(
+                                         children: [
+                                           Padding(
+                                             padding:  EdgeInsets.only(top: HeightScreen/50),
+                                             child: Text(
+                                               'Temps restant : 3 jours',
+                                               style: TextStyle(
+                                                   fontSize: 17,
+                                                   fontWeight: FontWeight.bold
+                                               ),
+                                             ),
+                                           ),
+                                           SizedBox(height: 15,),
+                                           Center(
+                                             child: Text(
+                                               'Consulation avec Dr.Fred',
+                                               style: TextStyle(
+                                                   fontSize: 16,
+                                                   color: Colors.redAccent
+                                               ),
+                                             ),
+                                           ),
+                                           SizedBox(height: 15,),
+                                           Row(
+                                             children: [
+                                               Padding(
+                                                 padding:  EdgeInsets.only(left: WidthScreen/40),
+                                                 child: Icon(
+                                                   Icons.calendar_today_rounded,
+                                                   size: 25,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 10,),
+                                               Text(
+                                                 '10 Septembre',
+                                                 style: TextStyle(
+                                                   fontSize: 16,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 30,),
+                                               Icon(
+                                                 Icons.schedule,
+                                                 size: 25,
+                                               ),
+                                               SizedBox(width: 10,),
+                                               Padding(
+                                                 padding:  EdgeInsets.only(right: WidthScreen/50),
+                                                 child: Text(
+                                                   '3:00 PM',
+                                                   style: TextStyle(
+                                                     fontSize: 16,
+                                                   ),
+                                                 ),
+                                               ),
+
+                                             ],
+                                           ),
+                                           SizedBox(height: 23,),
+                                           Row(
+                                             children: [
+                                               Padding(
+                                                 padding:  EdgeInsets.only(left: WidthScreen/50),
+                                                 child: Icon(
+                                                   Icons.local_hospital,
+                                                   size: 30,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 10,),
+                                               Text(
+                                                 'Hopital \nMarrakech',
+                                                 textAlign: TextAlign.center,
+                                                 style: TextStyle(
+                                                   fontSize: 16,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 25,),
+                                               Icon(
+                                                 Icons.phone,
+                                                 size: 25,
+                                               ),
+                                               SizedBox(width: 10,),
+                                               Text(
+                                                 '0682622717',
+                                                 style: TextStyle(
+                                                   fontSize: 16,
+                                                 ),
+                                               ),
+
+                                             ],
+                                           ),
+                                           SizedBox(height: 5,),
+
+                                           ElevatedButton(
+                                               style: ElevatedButton.styleFrom(
+                                                   primary: Colors.red[400]
+                                               ),
+                                               onPressed: () {},
+                                               child: Text(
+                                                 'Annulez rendez-vous',
+                                                 style: TextStyle(
+                                                     fontSize: 16
+                                                 ),
+                                               )
+                                           )
+                                         ],
+                                       ),
+                                     ),
+                                   ),
+                                 ],
+                               ),
+                             ],
+                             options: CarouselOptions(
+                               height: 300,
+                               enlargeCenterPage: true,
+                               autoPlay: true,
+                               aspectRatio: 16/9,
+                               autoPlayCurve: Curves.fastOutSlowIn,
+                               enableInfiniteScroll: true,
+                               autoPlayAnimationDuration: Duration(milliseconds: 800),
+                               viewportFraction: 0.8,
+                             ),
+                           ),
             ],
           ),
 

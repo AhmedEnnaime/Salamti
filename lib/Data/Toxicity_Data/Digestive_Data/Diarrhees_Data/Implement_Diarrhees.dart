@@ -13,7 +13,7 @@ class Diarrhees_Data implements Diarrhee_Data{
   @override
   Future<String> postDiarrhees(Diarrhees diarrhees) async {
     print("${diarrhees.toJson()}");
-    var url = Uri.parse('$dataUrl/patients/');
+    var url = Uri.parse('$dataUrl/Diarrhees/');
     var result='';
     var response = await http.post(url, body: diarrhees.toJson());
     print(response.statusCode);

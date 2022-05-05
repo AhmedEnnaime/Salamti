@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+
 
 class Profile_medecin extends StatefulWidget {
 
@@ -11,14 +13,20 @@ class Profile_medecin extends StatefulWidget {
 }
 
 class _Profile_medecinState extends State<Profile_medecin> {
-  File ?_image;
-  final imagePicker = ImagePicker();
-  Future getImage() async{
-    final image = await imagePicker.getImage(source: ImageSource.gallery);
-    setState(() {
-      _image = File(image.path);
-    });
-  }
+  File ?dr_image;
+  Future pickimage() async{
+    try{
+      final image = await ImagePicker().getImage(source: ImageSource.gallery);
+      if(image==null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.dr_image = imageTemp;
+      });
+    }on PlatformException catch(e){
+      print('failed to pick image:$e');
+
+    }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -52,21 +60,14 @@ class _Profile_medecinState extends State<Profile_medecin> {
                       padding: EdgeInsets.only(top: HeightScreen/40),
                       child: Stack(children: <Widget>[
                         CircleAvatar(
-                          child: ClipOval(
-                            child: Image.asset(
-                              'assets/dr.png',
-                              width: 90,
-                              height: 90,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                          backgroundImage: dr_image==null ?null:FileImage(dr_image!),
                           radius: 50,
                         ),
                         Positioned(
                           bottom: 0.0,
                           right: 0,
                           child: IconButton(
-                            onPressed: getImage,
+                            onPressed: pickimage,
                             icon: Icon(
                               Icons.camera_alt,
                               size: 28.0,

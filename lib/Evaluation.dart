@@ -1,6 +1,9 @@
 import 'package:e_sante/Main_pages/Acceuil.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/variables.dart';
+import 'package:e_sante/Data/Toxicity_Data/Evaluation_Data/Evaluation_Model.dart';
+import 'package:e_sante/Data/Toxicity_Data/Evaluation_Data/Evaluation_controller.dart';
+import 'package:e_sante/Data/Toxicity_Data/Evaluation_Data/Implement_Evaluation.dart';
 
 
 class Evaluation extends StatefulWidget {
@@ -14,6 +17,7 @@ class _EvaluationState extends State<Evaluation> {
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
+    var evaluationcontroller = Evaluationcontroller(Evaluation_Data());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan[900],
@@ -417,6 +421,8 @@ class _EvaluationState extends State<Evaluation> {
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                     ),
                     onPressed: () {
+                      Evaluation_Model evaluation = Evaluation_Model(Presence_Plaintes:plaintes_value,Fatigue: ftg_value,Capacite_travail: travail_value,Activites_quotidiennes: quotidiennes_value,Autonomie: Autonomie_value,Apetit: Apetit_value,Douleur: Douleur_value,Depression: depression_value,Patient_Ip: IP.text );
+                      evaluationcontroller.postEvaluation(evaluation);
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
 
                     },
