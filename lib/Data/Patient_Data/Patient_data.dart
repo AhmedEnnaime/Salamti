@@ -1,5 +1,6 @@
 import 'package:e_sante/Data/Patient_Data/Patient.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
+import 'package:e_sante/variables.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,18 +11,17 @@ class Patients_data implements Patient_data{
   @override
   Future<List<Patient>> getPatient() async {
     List<Patient> patientList=[];
-    var url=Uri.parse('$dataUrl/patients');
+    var url=Uri.parse('$dataUrl/patients?Ip=${IP.text}');
     var response= await http.get(url);
     print('status code : ${response.statusCode}');
     var body = json.decode(response.body);
       patientList.add(Patient.fromJson(body[0]));
-
     return patientList;
   }
 
   @override
   Future<String> patchPatient(Patient patient) async {
-    var url = Uri.parse('$dataUrl/patients/${patient.Ip}');
+    var url = Uri.parse('$dataUrl/patients?Ip=${IP.text}');
     String resData='';
     await http.patch(
       url,
@@ -87,7 +87,7 @@ class Patients_data implements Patient_data{
   @override
   Future<List<Patient>> getPatientList() async {
     List<Patient> patientList=[];
-    var url=Uri.parse('$dataUrl/patients');
+    var url=Uri.parse('$dataUrl/patients?Doctor_Ip=${Ip_medecin.text}');
     var response= await http.get(url);
     print('status code : ${response.statusCode}');
     var body = json.decode(response.body);

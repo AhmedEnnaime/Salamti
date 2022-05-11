@@ -1,3 +1,6 @@
+import 'package:e_sante/Data/Rdv_patient_Data/Implement_Rdv_patient.dart';
+import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_Model.dart';
+import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_controller.dart';
 import 'package:flutter/material.dart';
 
 class Ajouter_rdv extends StatefulWidget {
@@ -7,26 +10,24 @@ class Ajouter_rdv extends StatefulWidget {
 }
 
 class _Ajouter_rdvState extends State<Ajouter_rdv> {
-  DateTime ?_dateTime;
-  TimeOfDay ?_timeOfDay;
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen=MediaQuery.of(context).size.width;
     double HeightScreen=MediaQuery.of(context).size.height;
+    var rdvpatientcontroller = Rdv_patientcontroller(Rdv_patient_Data());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[800],
-        title: Padding(
-          padding:  EdgeInsets.only(left: WidthScreen/50,right: WidthScreen/50),
-          child: Row(
+        title: Row(
             children: [
               Icon(
-                Icons.bookmark_add_outlined,
+                Icons.bookmark,
                 size: 30,
               ),
               SizedBox(width: 10,),
               Text(
-                'Ajouter rendez-vous',
+                'Liste des rendez-vous',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
@@ -35,119 +36,83 @@ class _Ajouter_rdvState extends State<Ajouter_rdv> {
               ),
             ],
           ),
-        ),
+
         centerTitle: true,
 
 
 
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding:  EdgeInsets.only(top: HeightScreen/15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                      onPressed: (){
-                        showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2022),
-                            lastDate: DateTime(2060),
-                        ).then((date) {
-                          setState(() {
-                            _dateTime = date;
-                          });
-                        });
-
-
-                      },
-                      icon: Icon(
-                        Icons.calendar_today_rounded,
-                        size: 30,
-                        color: Colors.blue[800],
-                      ),
-                  ),
-                  SizedBox(width: 10,),
-                  Text(
-                    _dateTime==null ? "Aucune date n'a ete selectionne":_dateTime.toString(),
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  )
-
-                ],
-              ),
-            ),
-            SizedBox(height: 20,),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: (){
-                      showTimePicker(
-                          context: context,
-                          initialTime: TimeOfDay.now(),
-                      ).then((time) {
-                        _timeOfDay=time;
-                      });
-
-
-                    },
-                    icon: Icon(
-                      Icons.watch_later_outlined,
-                      size: 30,
-                      color: Colors.blue[800],
-                    ),
-                  ),
-                  SizedBox(width: 10,),
-                  Text(
-                    _timeOfDay==null ? "Aucune horraire n'a ete selectionne":_timeOfDay.toString(),
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  )
-
-                ],
-              ),
-            SizedBox(height: 25,),
-
-            Card(
-              margin: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black,),
-                  borderRadius: BorderRadius.circular(20)
-              ),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  focusColor: Color(0xffF5591F),
-                  hintText: "Nom du patient",
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  icon: Padding(
-                    padding:  EdgeInsets.only(left: WidthScreen/30),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_down,
-                        size: 20,
-                      ),
-                      onPressed: () {},
-
-                    ),
-                  ),
+      body: FutureBuilder<List<Rdv_patient>>(
+        future: rdvpatientcontroller.getRdv_patient_medecin(),
+          builder: (context, snapshot) {
+            if(snapshot.connectionState == ConnectionState.waiting){
+              return Center(child: CircularProgressIndicator(),);
+            }
+            if (snapshot.hasError){
+              return Center(child: Text('${snapshot.error}'),);
+            }
+            return GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  childAspectRatio:4,
+                  mainAxisSpacing: 7
 
                 ),
+                itemCount: snapshot.data?.length ?? 0,
+                shrinkWrap: true,
+                itemBuilder: (context,index){
+                  var Listrdvmedecin = snapshot.data?[index];
+                  return Card(
+                    margin: EdgeInsets.only(left: WidthScreen/30,right: WidthScreen/35,bottom: HeightScreen/60,top: HeightScreen/60),
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.grey[400],
+                    shape: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey,),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(30, 14, 0, 14),
+                          child: CircleAvatar(
 
-              ),
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: (){},
+                              child: Text(
+                                '${Listrdvmedecin?.Patient_nom}',
+                                style: TextStyle(
+                                  color: Colors.red[300],
+                                  fontSize: 16,
+                                ),
+                              ),
 
-            ),
-          ],
-        ),
+                            ),
+                            Row(
+                              children: [
+                                Text('${Listrdvmedecin?.Day}'),
+                                SizedBox(width: 80,),
+                                Text('${Listrdvmedecin?.rdv_temps}')
+                              ],
+                            )
+                          ],
+                        ),
 
-      ) ,
+                      ],
+                    ),
 
+                  );
+                }
+            );
+
+      })
     );
+
+
   }
 }

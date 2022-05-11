@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
+import 'package:e_sante/Data/Patient_Data/User.dart';
+import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/variables.dart';
@@ -23,7 +26,35 @@ class _CuresState extends State<Cures> {
   DateTime ?next_cure;
   DateTime ?temps_restant;
   File ?image;
+  String _getMonthDate(int month) {
+    if (month == 01) {
+      return 'Janvier';
+    } else if (month == 02) {
+      return 'Février';
+    } else if (month == 03) {
+      return 'Mars';
+    } else if (month == 04) {
+      return 'Avril';
+    } else if (month == 05) {
+      return 'Mai';
+    } else if (month == 06) {
+      return 'Juin';
+    } else if (month == 07) {
+      return 'Juillet';
+    } else if (month == 08) {
+      return 'Aout';
+    } else if (month == 09) {
+      return 'Septembre';
+    } else if (month == 10) {
+      return 'Octobre';
+    } else if (month == 11) {
+      return 'Novembre';
+    } else {
+      return 'Decembre';
+    }
+  }
   var curescontroller = Curescontroller(Cures_Data());
+  var patientcontroller = Patientcontroller(Patients_data());
   void timer(){
     Timer.periodic(Duration(seconds: 1), (timer) {
       if(y > 0){
@@ -194,43 +225,64 @@ class _CuresState extends State<Cures> {
               ],
             ),
             SizedBox(height: 40,),
-            ElevatedButton(
-                onPressed: () async{
-                  if(cure_val=='Oui'){
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                    prefs.setInt('Timer', y);
-                    timer();
-                    cure_day = DateTime.now();
-                    print(cure_day);
-                    next_cure= cure_day?.add(Duration(days: 21));
-                    print(next_cure);
-                    temps_restant = (next_cure?.subtract(Duration(days: cure_day!.day)));
-                    print(temps_restant?.day);
-                    Cures_Model cure = Cures_Model(cure_confirm: cure_val,cure_day: cure_day,Next_cure: next_cure,Temps_restant: temps_restant?.day,Patient_Ip: patient.Ip);
-                    curescontroller.postCures(cure);
-                    /*Future.delayed(Duration(seconds: y),(){
-                      setState(() {
-                        visible =!visible;
-                      });
+            FutureBuilder<List<Patient>>(
+              future:patientcontroller.fetchPatientList() ,
+              builder: ( context, snapshot) {
+                if(snapshot.connectionState == ConnectionState.waiting){
+                  return Center(child: CircularProgressIndicator(),);
+                }
+                if (snapshot.hasError){
+                  return Center(child: Text('${snapshot.error}'),);
+                }
+                return Container(
+                  width: WidthScreen/2,
+                  height: HeightScreen/17,
+                  child: ListView.separated(
+                      itemBuilder: (context, index) {
+                        var patient = snapshot.data?[index];
+                        return ElevatedButton(
+                          onPressed: () async{
+                            if(cure_val=='Oui'){
+                              SharedPreferences prefs = await SharedPreferences.getInstance();
+                              prefs.setInt('Timer', y);
+                              timer();
+                              cure_day = DateTime.now();
+                              print(cure_day);
+                              next_cure= cure_day?.add(Duration(days: 21));
+                              print(next_cure);
+                              temps_restant = (next_cure?.subtract(Duration(days: cure_day!.day)));
+                              print(temps_restant?.day);
+                              Cures_Model cure = Cures_Model(cure_confirm: cure_val,cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',Patient_Ip: IP.text,Patient_nom: patient?.Nom);
+                              curescontroller.postCures(cure);
+                              /*Future.delayed(Duration(seconds: y),(){
+                          setState(() {
+                            visible =!visible;
+                          });
 
-                    });
+                        });
 
-                    */
+                        */
 
-                  }else {
-                    setState(() {
-                      visible = false;
-                    });
-                  }
-            },
+                            }else {
+                              setState(() {
+                                visible = false;
+                              });
+                            }
+                          },
 
 
-                child: Text(
-                  'Confirmer',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
+                          child: Text(
+                            'Confirmer',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        );
+
+                  }, separatorBuilder: (BuildContext context, int index) { return Divider(); }, itemCount: snapshot.data?.length ?? 0,),
+                );
+              },
+
             ),
             SizedBox(height: 30,),
       Text(

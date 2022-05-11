@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:e_sante/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
 import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
@@ -298,7 +299,7 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
               SizedBox(height: 30,),
               ElevatedButton(
                   onPressed: ()  {
-                    Patient patient = Patient(Ip: Ip.text,Nom: Nom.text,Age: Age.text,Sexe:Sexe.text,Mail: Mail.text,Tel: Tel.text,Password: Password.text );
+                    Patient patient = Patient(Ip: Ip.text,Nom: Nom.text,Age: Age.text,Sexe:Sexe.text,Mail: Mail.text,Tel: Tel.text,Password: Password.text,Doctor_Ip: Ip_medecin.text );
                     patientcontroller.postPatient(patient);
                     //adduser();
                   },
@@ -318,19 +319,4 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
     );
 
   }
-  /*Future adduser() async {
-    var APIURL = "http://10.0.2.2:3000/patients";
-    Map mapeddata = {
-      "Ip" : patient.Ip,
-      "Nom":patient.Nom,
-      "Age":patient.Age,
-      "Sexe":patient.Sexe,
-      "Mail":patient.Mail,
-      "Tel":patient.Tel,
-      "Password": patient.Password,
-    };
-    http.Response reponse = await http.post(APIURL,body: mapeddata);
-    var data = jsonDecode(reponse.body);
-    print('DATA: ${data}');
-  }*/
 }

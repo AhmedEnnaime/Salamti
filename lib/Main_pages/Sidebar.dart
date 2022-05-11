@@ -289,11 +289,14 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                         padding:  EdgeInsets.fromLTRB(0, 0, 80, 0),
                         child: TextButton(
                           onPressed: () {},
-                          child: Text(
-                            "Guide d'utilisation",
-                            style: TextStyle(
-                              color: Colors.black,
+                          child: TextButton(
+                            child: Text(
+                              "Guide d'utilisation",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
                             ),
+                             onPressed: () {  },
                           ),
 
                         ),

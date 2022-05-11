@@ -1,4 +1,5 @@
 import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
+import 'package:e_sante/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
@@ -154,6 +155,8 @@ class _prflState extends State<prfl> {
                                         ),
                                         SizedBox(width: 10,),
                                         Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                                 'Nom et Prenom',
@@ -200,7 +203,8 @@ class _prflState extends State<prfl> {
                                                   ),
                                                   ElevatedButton(
                                                       onPressed: (){
-                                                        patientcontroller.patchtPatient(patient!);
+                                                        Patient patient = Patient(Nom: new_Nom.text);
+                                                        patientcontroller.patchtPatient(patient);
                                                       },
                                                       child: Text(
                                                         'Confirmer',
@@ -248,6 +252,7 @@ class _prflState extends State<prfl> {
                                         SizedBox(width: 10,),
                                         Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Email                              ',
@@ -352,6 +357,8 @@ class _prflState extends State<prfl> {
                                         ),
                                         SizedBox(width: 10,),
                                         Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Age',
@@ -440,6 +447,8 @@ class _prflState extends State<prfl> {
                                         ),
                                         SizedBox(width: 10,),
                                         Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Sexe',
@@ -492,6 +501,8 @@ class _prflState extends State<prfl> {
                                         ),
                                         SizedBox(width: 10,),
                                         Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Telephone',
@@ -580,6 +591,8 @@ class _prflState extends State<prfl> {
                                         ),
                                         SizedBox(width: 10,),
                                         Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Mot de passe',
@@ -668,6 +681,8 @@ class _prflState extends State<prfl> {
                                         ),
                                         SizedBox(width: 10,),
                                         Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Langue',
@@ -734,6 +749,8 @@ class _prflState extends State<prfl> {
                                         ),
                                         SizedBox(width: 10,),
                                         Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             TextButton(
                                               onPressed: () {  },

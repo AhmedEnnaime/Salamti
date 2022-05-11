@@ -82,18 +82,7 @@ bool medeci_midi5 = false;
 bool medeci_midi6 = false;
 ////////rdv///////////
 DateTime ?dateTime;
-bool patient_matin1 = false;
-bool patient_matin2 = false;
-bool patient_matin3 = false;
-bool patient_matin4 = false;
-bool patient_matin5 = false;
-bool patient_matin6 = false;
-bool patient_midi1 = false;
-bool patient_midi2 = false;
-bool patient_midi3 = false;
-bool patient_midi4 = false;
-bool patient_midi5 = false;
-bool patient_midi6 = false;
+String rdv_time='';
 ///////Mucite_survey///////
 String val13='';
 int score_voix = 0;
@@ -200,3 +189,6 @@ int mucite_levres(){
 }
 ////////login////////
 TextEditingController IP = TextEditingController();
+TextEditingController Mp = TextEditingController();
+/////////login_medecin//////////
+TextEditingController Ip_medecin = TextEditingController();

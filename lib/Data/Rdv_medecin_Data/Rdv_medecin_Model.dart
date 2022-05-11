@@ -1,18 +1,18 @@
-import 'package:e_sante/variables.dart';
 class Rdv_medecin{
-  DateTime? Day;
-  bool? medecin_matin1;
-  bool? medecin_matin2;
-  bool? medecin_matin3;
-  bool? medecin_matin4;
-  bool? medecin_matin5;
-  bool? medecin_matin6;
-  bool? medecin_midi1;
-  bool? medecin_midi2;
-  bool? medecin_midi3;
-  bool? medecin_midi4;
-  bool? medecin_midi5;
-  bool? medecin_midi6;
+  String? Day;
+  String? medecin_matin1;
+  String? medecin_matin2;
+  String? medecin_matin3;
+  String? medecin_matin4;
+  String? medecin_matin5;
+  String? medecin_matin6;
+  String? medecin_midi1;
+  String? medecin_midi2;
+  String? medecin_midi3;
+  String? medecin_midi4;
+  String? medecin_midi5;
+  String? medecin_midi6;
+  String? Doctor_Ip;
 
 
   Rdv_medecin({
@@ -29,22 +29,24 @@ class Rdv_medecin{
     this.medecin_midi4,
     this.medecin_midi5,
     this.medecin_midi6,
+    this.Doctor_Ip
 
   });
   Rdv_medecin.fromJson(Map<String,dynamic>json){
-    Day= json[dateTime];
-    medecin_matin1= json[medeci_matin1];
-    medecin_matin2= json[medeci_matin2];
-    medecin_matin3= json[medeci_matin3];
-    medecin_matin4= json[medeci_matin4];
-    medecin_matin5= json[medeci_matin5];
-    medecin_matin6= json[medeci_matin6];
-    medecin_midi1= json[medeci_midi1];
-    medecin_midi2= json[medeci_midi2];
-    medecin_midi3= json[medeci_midi3];
-    medecin_midi4= json[medeci_midi4];
-    medecin_midi5= json[medeci_midi5];
-    medecin_midi6= json[medeci_midi6];
+    Day= json['La date seléctionnée'];
+    medecin_matin1= json["9:00 AM"];
+    medecin_matin2= json['9:30 AM'];
+    medecin_matin3= json['10:00 AM'];
+    medecin_matin4= json['10:30 AM'];
+    medecin_matin5= json['11:00 AM'];
+    medecin_matin6= json["11:30 AM"];
+    medecin_midi1= json["3:00 AM"];
+    medecin_midi2= json['3:30 PM'];
+    medecin_midi3= json['4:00 PM'];
+    medecin_midi4= json["4:30 PM"];
+    medecin_midi5= json['5:00 PM'];
+    medecin_midi6= json['5:30 PM'];
+    Doctor_Ip= json['Doctor_Ip'];
   }
   Map<String,dynamic> toJson(){
     final Map<String,dynamic> data = new Map<String,dynamic>();
@@ -61,6 +63,7 @@ class Rdv_medecin{
     data['4:30 PM']= this.medecin_midi4.toString();
     data['5:00 PM']= this.medecin_midi5.toString();
     data['5:30 PM']= this.medecin_matin6.toString();
+    data['Doctor_Ip']= this.Doctor_Ip.toString();
     return data;
   }
 

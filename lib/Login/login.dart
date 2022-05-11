@@ -18,7 +18,6 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   var patientcontroller= Patientcontroller(Patients_data());
 
-  TextEditingController Mp = TextEditingController();
   final _formkey = GlobalKey <FormState> ();
   Login_patient() async{
     if(IP.text.isNotEmpty && Mp.text.isNotEmpty){

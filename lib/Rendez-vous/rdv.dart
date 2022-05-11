@@ -1,10 +1,16 @@
 import 'dart:ui';
+import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
+import 'package:e_sante/Data/Patient_Data/User.dart';
+import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
 import 'package:e_sante/Data/Rdv_medecin_Data/Rdv_medecin_Model.dart';
 import 'package:e_sante/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Rendez-vous/rdv_confirm.dart';
 import '../Data/Rdv_medecin_Data/Implement_Rdv_medecin.dart';
 import '../Data/Rdv_medecin_Data/Rdv_medecin_controller.dart';
+import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_Model.dart';
+import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_controller.dart';
+import 'package:e_sante/Data/Rdv_patient_Data/Implement_Rdv_patient.dart';
 
 class rdv extends StatefulWidget {
   @override
@@ -47,14 +53,11 @@ class _rdv extends State<rdv> {
   }
 
   Widget initWidget(BuildContext context) {
+    double WidthScreen=MediaQuery.of(context).size.width;
+    double HeightScreen=MediaQuery.of(context).size.height;
     var rdv_medecincontroller = Rdv_medecincontroller(Rdv_medecin_Data());
-    rdv_medecincontroller.getRdv_medecin();
-    /*bool matin1_visibility(){
-      if(dateTime== rdv_medecin.Day && medecin_matin1== true){
-        return true;
-      }else return false;
-    }*/
-
+    var rdv_patientcontroller = Rdv_patientcontroller(Rdv_patient_Data());
+    var patientcontroller = Patientcontroller(Patients_data());
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -71,620 +74,625 @@ class _rdv extends State<rdv> {
         ),
 
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                  color: Color(0xff053F5E),
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
-              ),
-              child: Container(
-                margin: EdgeInsets.only(left: 30, bottom: 30),
-                child: Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: CircleAvatar(
-                        child: ClipOval(
-                          child: Image.asset(
-                              'assets/dr.png',
-                              fit: BoxFit.cover,
-                              width: 100,
-                              height: 100,
-                          ),
+      body: FutureBuilder<List<Rdv_medecin>>(
+        future: rdv_medecincontroller.getRdv_medecin(),
+        builder: (context,snapshot){
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator(),);
+          }
+          if (snapshot.hasError){
+            return Center(child: Text('${snapshot.error}'),);
+          }
+          return ListView.separated(
+              itemBuilder: (context, index) {
+                var rdv_medecinn = snapshot.data?[index];
+                bool matin1_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_matin1=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool matin2_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_matin2=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool matin3_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_matin3=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool matin4_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_matin4=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool matin5_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_matin5=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool matin6_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_matin6=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool midi1_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_midi1=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool midi2_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_midi2=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool midi3_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_midi3=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool midi4_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_midi4=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool midi5_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_midi5=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                bool midi6_visibility(){
+                  if (rdv_medecinn?.Day == dateTime.toString()){
+                    if(rdv_medecinn?.medecin_midi6=='true'){
+                      return true;
+                    }
+                  }else return false;
+                  return false;
+                }
+                return SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                            color: Color(0xff053F5E),
+                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
                         ),
-                        radius: 50,
-                        backgroundColor: Colors.white,
-
-                      )
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 40),
-                            child: Text('Dr. Fred Mask',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 20, top: 20, right: 20),
-              height: 90,
-              child: FutureBuilder<List<Rdv_medecin>>(
-                future: rdv_medecincontroller.getRdv_medecin(),
-                builder: (context,  snapshot) {
-                  if(snapshot.connectionState == ConnectionState.waiting){
-                    return Center(child: CircularProgressIndicator(),);
-                  }
-                  if (snapshot.hasError){
-                    return Center(child: Text('${snapshot.error}'),);
-                  }
-                  return  ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: ( context, index) {
-                      var rdv_medecin = snapshot.data?[index];
-                      return Container(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
+                        child: Container(
+                          margin: EdgeInsets.only(left: 30, bottom: 30),
                           child: Row(
                             children: [
-                              IconButton(
-                                onPressed: (){
-                                  showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(2022),
-                                    lastDate: DateTime(2060),
-                                  ).then((date) {
-                                    setState(() {
-                                      dateTime = date;
-                                    });
-                                  });
 
-
-                                },
-                                icon: Icon(
-                                  Icons.calendar_today_rounded,
-                                  size: 40,
-                                  color: Colors.blue[800],
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Text(
-                                dateTime==null ? "Aucune date n'a ete selectionne":"${dateTime?.day} ${_getMonthDate(dateTime!.month)} ${dateTime?.year}",
-                                style: TextStyle(
-                                  fontSize: 20,
+                              Container(
+                                margin: EdgeInsets.only(left: 20),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(top: 40),
+                                      child: Text('Rendez-vous disponibles',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 25,
+                                          fontFamily: 'Roboto',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               )
                             ],
                           ),
                         ),
-                      );
-                    }, separatorBuilder: ( context,  index) { return Divider(); }, itemCount: snapshot.data?.length ?? 0,
-                  );
-
-                },
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 20, top: 30),
-              child: Text('Matin',
-                style: TextStyle(
-                  color: Color(0xff363636),
-                  fontSize: 25,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(right: 10),
-              child: GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 3,
-                physics: NeverScrollableScrollPhysics(),
-                childAspectRatio: 2.7,
-                children: [
-                  Visibility(
-                    child: Card(
-                      clipBehavior: Clip.antiAlias,
-                      color: Colors.grey[200],
-                      shape: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black,)
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('9:00 AM'),
-                          Checkbox(
-                            value: patient_matin1,
-                            onChanged: (val) {
-                              setState(() {
-                                patient_matin1=val!;
-                              });
+                      Container(
+                        margin: EdgeInsets.only(left: 20, top: 20, right: 20),
+                        height: 90,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            Container(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: (){
+                                        showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: DateTime(2022),
+                                          lastDate: DateTime(2060),
+                                        ).then((date) {
+                                          setState(() {
+                                            dateTime = date;
+                                          });
+                                        });
 
-                            },
 
+                                      },
+                                      icon: Icon(
+                                        Icons.calendar_today_rounded,
+                                        size: 40,
+                                        color: Colors.blue[800],
+                                      ),
+                                    ),
+                                    SizedBox(width: 10,),
+                                    Text(
+                                      dateTime==null ? "Aucune date n'a ete selectionne":"${dateTime?.day} ${_getMonthDate(dateTime!.month)} ${dateTime?.year}",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+
+
+
+                        ),
+
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 20, top: 30),
+                        child: Text('Matin',
+                          style: TextStyle(
+                            color: Color(0xff363636),
+                            fontSize: 25,
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w700,
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                   // visible:matin1_visibility() ,
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('9:30 AM'),
-                        Checkbox(
-                          value: patient_matin2,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_matin2=val!;
-                            });
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        child: GridView.count(
+                          shrinkWrap: true,
+                          crossAxisCount: 3,
+                          physics: NeverScrollableScrollPhysics(),
+                          childAspectRatio: 2.7,
+                          children: [
+                            Visibility(
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('9:00 AM'),
+                                    Radio<String>(
+                                      value: '9:00 AM',
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
 
-                          },
+                                      }, groupValue: rdv_time,
 
+                                    ),
+                                  ],
+                                ),
+                              ),
+                               visible:matin1_visibility() ,
+                            ),
+                            Visibility(
+                              visible: matin2_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('9:30 AM'),
+                                    Radio<String>(
+                                      value: "9:30 AM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      }, groupValue: rdv_time,
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: matin3_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('10:00 AM'),
+                                    Radio<String>(
+                                      value: "10:00 AM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      }, groupValue: rdv_time,
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: matin4_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('10:30 AM'),
+                                    Radio<String>(
+                                      value: "10:30 AM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      }, groupValue: rdv_time,
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: matin5_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('11:00 AM'),
+                                    Radio<String>(
+                                      value: "11:00 AM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      },groupValue: rdv_time,
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: matin6_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('11:30 AM'),
+                                    Radio<String>(
+                                      value: "11:30 AM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      }, groupValue: rdv_time,
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('10:00 AM'),
-                        Checkbox(
-                          value: patient_matin3,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_matin3=val!;
-                            });
-
-                          },
-
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('10:30 AM'),
-                        Checkbox(
-                          value: patient_matin4,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_matin4=val!;
-                            });
-
-                          },
-
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('11:00 AM'),
-                        Checkbox(
-                          value: patient_matin5,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_matin5=val!;
-                            });
-
-                          },
-
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('11:30 AM'),
-                        Checkbox(
-                          value: patient_matin6,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_matin6=val!;
-                            });
-
-                          },
-
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 25, top: 30),
-              child: Text('Aprés-midi',
-                style: TextStyle(
-                  color: Color(0xff363636),
-                  fontSize: 25,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(right: 10),
-              child: GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 3,
-                physics: NeverScrollableScrollPhysics(),
-                childAspectRatio: 2.7,
-                children: [
-                  Visibility(
-                    child: Card(
-                      clipBehavior: Clip.antiAlias,
-                      color: Colors.grey[200],
-                      shape: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black,)
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('3:00 PM'),
-                          Checkbox(
-                            value: patient_midi1,
-                            onChanged: (val) {
-                              setState(() {
-                                patient_midi1=val!;
-                              });
-
-                            },
-
+                      Container(
+                        margin: EdgeInsets.only(left: 25, top: 30),
+                        child: Text('Aprés-midi',
+                          style: TextStyle(
+                            color: Color(0xff363636),
+                            fontSize: 25,
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w700,
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                    // visible:matin1_visibility() ,
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('3:30 PM'),
-                        Checkbox(
-                          value: patient_midi2,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_midi2=val!;
-                            });
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        child: GridView.count(
+                          shrinkWrap: true,
+                          crossAxisCount: 3,
+                          physics: NeverScrollableScrollPhysics(),
+                          childAspectRatio: 2.7,
+                          children: [
+                            Visibility(
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('3:00 PM'),
+                                    Radio<String>(
+                                      value: "3:00 PM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
 
-                          },
+                                      }, groupValue: rdv_time,
 
+                                    ),
+                                  ],
+                                ),
+                              ),
+                               visible:midi1_visibility() ,
+                            ),
+                            Visibility(
+                              visible: midi2_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('3:30 PM'),
+                                    Radio<String>(
+                                      value: "3:30 PM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      }, groupValue: rdv_time,
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: midi3_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('4:00 PM'),
+                                    Radio<String>(
+                                      value: "4:00 PM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      },groupValue: rdv_time,
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: midi4_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('4:30 PM'),
+                                    Radio<String>(
+                                      value: "4:30 PM",
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      }, groupValue: rdv_time,
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: midi5_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('5:00 PM'),
+                                    Radio<String>(
+                                      value: '5:00 PM',
+                                      groupValue: rdv_time,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      },
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: midi6_visibility(),
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                color: Colors.grey[200],
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('5:30 PM'),
+                                    Radio<String>(
+                                      value: "5:30 PM",
+                                      groupValue: rdv_time,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          rdv_time=value!;
+                                        });
+
+                                      },
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      FutureBuilder<List<Patient>>(
+                        future:patientcontroller.fetchPatientList() ,
+                        builder: ( context,snapshot) {
+                          if(snapshot.connectionState == ConnectionState.waiting){
+                            return Center(child: CircularProgressIndicator(),);
+                          }
+                          if (snapshot.hasError){
+                            return Center(child: Text('${snapshot.error}'),);
+                          }
+                          return Container(
+                            width:WidthScreen ,
+                            height: HeightScreen/10,
+                            child: ListView.separated(
+                                itemBuilder: (context, index) {
+                                  var patient = snapshot.data?[index];
+                                  return Container(
+                                    alignment: Alignment.center,
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: EdgeInsets.all(20),
+                                    decoration: BoxDecoration(
+                                      color: Color(0xff107163),
+                                      borderRadius: BorderRadius.circular(5),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0x17000000),
+                                          offset: Offset(0, 15),
+                                          blurRadius: 15,
+                                          spreadRadius: 0,
+                                        ),
+                                      ],
+                                    ),
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Rdv_patient rdv_patient = Rdv_patient(Day:' ${dateTime?.day.toString()} ${_getMonthDate(dateTime!.month).toString()} ${dateTime?.year.toString()}',rdv_temps: rdv_time.toString(),Patient_Ip: IP.text,Doctor_Ip: patient?.Doctor_Ip,Patient_nom: patient?.Nom);
+                                        rdv_patientcontroller.postRdv_patient(rdv_patient);
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>rdv_confirm()));
+                                      },
+                                      child: Text(
+                                        'Prendre rendez-vous',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontFamily: 'Roboto',
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+
+                                    ),
+                                  );
+
+                            }, itemCount: snapshot.data?.length ?? 0, separatorBuilder: (BuildContext context, int index) { return Divider(); },),
+                          );
+
+                        },
+                      ),
+                    ],
                   ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('4:00 PM'),
-                        Checkbox(
-                          value: patient_midi3,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_midi3=val!;
-                            });
+                );
 
-                          },
+              }, separatorBuilder: ( context, index) { 
+                return Divider();
+          }, itemCount: snapshot.data?.length ?? 0,);
+        },
 
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('4:30 PM'),
-                        Checkbox(
-                          value: patient_midi4,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_midi4=val!;
-                            });
-
-                          },
-
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('5:00 PM'),
-                        Checkbox(
-                          value: patient_midi5,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_midi5=val!;
-                            });
-
-                          },
-
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    color: Colors.grey[200],
-                    shape: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black,)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('5:30 PM'),
-                        Checkbox(
-                          value: patient_midi6,
-                          onChanged: (val) {
-                            setState(() {
-                              patient_midi6=val!;
-                            });
-
-                          },
-
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width,
-              height: 54,
-              margin: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Color(0xff107163),
-                borderRadius: BorderRadius.circular(5),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x17000000),
-                    offset: Offset(0, 15),
-                    blurRadius: 15,
-                    spreadRadius: 0,
-                  ),
-                ],
-              ),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>rdv_confirm()));
-                },
-                child: Text(
-                    'Prendre rendez-vous',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget demoDates(String day, String date, bool isSelected) {
-    return isSelected ? Container(
-      width: 70,
-      margin: EdgeInsets.only(right: 15),
-      decoration: BoxDecoration(
-        color: Color(0xff107163),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Text(
-              day,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.all(7),
-            child: Text(
-              date,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.bold
-              ),
-            ),
-          ),
-        ],
-      ),
-    ) : Container(
-      width: 70,
-      margin: EdgeInsets.only(right: 15),
-      decoration: BoxDecoration(
-        color: Color(0xffEEEEEE),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Text(
-              day,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.all(7),
-            child: Text(
-              date,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.bold
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget doctorTimingsData(String time, bool isSelected) {
-    return isSelected ? Container(
-      margin: EdgeInsets.only(left: 20, top: 10),
-      decoration: BoxDecoration(
-        color: Color(0xff107163),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.only(right: 2),
-            child: Icon(
-              Icons.access_time,
-              color: Colors.white,
-              size: 18,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 2),
-            child: Text('08:30 AM',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17,
-                fontFamily: 'Roboto',
-              ),
-            ),
-          ),
-        ],
-      ),
-    ) : Container(
-      margin: EdgeInsets.only(left: 20, top: 10),
-      decoration: BoxDecoration(
-        color: Color(0xffEEEEEE),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.only(right: 2),
-            child: Icon(
-              Icons.access_time,
-              color: Colors.black,
-              size: 18,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 2),
-            child: Text('08:30 AM',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 17,
-                fontFamily: 'Roboto',
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

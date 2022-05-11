@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:e_sante/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
 import 'package:http/http.dart' as http;
@@ -11,7 +12,6 @@ class Login_medecin extends StatefulWidget {
 }
 
 class _Login_medecinState extends State<Login_medecin> {
-  TextEditingController tel = TextEditingController();
   TextEditingController Mdp = TextEditingController();
   final _formkey = GlobalKey <FormState> ();
   @override
@@ -53,20 +53,20 @@ class _Login_medecinState extends State<Login_medecin> {
                           child: Column(
                             children: [
                               TextFormField(
-                                controller:tel,
-                                keyboardType: TextInputType.phone,
+                                controller:Ip_medecin,
+                                keyboardType: TextInputType.text,
                                 style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
-                                  hintText: "Numero de telephone",
+                                  hintText: "IP",
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
                                 validator: (value){
-                                  if(value!.isEmpty || value == null || value.length <10){
-                                    return 'Entrez votre numero de telephone';
+                                  if(value!.isEmpty || value == null ){
+                                    return 'Entrez votre Ip';
                                   }else{
                                     return null;
                                   }

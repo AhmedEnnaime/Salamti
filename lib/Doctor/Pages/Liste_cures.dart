@@ -53,10 +53,9 @@ class _Liste_curesState extends State<Liste_cures> {
                           children: [
                             Row(
                               children: [
-                                Expanded(flex:1,child: Text('${Listcures?.Patient_Ip}')),
+                                Expanded(flex:1,child: Text('${Listcures?.Patient_nom}')),
                                 Expanded(flex:1,child: Text('${Listcures?.cure_day}')),
                                 Expanded(flex:1,child: Text('${Listcures?.Next_cure}')),
-                                Expanded(flex:1,child: Text('${Listcures?.Temps_restant}')),
                               ],
                             ),
                           ],

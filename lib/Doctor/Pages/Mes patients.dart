@@ -40,41 +40,118 @@ class _Mes_patientsState extends State<Mes_patients> {
             if (snapshot.hasError){
               return Center(child: Text('${snapshot.error}'),);
             }
-            return ListView.separated(
+            return GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio:1,
+                crossAxisSpacing: 5,
+                mainAxisSpacing: 40,
+              ),
               shrinkWrap: true,
                 itemBuilder: (context, index) {
                   var Listpatient = snapshot.data?[index];
-                  return Column(
-                    children: [
-                      Container(
-                        height: 100,
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(flex:1,child: Text('${Listpatient?.Ip}')),
-                                Expanded(flex:1,child: Text('${Listpatient?.Nom}')),
-                                Expanded(flex:1,child: Text('${Listpatient?.Tel}')),
-                                Expanded(flex:1,child: Text('${Listpatient?.Sexe}')),
-                              ],
-                            ),
-                          ],
-                        ),
+                  String sex_convert(){
+                    if(Listpatient?.Sexe=='Homme'){
+                      return 'H';
+                    }else if(Listpatient?.Sexe=='Femme'){
+                      return 'F';
+                    }else return 'U';
 
-                      ),
-                    ],
+                  }
+                  return Container(
+                          child:Padding(
+                            padding:  EdgeInsets.only(right: WidthScreen/50,left: WidthScreen/40),
+                            child: Card(
+                              margin: EdgeInsets.only(bottom: HeightScreen/3000),
+                              clipBehavior: Clip.antiAlias,
+                              color: Colors.grey[200],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding:  EdgeInsets.only(right: WidthScreen/4),
+                                    child: CircleAvatar(
+                                      radius: 30,
+
+
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      '${Listpatient?.Nom}',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18
+                                      ),
+                                    ),
+                                  ),
+                                  //SizedBox(height: 2,),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Card(
+                                        clipBehavior: Clip.antiAlias,
+                                        color: Colors.grey[350],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child: Padding(
+                                          padding:  EdgeInsets.only(left: WidthScreen/30,right: WidthScreen/30),
+                                          child: Text(
+                                            'Age\n${Listpatient?.Age}',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 10,),
+                                      Card(
+                                        clipBehavior: Clip.antiAlias,
+                                        color: Colors.grey[350],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child: Padding(
+                                          padding:  EdgeInsets.only(right: WidthScreen/30,left: WidthScreen/30),
+                                          child: Text(
+                                            'Sexe\n${sex_convert()}',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                              fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding:  EdgeInsets.only(bottom: HeightScreen/900),
+                                    child: TextButton(
+                                        onPressed: (){},
+                                        child: Text(
+                                            'Plus de details',
+                                          style: TextStyle(
+                                            color: Colors.blueAccent,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
                   );
 
                 },
-              separatorBuilder: (BuildContext context, int index) {
-                return Divider(
-                  thickness: 0.5,
-                  height: 0.5,
-                );
-
-            },
               itemCount:  snapshot.data?.length ?? 0,
+
             );
 
 

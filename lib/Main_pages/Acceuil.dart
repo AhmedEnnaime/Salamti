@@ -1,15 +1,15 @@
 import 'dart:ui';
+import 'package:e_sante/Data/Doctor_Data/Doctor_Model.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
+import 'package:e_sante/Data/Rdv_patient_Data/Implement_Rdv_patient.dart';
+import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_Model.dart';
+import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_controller.dart';
 import 'package:e_sante/Data/Toxicity_Data/Fievre_Data/Fievre_Model.dart';
+import 'package:e_sante/variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Sidebar.dart';
 import 'package:e_sante/Evaluation.dart';
-import 'package:e_sante/Conseils generaux/Fumer.dart';
-import 'package:e_sante/Conseils generaux/Active.dart';
-import 'package:e_sante/Conseils generaux/Alcol.dart';
-import 'package:e_sante/Conseils generaux/Fruits.dart';
-import 'package:e_sante/Conseils generaux/Surpoids.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_sante/Data/Question_Libre_Data/Question_Model.dart';
 import 'package:e_sante/Data/Question_Libre_Data/Implement_Question.dart';
@@ -32,7 +32,7 @@ class _AcceuilState extends State<Acceuil> {
   var patientcontroller= Patientcontroller(Patients_data());
   TextEditingController question_controller = TextEditingController();
   var questioncontroller = Questioncontroller(Question_Data());
-
+  Patient _patient = Patient();
   late YoutubePlayerController _controller;
   late YoutubePlayerController _controller1;
   late YoutubePlayerController _controller2;
@@ -71,6 +71,7 @@ class _AcceuilState extends State<Acceuil> {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
     var curecontroller = Curescontroller(Cures_Data());
+    var rdv_patientcontroller = Rdv_patientcontroller(Rdv_patient_Data());
 
     return Scaffold(
       drawer: NavigationDrawerWidget(),
@@ -535,7 +536,7 @@ class _AcceuilState extends State<Acceuil> {
                                           ),
                                           ElevatedButton(
                                             onPressed: (){
-                                              Question question = Question(Question_contenu:question_controller.text);
+                                              Question question = Question(Question_contenu:question_controller.text,Patient_Ip: IP.text,Doctor_Ip:_patient.Doctor_Ip );
                                               questioncontroller.postQuestion(question);
                                             },
                                             child: Text(
@@ -589,240 +590,261 @@ class _AcceuilState extends State<Acceuil> {
 
                 CarouselSlider(
                              items: [
-                               Column(
-                                 children: [
-                                   Padding(
-                                     padding:  EdgeInsets.only(right: WidthScreen/5),
-                                     child: Text(
-                                       'Prochaine Cure',
-                                       style: TextStyle(
-                                           fontSize: 18,
-                                           fontWeight: FontWeight.bold
-                                       ),
-                                     ),
-                                   ),
-                                   Container(
-                                     child: Card(
-                                       color: Colors.cyan[100],
-                                       shape: RoundedRectangleBorder(
-                                         borderRadius: BorderRadius.circular(20),
-
-                                       ),
-                                       child: Column(
-                                         children: [
-                                           Padding(
-                                             padding:  EdgeInsets.only(top: HeightScreen/50),
-                                             child: Text(
-                                               'Temps restant : 15 jours',
-                                               style: TextStyle(
-                                                   fontSize: 17,
-                                                   fontWeight: FontWeight.bold
-                                               ),
-                                             ),
-                                           ),
-                                           SizedBox(height: 30,),
-                                           Row(
-                                             children: [
-                                               Padding(
-                                                 padding:  EdgeInsets.only(left: WidthScreen/40),
-                                                 child: Icon(
-                                                   Icons.calendar_today_rounded,
-                                                   size: 25,
-                                                 ),
-                                               ),
-                                               SizedBox(width: 10,),
-                                               Text(
-                                                 '12/4/2022',
-                                                 style: TextStyle(
-                                                   fontSize: 16,
-                                                 ),
-                                               ),
-                                               SizedBox(width: 30,),
-                                               Icon(
-                                                 Icons.schedule,
-                                                 size: 25,
-                                               ),
-                                               SizedBox(width: 10,),
-                                               Padding(
-                                                 padding:  EdgeInsets.only(right: WidthScreen/50),
-                                                 child: Text(
-                                                   '3:00 PM',
-                                                   style: TextStyle(
-                                                     fontSize: 16,
+                               FutureBuilder<List<Cures_Model>>(
+                                 future: curecontroller.getCures(),
+                                 builder: ( context, snapshot) {
+                                   if(snapshot.connectionState == ConnectionState.waiting){
+                                     return Center(child: CircularProgressIndicator(),);
+                                   }
+                                   if (snapshot.hasError){
+                                     return Center(child: Text('${snapshot.error}'),);
+                                   }
+                                   return ListView.separated(
+                                       itemBuilder: (context, index) {
+                                         var cures = snapshot.data?[index];
+                                             return Column(
+                                               children: [
+                                                 Padding(
+                                                   padding:  EdgeInsets.only(right: WidthScreen/5),
+                                                   child: Text(
+                                                     'Prochaine Cure',
+                                                     style: TextStyle(
+                                                         fontSize: 18,
+                                                         fontWeight: FontWeight.bold
+                                                     ),
                                                    ),
                                                  ),
-                                               ),
+                                                 Container(
+                                                   child: Card(
+                                                     color: Colors.cyan[100],
+                                                     shape: RoundedRectangleBorder(
+                                                       borderRadius: BorderRadius.circular(20),
 
-                                             ],
-                                           ),
-                                           SizedBox(height: 40,),
-                                           Row(
-                                             children: [
-                                               Padding(
-                                                 padding:  EdgeInsets.only(left: WidthScreen/50),
-                                                 child: Icon(
-                                                   Icons.local_hospital,
-                                                   size: 30,
-                                                 ),
-                                               ),
-                                               SizedBox(width: 10,),
-                                               Text(
-                                                 'Hopital \nMarrakech',
-                                                 textAlign: TextAlign.center,
-                                                 style: TextStyle(
-                                                   fontSize: 16,
-                                                 ),
-                                               ),
-                                               SizedBox(width: 25,),
-                                               Icon(
-                                                 Icons.phone,
-                                                 size: 25,
-                                               ),
-                                               SizedBox(width: 10,),
-                                               Text(
-                                                 '0682622717',
-                                                 style: TextStyle(
-                                                   fontSize: 16,
-                                                 ),
-                                               ),
+                                                     ),
+                                                     child: Column(
+                                                       children: [
+                                                         Padding(
+                                                           padding:  EdgeInsets.only(top: HeightScreen/20),
+                                                           child: Row(
+                                                             children: [
+                                                               Padding(
+                                                                 padding:  EdgeInsets.only(left: WidthScreen/40),
+                                                                 child: Icon(
+                                                                   Icons.calendar_today_rounded,
+                                                                   size: 25,
+                                                                 ),
+                                                               ),
+                                                               SizedBox(width: 10,),
+                                                               Text(
+                                                                 '${cures?.Next_cure}',
+                                                                 style: TextStyle(
+                                                                   fontSize: 16,
+                                                                 ),
+                                                               ),
+                                                               SizedBox(width: 30,),
+                                                               Icon(
+                                                                 Icons.schedule,
+                                                                 size: 25,
+                                                               ),
+                                                               SizedBox(width: 10,),
+                                                               Padding(
+                                                                 padding:  EdgeInsets.only(right: WidthScreen/50),
+                                                                 child: Text(
+                                                                   '3:00 PM',
+                                                                   style: TextStyle(
+                                                                     fontSize: 16,
+                                                                   ),
+                                                                 ),
+                                                               ),
 
-                                             ],
-                                           ),
-                                           SizedBox(height: 40,),
-                                         ],
-                                       ),
-                                     ),
-                                   ),
-                                 ],
+                                                             ],
+                                                           ),
+                                                         ),
+                                                         SizedBox(height: 50,),
+                                                         Row(
+                                                           children: [
+                                                             Padding(
+                                                               padding:  EdgeInsets.only(left: WidthScreen/50),
+                                                               child: Icon(
+                                                                 Icons.local_hospital,
+                                                                 size: 30,
+                                                               ),
+                                                             ),
+                                                             SizedBox(width: 10,),
+                                                             Text(
+                                                               'CHU \nMarrakech',
+                                                               textAlign: TextAlign.center,
+                                                               style: TextStyle(
+                                                                 fontSize: 16,
+                                                               ),
+                                                             ),
+                                                             SizedBox(width: 25,),
+                                                             Icon(
+                                                               Icons.phone,
+                                                               size: 25,
+                                                             ),
+                                                             SizedBox(width: 10,),
+                                                             Text(
+                                                               '0524300700',
+                                                               style: TextStyle(
+                                                                 fontSize: 16,
+                                                               ),
+                                                             ),
+
+                                                           ],
+                                                         ),
+                                                         SizedBox(height: 40,),
+                                                       ],
+                                                     ),
+                                                   ),
+                                                 ),
+                                               ],
+                                             );
+                                     
+                                   }, separatorBuilder: (BuildContext context, int index) { return Divider(); }, itemCount:  snapshot.data?.length ?? 0,
+                                   );
+                                 },
+                                 
                                ),
-                               Column(
-                                 children: [
-                                   Padding(
-                                     padding:  EdgeInsets.only(right: WidthScreen/5),
-                                     child: Text(
-                                       'Prochain rendez-vous',
-                                       style: TextStyle(
-                                           fontSize: 18,
-                                           fontWeight: FontWeight.bold
-                                       ),
-                                     ),
-                                   ),
-                                   Container(
-                                     child: Card(
-                                       color: Colors.cyan[100],
-                                       shape: RoundedRectangleBorder(
-                                         borderRadius: BorderRadius.circular(20),
-
-                                       ),
-                                       child: Column(
-                                         children: [
-                                           Padding(
-                                             padding:  EdgeInsets.only(top: HeightScreen/50),
-                                             child: Text(
-                                               'Temps restant : 3 jours',
-                                               style: TextStyle(
-                                                   fontSize: 17,
-                                                   fontWeight: FontWeight.bold
-                                               ),
-                                             ),
-                                           ),
-                                           SizedBox(height: 15,),
-                                           Center(
-                                             child: Text(
-                                               'Consulation avec Dr.Fred',
-                                               style: TextStyle(
-                                                   fontSize: 16,
-                                                   color: Colors.redAccent
-                                               ),
-                                             ),
-                                           ),
-                                           SizedBox(height: 15,),
-                                           Row(
-                                             children: [
-                                               Padding(
-                                                 padding:  EdgeInsets.only(left: WidthScreen/40),
-                                                 child: Icon(
-                                                   Icons.calendar_today_rounded,
-                                                   size: 25,
-                                                 ),
-                                               ),
-                                               SizedBox(width: 10,),
-                                               Text(
-                                                 '10 Septembre',
-                                                 style: TextStyle(
-                                                   fontSize: 16,
-                                                 ),
-                                               ),
-                                               SizedBox(width: 30,),
-                                               Icon(
-                                                 Icons.schedule,
-                                                 size: 25,
-                                               ),
-                                               SizedBox(width: 10,),
-                                               Padding(
-                                                 padding:  EdgeInsets.only(right: WidthScreen/50),
-                                                 child: Text(
-                                                   '3:00 PM',
-                                                   style: TextStyle(
-                                                     fontSize: 16,
-                                                   ),
-                                                 ),
-                                               ),
-
-                                             ],
-                                           ),
-                                           SizedBox(height: 23,),
-                                           Row(
-                                             children: [
-                                               Padding(
-                                                 padding:  EdgeInsets.only(left: WidthScreen/50),
-                                                 child: Icon(
-                                                   Icons.local_hospital,
-                                                   size: 30,
-                                                 ),
-                                               ),
-                                               SizedBox(width: 10,),
-                                               Text(
-                                                 'Hopital \nMarrakech',
-                                                 textAlign: TextAlign.center,
-                                                 style: TextStyle(
-                                                   fontSize: 16,
-                                                 ),
-                                               ),
-                                               SizedBox(width: 25,),
-                                               Icon(
-                                                 Icons.phone,
-                                                 size: 25,
-                                               ),
-                                               SizedBox(width: 10,),
-                                               Text(
-                                                 '0682622717',
-                                                 style: TextStyle(
-                                                   fontSize: 16,
-                                                 ),
-                                               ),
-
-                                             ],
-                                           ),
-                                           SizedBox(height: 5,),
-
-                                           ElevatedButton(
-                                               style: ElevatedButton.styleFrom(
-                                                   primary: Colors.red[400]
-                                               ),
-                                               onPressed: () {},
+                               FutureBuilder<List<Rdv_patient>>(
+                                 future:rdv_patientcontroller.getRdv_patient() ,
+                                 builder: ( context,  snapshot) {
+                                   if(snapshot.connectionState == ConnectionState.waiting){
+                                     return Center(child: CircularProgressIndicator(),);
+                                   }
+                                   if (snapshot.hasError){
+                                     return Center(child: Text('${snapshot.error}'),);
+                                   }
+                                   return ListView.separated(
+                                       itemBuilder: (context, index) {
+                                         var rdv_patient = snapshot.data?[index];
+                                         return Column(
+                                           children: [
+                                             Padding(
+                                               padding:  EdgeInsets.only(right: WidthScreen/5),
                                                child: Text(
-                                                 'Annulez rendez-vous',
+                                                 'Prochain rendez-vous',
                                                  style: TextStyle(
-                                                     fontSize: 16
+                                                     fontSize: 18,
+                                                     fontWeight: FontWeight.bold
                                                  ),
-                                               )
-                                           )
-                                         ],
-                                       ),
-                                     ),
-                                   ),
-                                 ],
+                                               ),
+                                             ),
+                                             Container(
+                                               child: Card(
+                                                 color: Colors.cyan[100],
+                                                 shape: RoundedRectangleBorder(
+                                                   borderRadius: BorderRadius.circular(20),
+
+                                                 ),
+                                                 child: Column(
+                                                   children: [
+                                                     Padding(
+                                                       padding:  EdgeInsets.only(top: HeightScreen/40),
+                                                       child: Center(
+                                                         child: Text(
+                                                           'Consulation',
+                                                           style: TextStyle(
+                                                               fontSize: 16,
+                                                               color: Colors.redAccent
+                                                           ),
+                                                         ),
+                                                       ),
+                                                     ),
+                                                     SizedBox(height: 25,),
+                                                     Row(
+                                                       children: [
+                                                         Padding(
+                                                           padding:  EdgeInsets.only(left: WidthScreen/40),
+                                                           child: Icon(
+                                                             Icons.calendar_today_rounded,
+                                                             size: 25,
+                                                           ),
+                                                         ),
+                                                         SizedBox(width: 10,),
+                                                         Text(
+                                                           '${rdv_patient?.Day}',
+                                                           style: TextStyle(
+                                                             fontSize: 16,
+                                                           ),
+                                                         ),
+                                                         SizedBox(width: 30,),
+                                                         Icon(
+                                                           Icons.schedule,
+                                                           size: 25,
+                                                         ),
+                                                         SizedBox(width: 10,),
+                                                         Padding(
+                                                           padding:  EdgeInsets.only(right: WidthScreen/100),
+                                                           child: Text(
+                                                             '${rdv_patient?.rdv_temps}',
+                                                             style: TextStyle(
+                                                               fontSize: 16,
+                                                             ),
+                                                           ),
+                                                         ),
+
+                                                       ],
+                                                     ),
+                                                     SizedBox(height: 23,),
+                                                     Row(
+                                                       children: [
+                                                         Padding(
+                                                           padding:  EdgeInsets.only(left: WidthScreen/50),
+                                                           child: Icon(
+                                                             Icons.local_hospital,
+                                                             size: 30,
+                                                           ),
+                                                         ),
+                                                         SizedBox(width: 10,),
+                                                         Text(
+                                                           'CHU \nMarrakech',
+                                                           textAlign: TextAlign.center,
+                                                           style: TextStyle(
+                                                             fontSize: 16,
+                                                           ),
+                                                         ),
+                                                         SizedBox(width: 25,),
+                                                         Icon(
+                                                           Icons.phone,
+                                                           size: 25,
+                                                         ),
+                                                         SizedBox(width: 10,),
+                                                         Text(
+                                                           '0524300700',
+                                                           style: TextStyle(
+                                                             fontSize: 16,
+                                                           ),
+                                                         ),
+
+                                                       ],
+                                                     ),
+                                                     SizedBox(height: 5,),
+
+                                                     ElevatedButton(
+                                                         style: ElevatedButton.styleFrom(
+                                                             primary: Colors.red[400]
+                                                         ),
+                                                         onPressed: () {},
+                                                         child: Text(
+                                                           'Annulez rendez-vous',
+                                                           style: TextStyle(
+                                                               fontSize: 16
+                                                           ),
+                                                         )
+                                                     )
+                                                   ],
+                                                 ),
+                                               ),
+                                             ),
+                                           ],
+                                         );
+                                     
+                                   }, separatorBuilder: (BuildContext context, int index) { return Divider(); }, itemCount: snapshot.data?.length ?? 0,
+                                   );
+                                   
+                                 },
+                                 
                                ),
                              ],
                              options: CarouselOptions(

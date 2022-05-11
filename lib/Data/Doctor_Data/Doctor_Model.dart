@@ -1,24 +1,24 @@
-class Patient{
-     String? Ip;
-     String ?Nom;
-     String? Age;
-     String? Sexe;
-     String? Mail;
-     String? Tel;
-     String? Password;
-     String? Doctor_Ip;
+class Doctor{
+  String? Ip;
+  String ?Nom;
+  String? Age;
+  String? Sexe;
+  String? Mail;
+  String? Tel;
+  String? Password;
 
-  Patient({
-     this.Ip,
-     this.Nom,
-     this.Age,
-     this.Sexe,
-     this.Mail,
-     this.Tel,
-     this.Password,
-    this.Doctor_Ip
-     });
-  Patient.fromJson(Map<String,dynamic>json){
+
+  Doctor({
+    this.Ip,
+    this.Nom,
+    this.Age,
+    this.Sexe,
+    this.Mail,
+    this.Tel,
+    this.Password,
+
+  });
+  Doctor.fromJson(Map<String,dynamic>json){
     Ip= json['Ip'];
     Nom= json['Nom'];
     Age= json['Age'];
@@ -26,7 +26,6 @@ class Patient{
     Mail= json['Mail'];
     Tel= json['Tel'];
     Password= json['Password'];
-    Doctor_Ip= json['Doctor_Ip'];
   }
   Map<String,dynamic> toJson(){
     final Map<String,dynamic> data = new Map<String,dynamic>();
@@ -37,7 +36,6 @@ class Patient{
     data['Mail']= this.Mail.toString();
     data['Tel']= this.Tel.toString();
     data['Password']= this.Password.toString();
-    data['Doctor_Ip']= this.Doctor_Ip.toString();
     return data;
   }
 

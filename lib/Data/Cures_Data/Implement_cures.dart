@@ -2,18 +2,18 @@ import 'dart:convert';
 import 'package:e_sante/Data/Cures_Data/Cures_Model.dart';
 import 'package:e_sante/Data/Cures_Data/Abstract_class.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:e_sante/variables.dart';
 class Cures_Data implements Cure_data{
   String dataUrl='http://10.0.2.2:3000';
   @override
   Future<List<Cures_Model>> getCures() async {
     List<Cures_Model> curesList=[];
-    var url=Uri.parse('$dataUrl/Cures');
+    var url=Uri.parse('$dataUrl/Cures?Patient_Ip=${IP.text}');
     var response= await http.get(url);
     print('status code : ${response.statusCode}');
     var body = json.decode(response.body);
-    curesList.add(Cures_Model.fromJson(body[1]));
-    print(response.body[1]);
+    curesList.add(Cures_Model.fromJson(body[body.length-1]));
+    //print(response.body[1]);
 
     return curesList;
   }
