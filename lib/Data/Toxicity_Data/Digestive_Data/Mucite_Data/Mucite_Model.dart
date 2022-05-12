@@ -10,6 +10,7 @@ class Mucite_Model{
   String? Gencives;
   String? Dents;
   String? Levres;
+  String? Grade;
   String? Patient_Ip= patient.Ip;
 
 
@@ -22,6 +23,7 @@ class Mucite_Model{
     this.Gencives,
     this.Dents,
     this.Levres,
+    this.Grade,
     this.Patient_Ip,
 
   });
@@ -34,6 +36,7 @@ class Mucite_Model{
     Gencives= json["Les gencives"];
     Dents= json["Les dents"];
     Levres= json["Les lèvres"];
+    Grade= json["Grade de mucite"];
     Patient_Ip= json['Patient_Ip'];
   }
   Map<String,dynamic> toJson(){
@@ -46,6 +49,7 @@ class Mucite_Model{
     data["Les gencives"]= this.Gencives.toString();
     data["Les dents"]= this.Dents.toString();
     data["Les lèvres"]= this.Levres.toString();
+    data["Grade de mucite"]= this.Grade.toString();
     data['Patient_Ip']= this.Patient_Ip.toString();
     return data;
   }

@@ -220,7 +220,7 @@ class _Diarrhees4State extends State<Diarrhees4> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Diarrhees diarrhees = Diarrhees(Nbr_selles: val6,Duree_survenue: duree.text ,Douleurs_abdo: val7,Prise_alimentaire: val8,Aspect_selles: val9,Fatigue:Fatigue_value,Denutrition:Denutrition_value,Saignement:Saignement_value,Trbl_neuro:neurologiques_value,Fievre_diarr:Fievre_value,Patient_Ip: IP.text );
+                            Diarrhees diarrhees = Diarrhees(Nbr_selles: val6,Duree_survenue: duree.text ,Douleurs_abdo: val7,Prise_alimentaire: val8,Aspect_selles: val9,Fatigue:Fatigue_value,Denutrition:Denutrition_value,Saignement:Saignement_value,Trbl_neuro:neurologiques_value,Fievre_diarr:Fievre_value,Grade:Diarrhees_grade(),Patient_Ip: IP.text );
                             if(Fievre_value == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Fievre()));
                               diarrheescontroller.postDiarrhees(diarrhees);

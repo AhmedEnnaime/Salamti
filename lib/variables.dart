@@ -176,6 +176,7 @@ int mucite_dents(){
 }
 ///////Mucite_survey8//////
 String val20='';
+int final_score = 0;
 int score_levres = 0;
 int mucite_levres(){
   if(val19 == 'lises'){
@@ -192,3 +193,87 @@ TextEditingController IP = TextEditingController();
 TextEditingController Mp = TextEditingController();
 /////////login_medecin//////////
 TextEditingController Ip_medecin = TextEditingController();
+/////Neurologique_survey///////
+String val21='';
+//////Neurologique_survey2//////
+bool Picotements_val = false;
+bool fourmillements_val = false;
+bool dysethesies_val = false;
+bool brulure_val = false;
+//////Neurologique_survey3/////
+bool Escaliers_val = false;
+bool Extension_val = false;
+bool dlr_val = false;
+bool Aucun_val = false;
+bool Qtd_val = false;
+////////Arhtromyalgique_survey//////
+String val22='';
+TextEditingController Evo_duree = TextEditingController();
+TextEditingController delai_apparition = TextEditingController();
+//////////Arthromyalgique_survey2////////
+bool Hanches_val = false;
+bool Epaules_val = false;
+bool Membres_val = false;
+bool Aucun_arth_val = false;
+/////////Arthromyalgique_survey3//////
+bool musculaires_val = false;
+bool diffuses_val = false;
+bool arthralgies_val = false;
+/////////Ocuulaire_survey/////////////
+String val23='';
+TextEditingController Evo_duree_oculaire = TextEditingController();
+TextEditingController delai_oculaire = TextEditingController();
+///////Oculaire_survey2/////////////
+bool rougueur_val = false;
+bool larmoiement_val = false;
+bool odeme_val = false;
+bool sensation_val = false;
+////////Oculaire_survey3///////
+bool acuite_val = false;
+bool fievre_val = false;
+bool Aucun_oculaire_val = false;
+////////Gonadique_survey//////
+TextEditingController apprition_cures = TextEditingController();
+bool Irregularite_val = false;
+bool rythme_val = false;
+bool interruption_val = false;
+bool derivation_val = false;
+/////Digestive_symptome_Grading///////
+String Nausees_grade(){
+  if(Nausees_value == true){
+    if(Troubles_value==true || Moins_urines_value==true || Plus_urines_value==true || Deshydratation_value==true || Poids_value==true || douleurs_value==true || gouts_value==true){
+      return 'Grade 4';
+    }else if(val3=='Un seule repas' || val1=='Plus que six'){
+      return 'Grade 3';
+    }else if(val1=='Entre deux et cinq'){
+      return 'Grade 2';
+    }else return 'Grade 1';
+  }else return 'Grade 0';
+}
+String Diarrhees_grade(){
+  if(Diarrhees_value == true){
+    if(val6 == 'Plus que sept selles par jour' || Fatigue_value == true || Denutrition_value == true || Saignement_value == true || neurologiques_value == true || Fievre_value == true){
+      return 'Grade 3';
+    }else if(val6 == 'Entre quatre et six selles par jour'){
+      return 'Grade 2';
+    }else return 'Grade 1';
+  }else return 'Grade 0';
+}
+String Constipation_grade(){
+  if(Constipation_value == true){
+    if(Crampes_value == true || Digestif_value == true || Vms_value == true || Fvr_value == true){
+      return "Grade 3";
+    }else if(val12 == 'Persistante plus de 3 jours'){
+      return 'Grade 2';
+    }else return 'Grade 1';
+  }else return 'Grade 0';
+}
+String Mucite_grade(){
+  if(Mucite_value == true){
+    if(16< final_score){
+      return 'Grade 3';
+    }else if(final_score > 8 && final_score <=16){
+      return 'Grade 2';
+    }else return 'Grade 1';
+  }else return 'Grade 0';
+}

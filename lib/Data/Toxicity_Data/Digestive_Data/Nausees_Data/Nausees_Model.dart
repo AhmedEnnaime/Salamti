@@ -13,6 +13,7 @@ class Nausees{
   bool? Perte_poids;
   String? Traitement;
   String? Traitement_desc;
+  String? Grade;
   String? Patient_Ip= patient.Ip;
 
 
@@ -28,6 +29,7 @@ class Nausees{
     this.Perte_poids,
     this.Traitement,
     this.Traitement_desc,
+    this.Grade,
     this.Patient_Ip,
 
   });
@@ -43,6 +45,7 @@ class Nausees{
     Perte_poids= json['Perte de poids'];
     Traitement= json["Est-ce qu'un traitement a été prescrit ?"];
     Traitement_desc= json['Traitement prescrit'];
+    Grade= json['Grade de Nausées'];
     Patient_Ip= json['Patient_Ip'];
   }
   Map<String,dynamic> toJson(){
@@ -58,6 +61,7 @@ class Nausees{
     data['Perte de poids']= this.Perte_poids.toString();
     data["Est-ce qu'un traitement a été prescrit ?"]= this.Traitement.toString();
     data['Traitement prescrit']= this.Traitement_desc.toString();
+    data['Grade de Nausées']= this.Grade.toString();
     data['Patient_Ip']= this.Patient_Ip.toString();
     return data;
   }

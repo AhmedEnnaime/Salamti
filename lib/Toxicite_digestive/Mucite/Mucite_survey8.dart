@@ -18,7 +18,7 @@ class Mucite8 extends StatefulWidget {
 
 class _Mucite8State extends State<Mucite8> {
 
-  int final_score = 0;
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
@@ -164,7 +164,7 @@ class _Mucite8State extends State<Mucite8> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Mucite_Model mucite = Mucite_Model(Voix: val13,Deglutition: val14,Langue: val15,Salive: val16,Muqueuses: val17,Gencives: val18,Dents: val19,Levres: val20,Patient_Ip: IP.text );
+                            Mucite_Model mucite = Mucite_Model(Voix: val13,Deglutition: val14,Langue: val15,Salive: val16,Muqueuses: val17,Gencives: val18,Dents: val19,Levres: val20,Grade:Mucite_grade(),Patient_Ip: IP.text );
                             mucitecontroller.postMucite(mucite);
                             mucite_levres();
                             final_score = score_voix + score_deglutition + score_salive + score_muqueuses + score_gencives + score_langue + score_dents + score_levres;

@@ -8,6 +8,7 @@ class Constipation{
   bool? Sgnm;
   bool? Vms;
   bool? Fievre_consti;
+  String? Grade;
   String? Patient_Ip= patient.Ip;
 
 
@@ -18,6 +19,7 @@ class Constipation{
     this.Sgnm,
     this.Vms,
     this.Fievre_consti,
+    this.Grade,
     this.Patient_Ip,
 
   });
@@ -28,6 +30,7 @@ class Constipation{
     Sgnm= json["Saignement digestif associé"];
     Vms= json["Vomissements"];
     Fievre_consti= json["Fièvre"];
+    Grade= json["Grade de constipation"];
     Patient_Ip= json['Patient_Ip'];
   }
   Map<String,dynamic> toJson(){
@@ -38,6 +41,7 @@ class Constipation{
     data["Saignement digestif associé"]= this.Sgnm.toString();
     data["Vomissements"]= this.Vms.toString();
     data["Fièvre"]= this.Fievre_consti.toString();
+    data["Grade de constipation"]= this.Grade.toString();
     data['Patient_Ip']= this.Patient_Ip.toString();
     return data;
   }

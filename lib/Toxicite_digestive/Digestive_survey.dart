@@ -5,7 +5,9 @@ import 'package:e_sante/Main_pages/Toxicity.dart';
 import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_survey.dart';
 import 'package:e_sante/Toxicite_digestive/Constipation/Constipation_survey.dart';
 import 'package:e_sante/Toxicite_digestive/Mucite/Mucite_survey.dart';
-
+import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Digestive_symptome_Data/Digestive_symptome_Model.dart';
+import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Digestive_symptome_Data/Implement_Digestive_symptome.dart';
+import 'package:e_sante/Data/Toxicity_Data/Digestive_Data/Digestive_symptome_Data/Digestive_symptome_controller.dart';
 class Digestive_survey extends StatefulWidget {
   @override
   State<Digestive_survey> createState() => _Digestive_surveyState();
@@ -18,6 +20,7 @@ class _Digestive_surveyState extends State<Digestive_survey> {
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
+    var digestive_symptomecontroller = Digestive_symptomecontroller(Digestive_symptome_Data());
     return Scaffold(
           body: SingleChildScrollView(
             child:Column(
@@ -409,6 +412,8 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                                 padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                             ),
                             onPressed: () {
+                              Digestive_symptome digestive_symptome = Digestive_symptome(Nausees: Nausees_value,Vomissements: Vommissements_value,Diarrhees: Diarrhees_value,Constipation: Constipation_value,Mucite: Mucite_value,Douleurs_abdominales: Douleurs_value,Modification_gouts:Gouts_value,Patient_Ip: IP.text );
+                              digestive_symptomecontroller.postDigestive_symptome(digestive_symptome);
                               if(Nausees_value==true || Vommissements_value==true){
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees()));
                               }else if (Diarrhees_value==true){

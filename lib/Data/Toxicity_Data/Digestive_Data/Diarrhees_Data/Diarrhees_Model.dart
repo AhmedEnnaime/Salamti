@@ -12,6 +12,7 @@ class Diarrhees{
   bool? Saignement;
   bool? Trbl_neuro;
   bool? Fievre_diarr;
+  String? Grade;
   String? Patient_Ip= patient.Ip;
 
 
@@ -26,6 +27,7 @@ class Diarrhees{
     this.Saignement,
     this.Trbl_neuro,
     this.Fievre_diarr,
+    this.Grade,
     this.Patient_Ip,
 
   });
@@ -40,6 +42,7 @@ class Diarrhees{
     Saignement= json["Saignement digestif associé"];
     Trbl_neuro= json["Troubles neurologiques"];
     Fievre_diarr= json["Fièvre"];
+    Grade= json["Grade de diarrhées"];
     Patient_Ip= json['Patient_Ip'];
   }
   Map<String,dynamic> toJson(){
@@ -54,6 +57,7 @@ class Diarrhees{
     data["Saignement digestif associé"]= this.Saignement.toString();
     data["Troubles neurologiques"]= this.Trbl_neuro.toString();
     data["Fièvre"]= this.Fievre_diarr.toString();
+    data["Grade de diarrhées"]= this.Grade.toString();
     data['Patient_Ip']= this.Patient_Ip.toString();
     return data;
   }

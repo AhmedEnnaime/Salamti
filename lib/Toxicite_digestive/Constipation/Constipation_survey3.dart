@@ -192,7 +192,7 @@ class _Constipation3State extends State<Constipation3> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Constipation constipation = Constipation(Frequence_selles: val11,Duree_evolution: val12,Crampes:Crampes_value,Sgnm:Digestif_value,Vms:Vms_value,Fievre_consti:Fvr_value,Patient_Ip:IP.text);
+                            Constipation constipation = Constipation(Frequence_selles: val11,Duree_evolution: val12,Crampes:Crampes_value,Sgnm:Digestif_value,Vms:Vms_value,Fievre_consti:Fvr_value,Grade:Constipation_grade(),Patient_Ip:IP.text);
                             if(Fvr_value == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation_Fievre()));
                               constipationcontroller.postConstipation(constipation);

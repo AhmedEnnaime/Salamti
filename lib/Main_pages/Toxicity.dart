@@ -1,9 +1,12 @@
+import 'package:e_sante/Toxicite_Gonadique/Gonadique_survey.dart';
+import 'package:e_sante/Toxicite_Oculaire/Oculaire_survey.dart';
+import 'package:e_sante/Toxicite_arthromyalgique/Arthromyalgique_survey.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Sidebar.dart';
 import 'package:e_sante/Evaluation.dart';
 import 'package:e_sante/Toxicite_digestive/Digestive_survey.dart';
-
+import 'package:e_sante/Toxicite_neurologique/Neurologique_survey.dart';
 class Toxicity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -209,7 +212,9 @@ class Toxicity extends StatelessWidget {
                                             ),
                                             SizedBox(width: 20,),
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Arthromyalgique_survey()));
+                                              },
                                               child: Text("Continuer"),
                                             )
                                           ],
@@ -273,7 +278,9 @@ class Toxicity extends StatelessWidget {
                                             ),
                                             SizedBox(width: 20,),
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Neurologique_survey()));
+                                              },
                                               child: Text("Continuer"),
                                             )
                                           ],
@@ -331,7 +338,9 @@ class Toxicity extends StatelessWidget {
                                             ),
                                             SizedBox(width: 20,),
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Gonadique_survey()));
+                                              },
                                               child: Text("Continuer"),
                                             )
                                           ],
@@ -394,7 +403,9 @@ class Toxicity extends StatelessWidget {
                                             ),
                                             SizedBox(width: 20,),
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Oculaire_survey()));
+                                              },
                                               child: Text("Continuer"),
                                             )
                                           ],
