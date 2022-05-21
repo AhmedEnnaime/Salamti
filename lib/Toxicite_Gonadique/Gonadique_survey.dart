@@ -13,6 +13,33 @@ class Gonadique_survey extends StatefulWidget {
 }
 
 class _Gonadique_surveyState extends State<Gonadique_survey> {
+  String _getMonthDate(int month) {
+    if (month == 01) {
+      return 'Janvier';
+    } else if (month == 02) {
+      return 'Février';
+    } else if (month == 03) {
+      return 'Mars';
+    } else if (month == 04) {
+      return 'Avril';
+    } else if (month == 05) {
+      return 'Mai';
+    } else if (month == 06) {
+      return 'Juin';
+    } else if (month == 07) {
+      return 'Juillet';
+    } else if (month == 08) {
+      return 'Aout';
+    } else if (month == 09) {
+      return 'Septembre';
+    } else if (month == 10) {
+      return 'Octobre';
+    } else if (month == 11) {
+      return 'Novembre';
+    } else {
+      return 'Decembre';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
@@ -287,7 +314,8 @@ class _Gonadique_surveyState extends State<Gonadique_survey> {
                             padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                         ),
                         onPressed: () {
-                          Gonadique gonadique = Gonadique(Apparition_cures: apprition_cures.text,Irregularite: Irregularite_val,Rythme: rythme_val,Interruption: interruption_val,Derivation: derivation_val,Patient_Ip: IP.text);
+                          gonadique_day = DateTime.now();
+                          Gonadique gonadique = Gonadique(Apparition_cures: apprition_cures.text,Irregularite: Irregularite_val.toString(),Rythme: rythme_val.toString(),Interruption: interruption_val.toString(),Derivation: derivation_val.toString(),Toxicity_day:'${gonadique_day?.day} ${_getMonthDate(gonadique_day!.month)} ${gonadique_day?.year}',Grade:'Rassurement',Patient_Ip: IP.text);
                           gonadiquecontroller.postGonadique(gonadique);
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
                         },

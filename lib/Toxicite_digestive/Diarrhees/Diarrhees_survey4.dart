@@ -21,7 +21,7 @@ class _Diarrhees4State extends State<Diarrhees4> {
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
-    var diarrheescontroller = Diarrheescontroller(Diarrhees_Data());
+
     return Scaffold(
       body: SingleChildScrollView(
         child:Column(
@@ -220,21 +220,21 @@ class _Diarrhees4State extends State<Diarrhees4> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Diarrhees diarrhees = Diarrhees(Nbr_selles: val6,Duree_survenue: duree.text ,Douleurs_abdo: val7,Prise_alimentaire: val8,Aspect_selles: val9,Fatigue:Fatigue_value,Denutrition:Denutrition_value,Saignement:Saignement_value,Trbl_neuro:neurologiques_value,Fievre_diarr:Fievre_value,Grade:Diarrhees_grade(),Patient_Ip: IP.text );
+
                             if(Fievre_value == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Fievre()));
-                              diarrheescontroller.postDiarrhees(diarrhees);
+                              //diarrheescontroller.postDiarrhees(diarrhees);
                             }else if(val6 == 'Plus que sept selles par jour' || Fatigue_value == true || Denutrition_value == true || Saignement_value == true || neurologiques_value == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_grade3()));
-                              diarrheescontroller.postDiarrhees(diarrhees);
+                              //diarrheescontroller.postDiarrhees(diarrhees);
 
                             }else if(val6 == 'Entre quatre et six selles par jour'){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_grade2()));
-                              diarrheescontroller.postDiarrhees(diarrhees);
+                              //diarrheescontroller.postDiarrhees(diarrhees);
 
                             }else{
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_advices()));
-                              diarrheescontroller.postDiarrhees(diarrhees);
+                              //diarrheescontroller.postDiarrhees(diarrhees);
                             }
 
 

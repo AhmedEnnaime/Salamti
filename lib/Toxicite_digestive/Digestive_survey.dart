@@ -17,6 +17,33 @@ class _Digestive_surveyState extends State<Digestive_survey> {
 
 
   @override
+  String _getMonthDate(int month) {
+    if (month == 01) {
+      return 'Janvier';
+    } else if (month == 02) {
+      return 'Février';
+    } else if (month == 03) {
+      return 'Mars';
+    } else if (month == 04) {
+      return 'Avril';
+    } else if (month == 05) {
+      return 'Mai';
+    } else if (month == 06) {
+      return 'Juin';
+    } else if (month == 07) {
+      return 'Juillet';
+    } else if (month == 08) {
+      return 'Aout';
+    } else if (month == 09) {
+      return 'Septembre';
+    } else if (month == 10) {
+      return 'Octobre';
+    } else if (month == 11) {
+      return 'Novembre';
+    } else {
+      return 'Decembre';
+    }
+  }
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
@@ -412,8 +439,6 @@ class _Digestive_surveyState extends State<Digestive_survey> {
                                 padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                             ),
                             onPressed: () {
-                              Digestive_symptome digestive_symptome = Digestive_symptome(Nausees: Nausees_value,Vomissements: Vommissements_value,Diarrhees: Diarrhees_value,Constipation: Constipation_value,Mucite: Mucite_value,Douleurs_abdominales: Douleurs_value,Modification_gouts:Gouts_value,Patient_Ip: IP.text );
-                              digestive_symptomecontroller.postDigestive_symptome(digestive_symptome);
                               if(Nausees_value==true || Vommissements_value==true){
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees()));
                               }else if (Diarrhees_value==true){

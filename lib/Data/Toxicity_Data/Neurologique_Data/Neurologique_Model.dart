@@ -3,15 +3,17 @@ import 'package:e_sante/variables.dart';
 Patient patient = Patient(Ip: IP.text);
 class Neurologique{
   String? Topographie_neuropathie;
-  bool? Picotements;
-  bool? fourmillements;
-  bool? dysethesies;
-  bool? brulure;
-  bool? Douleur;
-  bool? escaliers;
-  bool? extension;
-  bool? Qtd;
-  bool? Aucun;
+  String? Picotements;
+  String? fourmillements;
+  String? dysethesies;
+  String? brulure;
+  String? Douleur;
+  String? escaliers;
+  String? extension;
+  String? Qtd;
+  String? Aucun;
+  String? Toxicity_day;
+  String? Grade;
   String? Patient_Ip= patient.Ip;
 
 
@@ -26,6 +28,8 @@ class Neurologique{
     this.extension,
     this.Qtd,
     this.Aucun,
+    this.Toxicity_day,
+    this.Grade,
     this.Patient_Ip,
 
   });
@@ -40,6 +44,8 @@ class Neurologique{
     extension= json['Difficulté de l’extension des doigts'];
     Qtd= json['Altération des activités quotidiennes'];
     Aucun= json['Aucun'];
+    Toxicity_day= json['Date de declaration'];
+    Grade= json['Grade'];
     Patient_Ip= json['Patient_Ip'];
   }
   Map<String,dynamic> toJson(){
@@ -54,6 +60,8 @@ class Neurologique{
     data['Difficulté de l’extension des doigts']= this.extension.toString();
     data['Altération des activités quotidiennes']= this.Qtd.toString();
     data['Aucun']= this.Aucun.toString();
+    data['Date de declaration']= this.Toxicity_day.toString();
+    data['Grade']= this.Grade.toString();
     data['Patient_Ip']= this.Patient_Ip.toString();
     return data;
   }

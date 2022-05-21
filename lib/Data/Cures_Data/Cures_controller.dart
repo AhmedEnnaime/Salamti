@@ -16,4 +16,12 @@ class Curescontroller{
   Future<List<Cures_Model>> getListCures() async{
     return _cure_data.getListCures();
   }
+
+  Future<List<Cures_Model>> getHistoriqueCures() async{
+    return _cure_data.getHistoriqueCures();
+  }
+
+  Future<List<Cures_Model>> gettodayCures() async{
+    return _cure_data.gettodayCures();
+  }
 }

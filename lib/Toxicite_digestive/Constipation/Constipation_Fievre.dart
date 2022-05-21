@@ -174,7 +174,7 @@ class _Constipation_FievreState extends State<Constipation_Fievre> {
                             padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                         ),
                         onPressed: () {
-                          Fievre_Model fievre = Fievre_Model(Delai_apparition: delai.text,Mesure:val10,Patient_Ip: patient.Ip);
+                          Fievre_Model fievre = Fievre_Model(Delai_apparition: delai.text,Mesure:val10,Patient_Ip: IP.text);
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation_grade3()));
                           fievrecontroller.postFievre(fievre);
 

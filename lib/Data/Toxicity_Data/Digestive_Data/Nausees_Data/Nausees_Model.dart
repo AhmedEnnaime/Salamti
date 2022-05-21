@@ -6,11 +6,11 @@ class Nausees{
   String? Nbr_ep;
   String? Duree_par_jours;
   String? Nbr_repas;
-  bool? Troubles_neurologiques;
-  bool? Moins_frequente;
-  bool? Urines_fonces;
-  bool? Deshydratation;
-  bool? Perte_poids;
+  String? Troubles_neurologiques;
+  String? Moins_frequente;
+  String? Urines_fonces;
+  String? Deshydratation;
+  String? Perte_poids;
   String? Traitement;
   String? Traitement_desc;
   String? Grade;

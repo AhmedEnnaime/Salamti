@@ -7,11 +7,11 @@ class Diarrhees{
   String? Douleurs_abdo;
   String? Prise_alimentaire;
   String? Aspect_selles;
-  bool? Fatigue;
-  bool? Denutrition;
-  bool? Saignement;
-  bool? Trbl_neuro;
-  bool? Fievre_diarr;
+  String? Fatigue;
+  String? Denutrition;
+  String? Saignement;
+  String? Trbl_neuro;
+  String? Fievre_diarr;
   String? Grade;
   String? Patient_Ip= patient.Ip;
 

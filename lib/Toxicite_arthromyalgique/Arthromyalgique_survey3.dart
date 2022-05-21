@@ -13,6 +13,33 @@ class Arthromyalgique_survey3 extends StatefulWidget {
 }
 
 class _Arthromyalgique_survey3State extends State<Arthromyalgique_survey3> {
+  String _getMonthDate(int month) {
+    if (month == 01) {
+      return 'Janvier';
+    } else if (month == 02) {
+      return 'Février';
+    } else if (month == 03) {
+      return 'Mars';
+    } else if (month == 04) {
+      return 'Avril';
+    } else if (month == 05) {
+      return 'Mai';
+    } else if (month == 06) {
+      return 'Juin';
+    } else if (month == 07) {
+      return 'Juillet';
+    } else if (month == 08) {
+      return 'Aout';
+    } else if (month == 09) {
+      return 'Septembre';
+    } else if (month == 10) {
+      return 'Octobre';
+    } else if (month == 11) {
+      return 'Novembre';
+    } else {
+      return 'Decembre';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
@@ -228,7 +255,8 @@ class _Arthromyalgique_survey3State extends State<Arthromyalgique_survey3> {
                             padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                         ),
                         onPressed: () {
-                          Arthromyalgique arthromyalgique = Arthromyalgique(Survient_Docetaxel: val22,Apparition: delai_apparition.text,Evo_duree: Evo_duree.text,Hanches: Hanches_val,Epaules: Epaules_val,Membres: Membres_val,Aucun: Aucun_arth_val,Crampes_musculaires: musculaires_val,Douleurs_diffuses: diffuses_val,Arthralgies: arthralgies_val,Patient_Ip: IP.text);
+                          arthromyalgique_day = DateTime.now();
+                          Arthromyalgique arthromyalgique = Arthromyalgique(Survient_Docetaxel: val22,Apparition: delai_apparition.text,Evo_duree: Evo_duree.text,Toxicity_day:'${arthromyalgique_day?.day} ${_getMonthDate(arthromyalgique_day!.month)} ${arthromyalgique_day?.year}',Hanches: Hanches_val.toString(),Epaules: Epaules_val.toString(),Membres: Membres_val.toString(),Aucun: Aucun_arth_val.toString(),Crampes_musculaires: musculaires_val.toString(),Douleurs_diffuses: diffuses_val.toString(),Arthralgies: arthralgies_val.toString(),Patient_Ip: IP.text);
                           arthromyalgiquecontroller.postArthromyalgique(arthromyalgique);
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Arthromyalgique_ordonnance()));
 

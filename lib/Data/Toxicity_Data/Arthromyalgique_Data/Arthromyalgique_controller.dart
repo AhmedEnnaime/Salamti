@@ -9,4 +9,7 @@ class Arthromyalgiquecontroller{
   Future<String> postArthromyalgique(Arthromyalgique arthromyalgique) async{
     return _arthromyalgiqu_data.postArthromyalgique(arthromyalgique);
   }
+  Future<List<Arthromyalgique>> getArthromyalgique() async{
+    return _arthromyalgiqu_data.getArthromyalgique();
+  }
 }

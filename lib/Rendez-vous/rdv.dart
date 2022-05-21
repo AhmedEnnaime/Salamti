@@ -662,7 +662,7 @@ class _rdv extends State<rdv> {
                                     ),
                                     child: TextButton(
                                       onPressed: () {
-                                        Rdv_patient rdv_patient = Rdv_patient(Day:' ${dateTime?.day.toString()} ${_getMonthDate(dateTime!.month).toString()} ${dateTime?.year.toString()}',rdv_temps: rdv_time.toString(),Patient_Ip: IP.text,Doctor_Ip: patient?.Doctor_Ip,Patient_nom: patient?.Nom);
+                                        Rdv_patient rdv_patient = Rdv_patient(Day:'${dateTime?.day.toString()} ${_getMonthDate(dateTime!.month).toString()} ${dateTime?.year.toString()}',rdv_temps: rdv_time.toString(),Patient_Ip: IP.text,Doctor_Ip: patient?.Doctor_Ip,Patient_nom: patient?.Nom);
                                         rdv_patientcontroller.postRdv_patient(rdv_patient);
                                         Navigator.push(context, MaterialPageRoute(builder: (context)=>rdv_confirm()));
                                       },

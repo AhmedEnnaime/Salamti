@@ -8,5 +8,8 @@ class Diarrheescontroller{
   Future<String> postDiarrhees(Diarrhees diarrhees) async{
     return _diarrhee_data.postDiarrhees(diarrhees);
   }
+  Future<List<Diarrhees>> getDiarrhees() async{
+    return _diarrhee_data.getDiarrhees();
+  }
 
 }

@@ -2,13 +2,18 @@ import 'package:e_sante/Data/Patient_Data/User.dart';
 import 'package:e_sante/variables.dart';
 Patient patient = Patient(Ip: IP.text);
 class Digestive_symptome{
-  bool? Nausees;
-  bool? Vomissements;
-  bool? Diarrhees;
-  bool? Constipation;
-  bool? Mucite;
-  bool? Douleurs_abdominales;
-  bool? Modification_gouts;
+  String? Nausees;
+  String? Vomissements;
+  String? Diarrhees;
+  String? Constipation;
+  String? Mucite;
+  String? Douleurs_abdominales;
+  String? Modification_gouts;
+  String? Toxicity_day;
+  String? Nausees_grade;
+  String? Diarrhees_grade;
+  String? Constipation_grade;
+  String? Mucite_grade;
   String? Patient_Ip= patient.Ip;
 
 
@@ -20,6 +25,11 @@ class Digestive_symptome{
     this.Mucite,
     this.Douleurs_abdominales,
     this.Modification_gouts,
+    this.Toxicity_day,
+    this.Nausees_grade,
+    this.Diarrhees_grade,
+    this.Constipation_grade,
+    this.Mucite_grade,
     this.Patient_Ip,
 
   });
@@ -31,6 +41,11 @@ class Digestive_symptome{
     Mucite= json['Mucite'];
     Douleurs_abdominales= json["Douleurs abdominales"];
     Modification_gouts= json["Modification des gouts des aliments"];
+    Toxicity_day= json["Date de déclaration"];
+    Nausees_grade= json["Grade de nausées"];
+    Diarrhees_grade= json["Grade de diarrhées"];
+    Constipation_grade= json["Grade de constipation"];
+    Mucite_grade= json["Grade de mucite"];
     Patient_Ip= json['Patient_Ip'];
   }
   Map<String,dynamic> toJson(){
@@ -42,6 +57,11 @@ class Digestive_symptome{
     data['Mucite']= this.Mucite.toString();
     data["Douleurs abdominales"]= this.Douleurs_abdominales.toString();
     data["Modification des gouts des aliments"]= this.Modification_gouts.toString();
+    data["Date de déclaration"]= this.Toxicity_day.toString();
+    data["Grade de nausées"]= this.Nausees_grade.toString();
+    data["Grade de diarrhées"]= this.Diarrhees_grade.toString();
+    data["Grade de constipation"]= this.Constipation_grade.toString();
+    data["Grade de mucite"]= this.Mucite_grade.toString();
     data['Patient_Ip']= this.Patient_Ip.toString();
     return data;
   }

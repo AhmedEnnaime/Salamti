@@ -1,3 +1,4 @@
+import 'package:e_sante/Toxicite_digestive/Nausees/Nausees_advices.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Toxicite_digestive/Diarrhees/Diarrhees_advices.dart';
 
@@ -54,7 +55,7 @@ class Nausees_grade2 extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Diarrhees_advices()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_advices()));
 
                     },
                     child: Text(

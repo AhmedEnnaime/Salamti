@@ -65,14 +65,42 @@ class _AcceuilState extends State<Acceuil> {
     _controller.dispose();
     super.dispose();
   }
-
+  String _getMonthDate(int month) {
+    if (month == 01) {
+      return 'Janvier';
+    } else if (month == 02) {
+      return 'Février';
+    } else if (month == 03) {
+      return 'Mars';
+    } else if (month == 04) {
+      return 'Avril';
+    } else if (month == 05) {
+      return 'Mai';
+    } else if (month == 06) {
+      return 'Juin';
+    } else if (month == 07) {
+      return 'Juillet';
+    } else if (month == 08) {
+      return 'Aout';
+    } else if (month == 09) {
+      return 'Septembre';
+    } else if (month == 10) {
+      return 'Octobre';
+    } else if (month == 11) {
+      return 'Novembre';
+    } else {
+      return 'Decembre';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
+    DateTime ?cure_day;
+    DateTime ?next_cure;
     var curecontroller = Curescontroller(Cures_Data());
     var rdv_patientcontroller = Rdv_patientcontroller(Rdv_patient_Data());
-
+    var curescontroller = Curescontroller(Cures_Data());
     return Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
@@ -587,7 +615,6 @@ class _AcceuilState extends State<Acceuil> {
 
               SizedBox(height: 30,),
 
-
                 CarouselSlider(
                              items: [
                                FutureBuilder<List<Cures_Model>>(
@@ -624,7 +651,7 @@ class _AcceuilState extends State<Acceuil> {
                                                      child: Column(
                                                        children: [
                                                          Padding(
-                                                           padding:  EdgeInsets.only(top: HeightScreen/20),
+                                                           padding:  EdgeInsets.only(top: HeightScreen/50),
                                                            child: Row(
                                                              children: [
                                                                Padding(
@@ -693,7 +720,52 @@ class _AcceuilState extends State<Acceuil> {
 
                                                            ],
                                                          ),
-                                                         SizedBox(height: 40,),
+                                                         SizedBox(height: 20,),
+                                                         Text(
+                                                             'Cliquez sur le boutton ci-dessous\n si vous avez passer la cure',
+                                                           textAlign: TextAlign.center,
+                                                           style: TextStyle(
+                                                             fontSize: 16,
+                                                             fontWeight: FontWeight.bold,
+                                                             color: Colors.redAccent
+                                                           ),
+                                                         ),
+                                                         FutureBuilder<List<Patient>>(
+                                                           future: patientcontroller.fetchPatientList(),
+                                                           builder: ( context, snapshot) {
+                                                             if(snapshot.connectionState == ConnectionState.waiting){
+                                                               return Center(child: CircularProgressIndicator(),);
+                                                             }
+                                                             if (snapshot.hasError){
+                                                               return Center(child: Text('${snapshot.error}'),);
+                                                             }
+                                                             return SafeArea(
+                                                               child: ListView.separated(
+                                                                 shrinkWrap: true,
+                                                                   itemBuilder: (context, index) {
+                                                                     var Patient =snapshot.data?[index];
+                                                                     return SafeArea(
+                                                                       child: Padding(
+                                                                         padding:  EdgeInsets.only(left: WidthScreen/7,right: WidthScreen/7),
+                                                                         child: ElevatedButton(
+                                                                             style: ElevatedButton.styleFrom(
+                                                                                 primary: Colors.green,
+                                                                             ),
+                                                                             onPressed: (){
+                                                                               cure_day = DateTime.now();
+                                                                               next_cure= cure_day?.add(Duration(days: 21));
+                                                                               Cures_Model cure = Cures_Model(cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',Patient_Ip: IP.text,Patient_nom: Patient?.Nom);
+                                                                               curescontroller.postCures(cure);
+                                                                             },
+                                                                             child: Text('Prochaine cure')
+                                                                         ),
+                                                                       ),
+                                                                     );
+                                                                 
+                                                               }, itemCount: snapshot.data?.length ?? 0, separatorBuilder: (BuildContext context, int index) { return Divider(); },),
+                                                             );
+                                                           },
+                                                         )
                                                        ],
                                                      ),
                                                    ),

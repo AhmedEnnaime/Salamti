@@ -59,7 +59,7 @@ class Rdv_patient_Data implements Rdv_patien_Data{
   @override
   Future<List<Rdv_patient>> getRdv_patient_medecin() async {
     List<Rdv_patient> rdv_medecinList=[];
-    var url=Uri.parse('$dataUrl/Rdv_patient?Doctor_Ip=${Ip_medecin.text}&&La date du rendez-vous>${DateTime.now().day.toString()} ${_getMonthDate(DateTime.now().month)} ${DateTime.now().year.toString()}');
+    var url=Uri.parse('$dataUrl/Rdv_patient?Doctor_Ip=${Ip_medecin.text}&La date du rendez-vous_gte=${DateTime.now().day.toString()} ${_getMonthDate(DateTime.now().month)} ${DateTime.now().year.toString()}');
     var response= await http.get(url);
     print('status code : ${response.statusCode}');
     var body = json.decode(response.body);
@@ -72,7 +72,7 @@ class Rdv_patient_Data implements Rdv_patien_Data{
   @override
   Future<List<Rdv_patient>> getRdv_patient_today() async {
     List<Rdv_patient> rdv_medecinList=[];
-    var url=Uri.parse('$dataUrl/Rdv_patient?Doctor_Ip=${Ip_medecin.text}');
+    var url=Uri.parse('$dataUrl/Rdv_patient?Doctor_Ip=${Ip_medecin.text}&La date du rendez-vous=${DateTime.now().day.toString()} ${_getMonthDate(DateTime.now().month)} ${DateTime.now().year.toString()}');
     var response= await http.get(url);
     print('status code : ${response.statusCode}');
     var body = json.decode(response.body);

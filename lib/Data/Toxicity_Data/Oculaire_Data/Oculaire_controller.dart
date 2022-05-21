@@ -8,4 +8,7 @@ class Oculairecontroller{
   Future<String> postOculaire(Oculaire oculaire) async{
     return _oculair_data.postOculaire(oculaire);
   }
+  Future<List<Oculaire>> getOculaire() async{
+    return _oculair_data.getOculaire();
+  }
 }

@@ -24,12 +24,12 @@ class Nausees6 extends StatefulWidget {
 class _Nausees6State extends State<Nausees6> {
 
 
-  TextEditingController traitement = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
-    var nauseescontroller= Nauseescontroller(Nausees_Data());
+
     Patient patient = Patient();
     return Scaffold(
       body: SingleChildScrollView(
@@ -133,7 +133,7 @@ class _Nausees6State extends State<Nausees6> {
                         child: Padding(
                           padding:  EdgeInsets.only(top: HeightScreen/30,bottom: HeightScreen/30),
                           child: TextFormField(
-                            controller: traitement,
+                            controller: Traitement,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               hintText: "Mentionnez le traitement et s'il ya une amelioration apres ce traitement",
@@ -174,19 +174,20 @@ class _Nausees6State extends State<Nausees6> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Nausees nausees = Nausees(Moment_apparition: val,Nbr_ep: val1,Duree_par_jours: val2,Nbr_repas: val3,Troubles_neurologiques:Troubles_value,Moins_frequente:Moins_urines_value,Urines_fonces:Plus_urines_value,Deshydratation:Deshydratation_value,Perte_poids:Poids_value,Traitement: val5,Traitement_desc: traitement.text,Grade:Nausees_grade(),Patient_Ip: IP.text);
+
+                            //print(nausees.Grade);
                             if(Troubles_value==true || Moins_urines_value==true || Plus_urines_value==true || Deshydratation_value==true || Poids_value==true || douleurs_value==true || gouts_value==true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
-                              nauseescontroller.postNausees(nausees);
+                              //nauseescontroller.postNausees(nausees);
                             }else if(val3=='Un seule repas' || val1=='Plus que six'){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade4()));
-                              nauseescontroller.postNausees(nausees);
+                              //nauseescontroller.postNausees(nausees);
                             }else if(val1=='Entre deux et cinq'){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_grade2()));
-                              nauseescontroller.postNausees(nausees);
+                              //nauseescontroller.postNausees(nausees);
                             }else
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Nausees_advices()));
-                            nauseescontroller.postNausees(nausees);
+                            //nauseescontroller.postNausees(nausees);
                           },
                           child: Text(
                             'Terminer',

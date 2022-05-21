@@ -14,7 +14,7 @@ class Liste_cures extends StatefulWidget {
 class _Liste_curesState extends State<Liste_cures> {
   @override
   Widget build(BuildContext context) {
-    var Listcurescontroller = Curescontroller(Cures_Data());
+    var curescontroller = Curescontroller(Cures_Data());
     double WidthScreen=MediaQuery.of(context).size.width;
     double HeightScreen=MediaQuery.of(context).size.height;
     return Scaffold(
@@ -32,54 +32,91 @@ class _Liste_curesState extends State<Liste_cures> {
           centerTitle: true,
         ),
         body: FutureBuilder<List<Cures_Model>>(
-            future:Listcurescontroller.getListCures(),
-            builder: (context, snapshot) {
-              if(snapshot.connectionState == ConnectionState.waiting){
-                return Center(child: CircularProgressIndicator(),);
-              }
-              if (snapshot.hasError){
-                return Center(child: Text('${snapshot.error}'),);
-              }
-              return ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  var Listcures = snapshot.data?[index];
-                  return Column(
-                    children: [
-                      Container(
-                        height: 100,
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(flex:1,child: Text('${Listcures?.Patient_nom}')),
-                                Expanded(flex:1,child: Text('${Listcures?.cure_day}')),
-                                Expanded(flex:1,child: Text('${Listcures?.Next_cure}')),
-                              ],
-                            ),
-                          ],
-                        ),
-
-                      ),
-                    ],
-                  );
-
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return Divider(
-                    thickness: 0.5,
-                    height: 0.5,
-                  );
-
-                },
-                itemCount:  snapshot.data?.length ?? 0,
-              );
-
-
+          future: curescontroller.gettodayCures(),
+          builder: (context, snapshot) {
+            if(snapshot.connectionState == ConnectionState.waiting){
+              return Center(child: CircularProgressIndicator(),);
             }
-        )
-    );
+            if (snapshot.hasError){
+              return Center(child: Text('${snapshot.error}'),);
+            }
+            return ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                var Listcures = snapshot.data?[index];
+                return Column(
+                  children: [
+                    Container(
+                      height: 100,
+                      padding: EdgeInsets.symmetric(horizontal: 16,vertical: 20),
+                      child: Column(
+                        children: [
+                          Table(
+                            border: TableBorder.all(),
+                            children: [
+                              TableRow(
+                                  children: [
+                                    Center(child: Text(
+                                      'Nom du patient',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15
+                                      ),
+                                    )),
+                                    Center(child: Text(
+                                      'Date du dernière cure',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15
+                                      ),
+                                    )),
+                                    Center(child: Text(
+                                      'Date du prochaine cure',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15
+                                      ),
+                                    )),
+                                  ]
+                              ),
+                              TableRow(
+                                  children: [
+                                    Center(child: Text('${Listcures?.Patient_nom}')),
+                                    Center(child: Text(
+                                      '${Listcures?.cure_day}',
+                                      textAlign: TextAlign.center,
+                                    )),
+                                    Center(child: Text('${Listcures?.Next_cure}')),
+                                  ]
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+
+                    ),
+                  ],
+                );
+
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return Divider(
+                  thickness: 0.5,
+                  height: 0.5,
+                );
+
+              },
+              itemCount:  snapshot.data?.length ?? 0,
+            );
+
+
+
+          }),
+
+        );
 
   }
 }

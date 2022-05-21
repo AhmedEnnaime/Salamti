@@ -21,7 +21,7 @@ class _Constipation3State extends State<Constipation3> {
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
-    var constipationcontroller = Constipationcotroller(Constipation_Data());
+
     return Scaffold(
       body: SingleChildScrollView(
         child:Column(
@@ -192,21 +192,21 @@ class _Constipation3State extends State<Constipation3> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Constipation constipation = Constipation(Frequence_selles: val11,Duree_evolution: val12,Crampes:Crampes_value,Sgnm:Digestif_value,Vms:Vms_value,Fievre_consti:Fvr_value,Grade:Constipation_grade(),Patient_Ip:IP.text);
+
                             if(Fvr_value == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation_Fievre()));
-                              constipationcontroller.postConstipation(constipation);
+                              //constipationcontroller.postConstipation(constipation);
                             }else if(Crampes_value == true || Digestif_value == true || Vms_value == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation_grade3()));
-                              constipationcontroller.postConstipation(constipation);
+                              //constipationcontroller.postConstipation(constipation);
 
                             }else if(val12 == 'Persistante plus de 3 jours'){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation_grade2()));
-                              constipationcontroller.postConstipation(constipation);
+                              //constipationcontroller.postConstipation(constipation);
 
                             }else{
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Constipation_advices()));
-                              constipationcontroller.postConstipation(constipation);
+                              //constipationcontroller.postConstipation(constipation);
                             }
 
                           },

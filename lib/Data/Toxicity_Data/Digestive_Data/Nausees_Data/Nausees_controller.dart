@@ -8,5 +8,8 @@ class Nauseescontroller{
   Future<String> postNausees(Nausees nausees) async{
     return _nausee_data.postNausees(nausees);
   }
+  Future<List<Nausees>> getNausees() async{
+    return _nausee_data.getNausees();
+  }
 
 }

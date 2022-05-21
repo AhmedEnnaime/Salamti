@@ -5,13 +5,14 @@ class Arthromyalgique{
   String? Survient_Docetaxel;
   String? Apparition;
   String? Evo_duree;
-  bool? Hanches;
-  bool? Epaules;
-  bool? Membres;
-  bool? Aucun;
-  bool? Crampes_musculaires;
-  bool? Douleurs_diffuses;
-  bool? Arthralgies;
+  String? Toxicity_day;
+  String? Hanches;
+  String? Epaules;
+  String? Membres;
+  String? Aucun;
+  String? Crampes_musculaires;
+  String? Douleurs_diffuses;
+  String? Arthralgies;
   String? Patient_Ip= patient.Ip;
 
 
@@ -19,6 +20,7 @@ class Arthromyalgique{
     this.Survient_Docetaxel,
     this.Apparition,
     this.Evo_duree,
+    this.Toxicity_day,
     this.Hanches,
     this.Epaules,
     this.Membres,
@@ -33,6 +35,7 @@ class Arthromyalgique{
     Survient_Docetaxel= json["Survient sous Docetaxel ?"];
     Apparition= json["Delai d'apparition"];
     Evo_duree= json["Durée d'évolution"];
+    Toxicity_day= json["Date de declaration"];
     Hanches= json["Hanches"];
     Epaules= json["Epaules"];
     Membres= json["Membres"];
@@ -47,6 +50,7 @@ class Arthromyalgique{
     data["Survient sous Docetaxel ?"]= this.Survient_Docetaxel.toString();
     data["Delai d'apparition"]= this.Apparition.toString();
     data["Durée d'évolution"]= this.Evo_duree.toString();
+    data["Date de declaration"]= this.Toxicity_day.toString();
     data['Hanches']= this.Hanches.toString();
     data['Epaules']= this.Epaules.toString();
     data["Membres"]= this.Membres.toString();

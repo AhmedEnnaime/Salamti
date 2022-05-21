@@ -8,4 +8,7 @@ class Digestive_symptomecontroller{
   Future<String> postDigestive_symptome(Digestive_symptome digestive_symptome) async{
     return _digestive_symptom_data.postDigestive_symptome(digestive_symptome);
   }
+  Future<List<Digestive_symptome>> getDigestive_symptome() async{
+    return _digestive_symptom_data.getDigestive_symptome();
+  }
 }

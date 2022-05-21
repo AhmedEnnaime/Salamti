@@ -17,7 +17,7 @@ class Rdv_medecin_Data implements Rdv_medeci_Data{
     var response= await http.get(url);
     print('status code : ${response.statusCode}');
     var body = json.decode(response.body);
-    rdv_medecinList.add(Rdv_medecin.fromJson(body[body.length-2]));
+    rdv_medecinList.add(Rdv_medecin.fromJson(body[body.length-1]));
 
     return rdv_medecinList;
   }

@@ -1,4 +1,6 @@
 import 'package:e_sante/Data/Patient_Data/User.dart';
+import 'package:e_sante/Doctor/Pages/Patient_historique.dart';
+import 'package:e_sante/Doctor/Pages/Historique.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Data/Patient_Data/Patient_data.dart';
 import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
@@ -133,7 +135,9 @@ class _Mes_patientsState extends State<Mes_patients> {
                                   Padding(
                                     padding:  EdgeInsets.only(bottom: HeightScreen/900),
                                     child: TextButton(
-                                        onPressed: (){},
+                                        onPressed: (){
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>historique()));
+                                        },
                                         child: Text(
                                             'Plus de details',
                                           style: TextStyle(

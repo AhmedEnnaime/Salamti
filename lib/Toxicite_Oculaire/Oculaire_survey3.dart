@@ -14,6 +14,33 @@ class Oculaire_survey3 extends StatefulWidget {
 }
 
 class _Oculaire_survey3State extends State<Oculaire_survey3> {
+  String _getMonthDate(int month) {
+    if (month == 01) {
+      return 'Janvier';
+    } else if (month == 02) {
+      return 'Février';
+    } else if (month == 03) {
+      return 'Mars';
+    } else if (month == 04) {
+      return 'Avril';
+    } else if (month == 05) {
+      return 'Mai';
+    } else if (month == 06) {
+      return 'Juin';
+    } else if (month == 07) {
+      return 'Juillet';
+    } else if (month == 08) {
+      return 'Aout';
+    } else if (month == 09) {
+      return 'Septembre';
+    } else if (month == 10) {
+      return 'Octobre';
+    } else if (month == 11) {
+      return 'Novembre';
+    } else {
+      return 'Decembre';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
@@ -208,7 +235,8 @@ class _Oculaire_survey3State extends State<Oculaire_survey3> {
                             padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                         ),
                         onPressed: () {
-                          Oculaire oculaire = Oculaire(Frequente_Docetaxel: val23,Apparition: delai_oculaire.text,Evo_duree: Evo_duree_oculaire.text,Rougueur: rougueur_val,larmoiement: larmoiement_val,Odeme: odeme_val,Sensation: sensation_val,Acuite: acuite_val,Fievre: fievre_val,Aucun: Aucun_oculaire_val,Patient_Ip: IP.text);
+                          oculaire_day = DateTime.now();
+                          Oculaire oculaire = Oculaire(Frequente_Docetaxel: val23,Apparition: delai_oculaire.text,Evo_duree: Evo_duree_oculaire.text,Toxicity_day:'${oculaire_day?.day} ${_getMonthDate(oculaire_day!.month)} ${oculaire_day?.year}',Rougueur: rougueur_val.toString(),larmoiement: larmoiement_val.toString(),Odeme: odeme_val.toString(),Sensation: sensation_val.toString(),Acuite: acuite_val.toString(),Fievre: fievre_val.toString(),Aucun: Aucun_oculaire_val.toString(),Grade:Oculaire_grading(),Patient_Ip: IP.text);
                           oculairecontroller.postOculaire(oculaire);
                           if(acuite_val == true || fievre_val == true){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Oculaire_hopital()));

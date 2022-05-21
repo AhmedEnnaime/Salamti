@@ -71,52 +71,53 @@ class _Acceuil_medecinState extends State<Acceuil_medecin> {
               return ListView.separated(
                   itemBuilder: (context, index) {
                     var rdvpatient = snapshot.data?[index];
-                    return Column(
-                      children: [
-
-                        Card(
-                          margin: EdgeInsets.only(
-                              left: WidthScreen / 20, right: WidthScreen / 10),
-                          clipBehavior: Clip.antiAlias,
-                          shape: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white,
+                    return SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Card(
+                            margin: EdgeInsets.only(
+                                left: WidthScreen / 20, right: WidthScreen / 10),
+                            clipBehavior: Clip.antiAlias,
+                            shape: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
                             ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(30, 14, 0, 14),
-                                child: CircleAvatar(),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  '${rdvpatient?.Patient_nom}',
-                                  style: TextStyle(
-                                    color: Colors.red[300],
-                                    fontSize: 16,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(30, 14, 0, 14),
+                                  child: CircleAvatar(),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    '${rdvpatient?.Patient_nom}',
+                                    style: TextStyle(
+                                      color: Colors.red[300],
+                                      fontSize: 16,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 40,
-                              ),
-                              Text(
-                                '${rdvpatient?.rdv_temps}'
-                              )
-                            ],
+                                SizedBox(
+                                  width: 40,
+                                ),
+                                Text(
+                                  '${rdvpatient?.rdv_temps}'
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     );
                 
-              }, separatorBuilder: (BuildContext context, int index) { return Divider(); }, itemCount: 2,);
+              }, separatorBuilder: (BuildContext context, int index) { return Divider(); }, itemCount: snapshot.data?.length ?? 0,);
               
             },
           ),

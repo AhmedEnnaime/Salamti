@@ -1,6 +1,7 @@
 import 'package:e_sante/Toxicite_Gonadique/Gonadique_survey.dart';
 import 'package:e_sante/Toxicite_Oculaire/Oculaire_survey.dart';
 import 'package:e_sante/Toxicite_arthromyalgique/Arthromyalgique_survey.dart';
+import 'package:e_sante/Toxicite_cutanee/Cutanee_survey.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Main_pages/Sidebar.dart';
@@ -462,7 +463,9 @@ class Toxicity extends StatelessWidget {
                                             ),
                                             SizedBox(width: 20,),
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Cutanee_survey()));
+                                              },
                                               child: Text("Continuer"),
                                             )
                                           ],

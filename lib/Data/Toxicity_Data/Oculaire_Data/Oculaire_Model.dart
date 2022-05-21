@@ -5,13 +5,15 @@ class Oculaire{
   String? Frequente_Docetaxel;
   String? Apparition;
   String? Evo_duree;
-  bool? Rougueur;
-  bool? larmoiement;
-  bool? Odeme;
-  bool? Sensation;
-  bool? Acuite;
-  bool? Fievre;
-  bool? Aucun;
+  String? Toxicity_day;
+  String? Rougueur;
+  String? larmoiement;
+  String? Odeme;
+  String? Sensation;
+  String? Acuite;
+  String? Fievre;
+  String? Aucun;
+  String? Grade;
   String? Patient_Ip= patient.Ip;
 
 
@@ -19,6 +21,7 @@ class Oculaire{
     this.Frequente_Docetaxel,
     this.Apparition,
     this.Evo_duree,
+    this.Toxicity_day,
     this.Rougueur,
     this.larmoiement,
     this.Odeme,
@@ -26,6 +29,7 @@ class Oculaire{
     this.Acuite,
     this.Fievre,
     this.Aucun,
+    this.Grade,
     this.Patient_Ip,
 
   });
@@ -33,6 +37,7 @@ class Oculaire{
     Frequente_Docetaxel= json["Fréquente avec Docetaxel ?"];
     Apparition= json["Delai d'apparition"];
     Evo_duree= json["Durée d'évolution"];
+    Toxicity_day= json["Date de declaration"];
     Rougueur= json["Rougueur"];
     larmoiement= json["Larmoiement"];
     Odeme= json["œdème"];
@@ -40,6 +45,7 @@ class Oculaire{
     Acuite= json["Baisse de l’acuité visuelle interférant avec les activités de la vie quotidienne"];
     Fievre= json["Fièvre"];
     Aucun= json["Aucun"];
+    Grade= json["Grade"];
     Patient_Ip= json['Patient_Ip'];
   }
   Map<String,dynamic> toJson(){
@@ -47,6 +53,7 @@ class Oculaire{
     data["Fréquente avec Docetaxel ?"]= this.Frequente_Docetaxel.toString();
     data["Delai d'apparition"]= this.Apparition.toString();
     data["Durée d'évolution"]= this.Evo_duree.toString();
+    data["Date de declaration"]= this.Toxicity_day.toString();
     data['Rougueur']= this.Rougueur.toString();
     data['Larmoiement']= this.larmoiement.toString();
     data["œdème"]= this.Odeme.toString();
@@ -54,6 +61,7 @@ class Oculaire{
     data['Baisse de l’acuité visuelle interférant avec les activités de la vie quotidienne']= this.Acuite.toString();
     data['Fièvre']= this.Fievre.toString();
     data["Aucun"]= this.Aucun.toString();
+    data["Grade"]= this.Grade.toString();
     data['Patient_Ip']= this.Patient_Ip.toString();
     return data;
   }

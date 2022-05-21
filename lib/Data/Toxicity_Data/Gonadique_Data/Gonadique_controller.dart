@@ -8,4 +8,7 @@ class Gonadiquecontroller{
   Future<String> postGonadique(Gonadique gonadique) async {
     return _gonadiqu_data.postGonadique(gonadique);
   }
+  Future<List<Gonadique>> getGonadique() async{
+    return _gonadiqu_data.getGonadique();
+  }
 }

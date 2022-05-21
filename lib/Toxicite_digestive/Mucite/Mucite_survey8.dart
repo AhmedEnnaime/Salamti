@@ -23,7 +23,7 @@ class _Mucite8State extends State<Mucite8> {
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
-    var mucitecontroller = Mucitecontroller(Mucite_Data());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -164,8 +164,8 @@ class _Mucite8State extends State<Mucite8> {
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
                           onPressed: () {
-                            Mucite_Model mucite = Mucite_Model(Voix: val13,Deglutition: val14,Langue: val15,Salive: val16,Muqueuses: val17,Gencives: val18,Dents: val19,Levres: val20,Grade:Mucite_grade(),Patient_Ip: IP.text );
-                            mucitecontroller.postMucite(mucite);
+
+                            //mucitecontroller.postMucite(mucite);
                             mucite_levres();
                             final_score = score_voix + score_deglutition + score_salive + score_muqueuses + score_gencives + score_langue + score_dents + score_levres;
                             if(16< final_score){

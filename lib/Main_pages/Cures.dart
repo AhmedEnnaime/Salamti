@@ -24,6 +24,7 @@ class _CuresState extends State<Cures> {
   int y=5;
   DateTime ?cure_day;
   DateTime ?next_cure;
+  DateTime ?bilan_day;
   DateTime ?temps_restant;
   File ?image;
   String _getMonthDate(int month) {
@@ -111,6 +112,12 @@ class _CuresState extends State<Cures> {
 
     }
 
+  }
+  bool zz(){
+    bilan_day = cure_day?.add(Duration(minutes: 1));
+    if(bilan_day == DateTime.now().minute){
+      return true;
+    }else return false;
   }
   @override
   /*void initState() {
@@ -252,17 +259,8 @@ class _CuresState extends State<Cures> {
                               print(next_cure);
                               temps_restant = (next_cure?.subtract(Duration(days: cure_day!.day)));
                               print(temps_restant?.day);
-                              Cures_Model cure = Cures_Model(cure_confirm: cure_val,cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',Patient_Ip: IP.text,Patient_nom: patient?.Nom);
+                              Cures_Model cure = Cures_Model(cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',Patient_Ip: IP.text,Patient_nom: patient?.Nom);
                               curescontroller.postCures(cure);
-                              /*Future.delayed(Duration(seconds: y),(){
-                          setState(() {
-                            visible =!visible;
-                          });
-
-                        });
-
-                        */
-
                             }else {
                               setState(() {
                                 visible = false;
@@ -295,7 +293,7 @@ class _CuresState extends State<Cures> {
       SizedBox(height: 20,),
 
       Visibility(
-        visible:visible ,
+        visible:zz() ,
         child:  Column(
           children: [
             Card(

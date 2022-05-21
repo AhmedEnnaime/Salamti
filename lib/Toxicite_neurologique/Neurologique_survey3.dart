@@ -15,6 +15,33 @@ class Neurologique_survey3 extends StatefulWidget {
 }
 
 class _Neurologique_survey3State extends State<Neurologique_survey3> {
+  String _getMonthDate(int month) {
+    if (month == 01) {
+      return 'Janvier';
+    } else if (month == 02) {
+      return 'Février';
+    } else if (month == 03) {
+      return 'Mars';
+    } else if (month == 04) {
+      return 'Avril';
+    } else if (month == 05) {
+      return 'Mai';
+    } else if (month == 06) {
+      return 'Juin';
+    } else if (month == 07) {
+      return 'Juillet';
+    } else if (month == 08) {
+      return 'Aout';
+    } else if (month == 09) {
+      return 'Septembre';
+    } else if (month == 10) {
+      return 'Octobre';
+    } else if (month == 11) {
+      return 'Novembre';
+    } else {
+      return 'Decembre';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
@@ -313,7 +340,8 @@ class _Neurologique_survey3State extends State<Neurologique_survey3> {
                             padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                         ),
                         onPressed: () {
-                          Neurologique neurologique = Neurologique(Topographie_neuropathie: val21,Picotements: Picotements_val,fourmillements: fourmillements_val,dysethesies: dysethesies_val,brulure: brulure_val,Douleur:dlr_val,escaliers: Escaliers_val,extension: Extension_val,Qtd:Qtd_val,Aucun: Aucun_val,Patient_Ip: IP.text );
+                          neuro_day = DateTime.now();
+                          Neurologique neurologique = Neurologique(Topographie_neuropathie: val21,Picotements: Picotements_val.toString(),fourmillements: fourmillements_val.toString(),dysethesies: dysethesies_val.toString(),brulure: brulure_val.toString(),Douleur:dlr_val.toString(),escaliers: Escaliers_val.toString(),extension: Extension_val.toString(),Qtd:Qtd_val.toString(),Aucun: Aucun_val.toString(),Toxicity_day:'${neuro_day?.day} ${_getMonthDate(neuro_day!.month)} ${neuro_day?.year}',Grade:Neurologique_grade(),Patient_Ip: IP.text );
                           neurologiquecontroller.postNeurologique(neurologique);
                           if(Escaliers_val == true || Extension_val == true || dlr_val == true || Qtd_val == true){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Neurologique_ordonnance()));

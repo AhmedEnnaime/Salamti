@@ -8,4 +8,7 @@ class Neurologiquecontroller{
   Future<String> postNeurologique(Neurologique neurologique) async{
     return _neurologiqu_data.postNeurologique(neurologique);
   }
+  Future<List<Neurologique>> getNeurologique() async{
+    return _neurologiqu_data.getNeurologique();
+  }
 }
