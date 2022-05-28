@@ -99,7 +99,7 @@ class _historiqueState extends State<historique> {
                     if(Toxicity_history?.Nausees_grade == 'Grade 4' || Toxicity_history?.Nausees_grade == 'Grade 3'){
                       return Colors.redAccent;
                     }else if(Toxicity_history?.Nausees_grade == 'Grade 2'){
-                      return Colors.blue;
+                      return Colors.orange;
                     }else if(Toxicity_history?.Nausees_grade == 'Grade 1'){
                       return Colors.green;
                     }else return Colors.white;
@@ -109,7 +109,7 @@ class _historiqueState extends State<historique> {
                     if(Toxicity_history?.Diarrhees_grade == 'Grade 3'){
                       return Colors.redAccent;
                     }else if(Toxicity_history?.Diarrhees_grade == 'Grade 2'){
-                      return Colors.blue;
+                      return Colors.orange;
                     }else if(Toxicity_history?.Diarrhees_grade == 'Grade 1'){
                       return Colors.green;
                     }else return Colors.white;
@@ -119,7 +119,7 @@ class _historiqueState extends State<historique> {
                     if(Toxicity_history?.Constipation_grade == 'Grade 3'){
                       return Colors.redAccent;
                     }else if(Toxicity_history?.Constipation_grade == 'Grade 2'){
-                      return Colors.blue;
+                      return Colors.orange;
                     }else if(Toxicity_history?.Constipation_grade == 'Grade 1'){
                       return Colors.green;
                     }else return Colors.white;
@@ -129,7 +129,7 @@ class _historiqueState extends State<historique> {
                     if(Toxicity_history?.Mucite_grade == 'Grade 3'){
                       return Colors.redAccent;
                     }else if(Toxicity_history?.Mucite_grade == 'Grade 2'){
-                      return Colors.blue;
+                      return Colors.orange;
                     }else if(Toxicity_history?.Mucite_grade == 'Grade 1'){
                       return Colors.green;
                     }else return Colors.white;
@@ -249,7 +249,7 @@ class _historiqueState extends State<historique> {
                                   if(cutane_symptome?.Rash_grade == 'Grade 3'){
                                     return Colors.redAccent;
                                   }else if(cutane_symptome?.Rash_grade  == 'Grade 2'){
-                                    return Colors.blue;
+                                    return Colors.orange;
                                   }else if(cutane_symptome?.Rash_grade  == 'Grade 1'){
                                     return Colors.green;
                                   }else return Colors.white;
@@ -259,7 +259,7 @@ class _historiqueState extends State<historique> {
                                   if(cutane_symptome?.Mains_grade == 'Grade 3'){
                                     return Colors.redAccent;
                                   }else if(cutane_symptome?.Mains_grade  == 'Grade 2'){
-                                    return Colors.blue;
+                                    return Colors.orange;
                                   }else if(cutane_symptome?.Mains_grade  == 'Grade 1'){
                                     return Colors.green;
                                   }else return Colors.white;
@@ -516,7 +516,7 @@ class _historiqueState extends State<historique> {
                               }
                               Color getNeurologiquecolor(){
                                 if(neurologique?.Grade == 'Ordonnance'){
-                                  return Colors.blue;
+                                  return Colors.orange;
                                 }else return Colors.white;
 
                               }

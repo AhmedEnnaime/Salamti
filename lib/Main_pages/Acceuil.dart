@@ -108,15 +108,15 @@ class _AcceuilState extends State<Acceuil> {
             return IconButton(
               onPressed: () =>Scaffold.of(context).openDrawer(),
               icon: Icon(Icons.menu,
-                color: Colors.red[400],
+                color: Colors.white,
                 size: 40,
               ),
             );
           }),
-          backgroundColor: Colors.cyan[900],
+          backgroundColor: Colors.pinkAccent[100],
           shape: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFFEF5350),
+              color: Colors.white,
             ),
           ),
           title: FutureBuilder<List<Patient>>(
@@ -157,7 +157,7 @@ class _AcceuilState extends State<Acceuil> {
             IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.notifications,
-                  color: Colors.red[400],
+                  color: Colors.white,
                   size: 40,
                 )
             )
@@ -448,9 +448,10 @@ class _AcceuilState extends State<Acceuil> {
                     width: WidthScreen/1.1,
                     height: HeightScreen/4,
                     child: Card(
+                        elevation: 10,
                         margin: EdgeInsets.only(left: WidthScreen/120,right: WidthScreen/100),
 
-                        color: Colors.cyan[100],
+                        color: Colors.pink[50],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
 
@@ -506,9 +507,10 @@ class _AcceuilState extends State<Acceuil> {
                     width: WidthScreen/1.1,
                     height: HeightScreen/4,
                     child: Card(
+                        elevation: 10,
                         margin: EdgeInsets.only(left: WidthScreen/120,right: WidthScreen/100),
 
-                        color: Colors.cyan[100],
+                        color: Colors.pink[50],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
 
@@ -643,7 +645,8 @@ class _AcceuilState extends State<Acceuil> {
                                                  ),
                                                  Container(
                                                    child: Card(
-                                                     color: Colors.cyan[100],
+                                                     elevation: 10,
+                                                     color: Colors.pink[50],
                                                      shape: RoundedRectangleBorder(
                                                        borderRadius: BorderRadius.circular(20),
 
@@ -804,7 +807,8 @@ class _AcceuilState extends State<Acceuil> {
                                              ),
                                              Container(
                                                child: Card(
-                                                 color: Colors.cyan[100],
+                                                 elevation: 40,
+                                                 color: Colors.pink[50],
                                                  shape: RoundedRectangleBorder(
                                                    borderRadius: BorderRadius.circular(20),
 

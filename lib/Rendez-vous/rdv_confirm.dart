@@ -16,10 +16,10 @@ class _rdv_confirmState extends State<rdv_confirm> {
     var rdv_patientcontroller = Rdv_patientcontroller(Rdv_patient_Data());
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.cyan[900],
+          backgroundColor: Colors.pinkAccent[100],
           shape: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFFEF5350),
+              color: Colors.white,
             ),
           ),
           bottom: PreferredSize(
@@ -83,7 +83,7 @@ class _rdv_confirmState extends State<rdv_confirm> {
                          child: ElevatedButton(
                              style: ElevatedButton.styleFrom(
                                minimumSize: Size(50, 50),
-                               primary: Colors.cyan[900],
+                               primary: Colors.pinkAccent[100],
                                padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10),
                              ),
                              onPressed: () {

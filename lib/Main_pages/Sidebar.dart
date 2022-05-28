@@ -76,7 +76,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                       ),
 
                       decoration: BoxDecoration(
-                          color: Colors.cyan[900]
+                          color: Colors.pinkAccent[100]
                       ),
                     ),
                     ListTile(

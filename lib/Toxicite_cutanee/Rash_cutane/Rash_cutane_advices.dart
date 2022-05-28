@@ -61,7 +61,7 @@ class Rash_cutane_advices extends StatelessWidget {
             Container(
               width: WidthScreen,
               height: HeightScreen/3.8,
-              color: Colors.cyan[900],
+              color: Colors.pinkAccent[100],
               child: Center(
                 child: Text(
                   'Conseils aux paients',
@@ -249,7 +249,7 @@ class Rash_cutane_advices extends StatelessWidget {
                     padding:  EdgeInsets.fromLTRB(0, 15, 0, 0),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Colors.cyan[900],
+                          primary: Colors.pinkAccent[100],
                           minimumSize: Size(40, 40),
                           padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10)
                       ),

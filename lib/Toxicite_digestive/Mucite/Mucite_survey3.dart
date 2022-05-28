@@ -22,7 +22,7 @@ class _Mucite3State extends State<Mucite3> {
             Container(
               width: WidthScreen,
               height: HeightScreen/3.8,
-              color: Colors.cyan[900],
+              color: Colors.pinkAccent[100],
               child: Center(
                 child: Text(
                   'Mucite',
@@ -132,7 +132,7 @@ class _Mucite3State extends State<Mucite3> {
                       children: [
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.cyan[900],
+                              primary: Colors.pinkAccent[100],
                               minimumSize: Size(40, 40),
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),
@@ -150,7 +150,7 @@ class _Mucite3State extends State<Mucite3> {
                         SizedBox(width: 50,),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.cyan[900],
+                              primary: Colors.pinkAccent[100],
                               minimumSize: Size(40, 40),
                               padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                           ),

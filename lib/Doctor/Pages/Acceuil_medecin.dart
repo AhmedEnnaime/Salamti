@@ -34,7 +34,7 @@ class _Acceuil_medecinState extends State<Acceuil_medecin> {
           );
         }),
         title: Padding(
-          padding:  EdgeInsets.only(top: HeightScreen/18,right: WidthScreen/7),
+          padding:  EdgeInsets.only(top: HeightScreen/18,right: WidthScreen/40),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -56,6 +56,15 @@ class _Acceuil_medecinState extends State<Acceuil_medecin> {
             ],
           ),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications,
+                color: Colors.redAccent[400],
+                size: 37,
+              )
+          )
+        ],
         centerTitle: true,
         flexibleSpace: Padding(
           padding: EdgeInsets.only(top: 90),

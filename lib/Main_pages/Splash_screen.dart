@@ -46,15 +46,15 @@ class StartState extends State<SplashScreen> {
         children: [
           Container(
             decoration: BoxDecoration(
-                color: Colors.cyan[900],
+                color: Colors.white,
             ),
           ),
           Center(
             child: Container(
               child: Image.asset(
-                  "assets/Logo circle.png",
-                  width: 90,
-                  height: 90,
+                  "assets/Logo_app.png",
+                  width: 150,
+                  height: 150,
               ),
             ),
           )

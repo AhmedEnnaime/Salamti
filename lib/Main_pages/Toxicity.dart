@@ -20,22 +20,26 @@ class Toxicity extends StatelessWidget {
             return IconButton(
               onPressed: () =>Scaffold.of(context).openDrawer(),
               icon: Icon(Icons.menu,
-                color: Colors.red[400],
+                color: Colors.white,
                 size: 40,
               ),
             );
           }),
-          backgroundColor: Colors.cyan[900],
+          backgroundColor: Colors.pinkAccent[100],
           shape: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFFEF5350),
+              color: Colors.white,
             ),
           ),
           title: Row(
             children: [
               Padding(
                 padding:  EdgeInsets.fromLTRB(30, 3, 0, 10),
-                child: Image.asset('assets/Logo circle.png'),
+                child: Image.asset(
+                  'assets/Logo_app.png',
+                  width: 50,
+                  height: 90,
+                ),
               ),
               SizedBox(width: 20,),
               Text(
@@ -54,7 +58,7 @@ class Toxicity extends StatelessWidget {
             IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.notifications,
-                  color: Colors.red[400],
+                  color: Colors.white,
                   size: 40,
                 )
             )
@@ -81,7 +85,7 @@ class Toxicity extends StatelessWidget {
                           borderSide: BorderSide.none
                       ),
                       filled: true,
-                      fillColor: Colors.grey[400]
+                      fillColor: Colors.grey[100]
                   ),
 
                 ),
@@ -122,7 +126,7 @@ class Toxicity extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Card(
-                            color: Colors.grey[300],
+                            color: Colors.pink[50],
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)
                             ),
@@ -174,6 +178,7 @@ class Toxicity extends StatelessWidget {
                                         'Digestive',
                                         style: TextStyle(
                                           fontSize: 20,
+                                          color: Colors.black
                                         )
                                     ),
 
@@ -186,7 +191,7 @@ class Toxicity extends StatelessWidget {
 
                         SizedBox(width: 7,),
                         Card(
-                          color: Colors.grey[300],
+                          color: Colors.pink[50],
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)
                           ),
@@ -232,6 +237,7 @@ class Toxicity extends StatelessWidget {
                                       ' Arthromyalgique',
                                       style: TextStyle(
                                         fontSize: 20,
+                                        color: Colors.black
                                       )
                                   ),
 
@@ -251,7 +257,7 @@ class Toxicity extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Card(
-                          color: Colors.grey[300],
+                          color: Colors.pink[50],
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)
                           ),
@@ -298,6 +304,7 @@ class Toxicity extends StatelessWidget {
                                       ' Neurologique',
                                       style: TextStyle(
                                         fontSize: 20,
+                                        color: Colors.black
                                       )
                                   ),
 
@@ -310,7 +317,7 @@ class Toxicity extends StatelessWidget {
 
                       SizedBox(width: 10,),
                       Card(
-                          color: Colors.grey[300],
+                          color: Colors.pink[50],
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)
                           ),
@@ -357,6 +364,7 @@ class Toxicity extends StatelessWidget {
                                       ' Gonadique',
                                       style: TextStyle(
                                         fontSize: 20,
+                                        color: Colors.black
                                       )
                                   ),
 
@@ -375,7 +383,7 @@ class Toxicity extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Card(
-                          color: Colors.grey[300],
+                          color: Colors.pink[50],
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)
                           ),
@@ -422,6 +430,7 @@ class Toxicity extends StatelessWidget {
                                       ' Oculaire',
                                       style: TextStyle(
                                         fontSize: 20,
+                                        color: Colors.black
                                       )
                                   ),
 
@@ -434,7 +443,7 @@ class Toxicity extends StatelessWidget {
 
                       SizedBox(width: 15,),
                       Card(
-                          color: Colors.grey[300],
+                          color: Colors.pink[50],
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)
                           ),
@@ -481,6 +490,7 @@ class Toxicity extends StatelessWidget {
                                       'Cutanée',
                                       style: TextStyle(
                                         fontSize: 20,
+                                        color: Colors.black
                                       )
 
                                   ),

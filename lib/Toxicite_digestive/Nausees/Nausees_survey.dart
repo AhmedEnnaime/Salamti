@@ -23,7 +23,7 @@ class _NauseesState extends State<Nausees> {
             Container(
               width: WidthScreen,
               height: HeightScreen/3.8,
-              color: Colors.cyan[900],
+              color: Colors.pinkAccent[100],
               child: Center(
                 child: Text(
                   'Nausees/Vomissements',
@@ -158,7 +158,7 @@ class _NauseesState extends State<Nausees> {
                           children: [
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: Colors.cyan[900],
+                                  primary: Colors.pinkAccent[100],
                                   minimumSize: Size(40, 40),
                                   padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                               ),
@@ -176,7 +176,7 @@ class _NauseesState extends State<Nausees> {
                             SizedBox(width: 40,),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: Colors.cyan[900],
+                                  primary: Colors.pinkAccent[100],
                                   minimumSize: Size(40, 40),
                                   padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                               ),

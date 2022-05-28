@@ -14,7 +14,9 @@ class Roles extends StatelessWidget {
             child: Padding(
               padding:  EdgeInsets.only(top: 90),
               child: Image.asset(
-                'assets/Logo circle.png',
+                'assets/Logo_app.png',
+                height: 150,
+                width: 150,
               ),
             ),
           ),
@@ -29,7 +31,7 @@ class Roles extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    color: Colors.cyan[900],
+                    color: Colors.pinkAccent[100],
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(24, 18, 48, 38),
                       child: IconButton(
@@ -69,7 +71,7 @@ class Roles extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    color: Colors.cyan[900],
+                    color: Colors.pinkAccent[100],
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(24, 18, 48, 38),
                       child: IconButton(

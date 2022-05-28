@@ -10,6 +10,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:e_sante/Main_pages/Acceuil.dart';
 
+import '../Login/login.dart';
+
 class prfl extends StatefulWidget {
 
   @override
@@ -46,7 +48,7 @@ class _prflState extends State<prfl> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Colors.pinkAccent[100],
         elevation: 0,
       ),
       body: FutureBuilder<List<Patient>>(
@@ -67,7 +69,7 @@ class _prflState extends State<prfl> {
                       Container(
                         width: WidthScreen,
                         height: HeightScreen/3.8,
-                        color: Colors.blue[800],
+                        color: Colors.pinkAccent[100],
                           child: Column(
                             children: [
                               Center(
@@ -118,7 +120,7 @@ class _prflState extends State<prfl> {
 
                       ),
                       Container(
-                        color: Colors.grey[300],
+                        color: Colors.white,
                         width: WidthScreen,
                         height: HeightScreen/1,
 
@@ -127,6 +129,7 @@ class _prflState extends State<prfl> {
                             Padding(
                               padding: EdgeInsets.only(left: WidthScreen/22,right: WidthScreen/22,top: HeightScreen/45),
                               child: Card(
+                                color: Colors.pink[50],
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
 
@@ -176,60 +179,11 @@ class _prflState extends State<prfl> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(width: 50,),
-                                        IconButton(
-                                            onPressed: (){
-                                              showDialog(context: context, builder: (context)=>AlertDialog(
-                                                title: Text('Changer votre nom'),
-                                                actions: [
-                                                  Card(
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(8.0),
-                                                      child: TextFormField(
-                                                        controller: new_Nom,
-                                                        keyboardType: TextInputType.text,
-                                                        decoration: InputDecoration(
-                                                          hintText: 'Nouveau nom',
-                                                          enabledBorder: InputBorder.none,
-                                                          focusedBorder: InputBorder.none,
-                                                        ),
-
-                                                      ),
-                                                    ),
-                                                    shape: OutlineInputBorder(
-                                                        borderSide: BorderSide(color: Colors.black,),
-                                                        borderRadius: BorderRadius.circular(14)
-                                                    ),
-                                                  ),
-                                                  ElevatedButton(
-                                                      onPressed: (){
-                                                        Patient patient = Patient(Nom: new_Nom.text);
-                                                        patientcontroller.patchtPatient(patient);
-                                                      },
-                                                      child: Text(
-                                                        'Confirmer',
-                                                        style: TextStyle(
-                                                          fontSize: 18
-                                                        ),
-                                                    ),
-                                                  )
-                                                ],
-
-
-                                              ));
-                                            },
-                                            icon: Icon(
-                                              Icons.arrow_forward_ios,
-                                              size: 20,
-                                              color: Colors.black,
-                                            ),
-                                        )
 
                                       ],
                                     ),
                                     SizedBox(height: 15,),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Padding(
                                           padding:  EdgeInsets.only(left: 20,top: 10,bottom: 10),
@@ -251,8 +205,8 @@ class _prflState extends State<prfl> {
                                         ),
                                         SizedBox(width: 10,),
                                         Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Text(
                                               'Email                              ',
@@ -261,65 +215,19 @@ class _prflState extends State<prfl> {
                                               ),
                                             ),
                                             SizedBox(height: 5,),
-                                            Padding(
-                                              padding:  EdgeInsets.only(right: WidthScreen/40),
-                                              child: Text(
-                                                '${patient?.Mail}',
-                                                style: TextStyle(
-                                                    color: Colors.grey
+                                            Text(
+                                              '${patient?.Mail}',
+                                              style: TextStyle(
+                                                  color: Colors.grey
 
-                                                ),
                                               ),
                                             ),
                                           ],
                                         ),
-                                        IconButton(
-                                          onPressed: (){
-                                            showDialog(context: context, builder: (context)=>AlertDialog(
-                                              title: Text('Changer votre mail'),
-                                              actions: [
-                                                Card(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.all(8.0),
-                                                    child: TextFormField(
-                                                      controller: new_Mail,
-                                                      keyboardType: TextInputType.emailAddress,
-                                                      decoration: InputDecoration(
-                                                        hintText: 'Nouveau mail',
-                                                        enabledBorder: InputBorder.none,
-                                                        focusedBorder: InputBorder.none,
-                                                      ),
-
-                                                    ),
-                                                  ),
-                                                  shape: OutlineInputBorder(
-                                                      borderSide: BorderSide(color: Colors.black,),
-                                                      borderRadius: BorderRadius.circular(14)
-                                                  ),
-                                                ),
-                                                ElevatedButton(
-                                                  onPressed: (){},
-                                                  child: Text(
-                                                    'Confirmer',
-                                                    style: TextStyle(
-                                                        fontSize: 18
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-
-
-                                            ));
-                                          },
-                                          icon: Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                        )
 
                                       ],
                                     ),
+
 
                                   ],
                                 ),
@@ -329,6 +237,7 @@ class _prflState extends State<prfl> {
                             Padding(
                               padding:  EdgeInsets.only(left: WidthScreen/22,right: WidthScreen/22,top: HeightScreen/45),
                               child: Card(
+                                color: Colors.pink[50],
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
 
@@ -377,50 +286,6 @@ class _prflState extends State<prfl> {
                                           ],
                                         ),
                                         SizedBox(width: 150,),
-                                        IconButton(
-                                          onPressed: (){
-                                            showDialog(context: context, builder: (context)=>AlertDialog(
-                                              title: Text('Changer votre age'),
-                                              actions: [
-                                                Card(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.all(8.0),
-                                                    child: TextFormField(
-                                                      controller: new_Age,
-                                                      keyboardType: TextInputType.number,
-                                                      decoration: InputDecoration(
-                                                        hintText: 'Nouveau age',
-                                                        enabledBorder: InputBorder.none,
-                                                        focusedBorder: InputBorder.none,
-                                                      ),
-
-                                                    ),
-                                                  ),
-                                                  shape: OutlineInputBorder(
-                                                      borderSide: BorderSide(color: Colors.black,),
-                                                      borderRadius: BorderRadius.circular(14)
-                                                  ),
-                                                ),
-                                                ElevatedButton(
-                                                  onPressed: (){},
-                                                  child: Text(
-                                                    'Confirmer',
-                                                    style: TextStyle(
-                                                        fontSize: 18
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-
-
-                                            ));
-                                          },
-                                          icon: Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                        )
 
                                       ],
                                     ),
@@ -466,15 +331,6 @@ class _prflState extends State<prfl> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(width: 130,),
-                                        IconButton(
-                                          onPressed: (){},
-                                          icon: Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                        )
 
                                       ],
                                     ),
@@ -520,52 +376,6 @@ class _prflState extends State<prfl> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(width: 70,),
-                                        IconButton(
-                                          onPressed: (){
-                                            showDialog(context: context, builder: (context)=>AlertDialog(
-                                              title: Text('Changer votre telephone'),
-                                              actions: [
-                                                Card(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.all(8.0),
-                                                    child: TextFormField(
-                                                      controller:new_Tel ,
-                                                      keyboardType: TextInputType.phone,
-                                                      decoration: InputDecoration(
-                                                        hintText: 'Nouveau telephone',
-                                                        enabledBorder: InputBorder.none,
-                                                        focusedBorder: InputBorder.none,
-                                                      ),
-
-                                                    ),
-                                                  ),
-                                                  shape: OutlineInputBorder(
-                                                      borderSide: BorderSide(color: Colors.black,),
-                                                      borderRadius: BorderRadius.circular(14)
-                                                  ),
-                                                ),
-                                                ElevatedButton(
-                                                  onPressed: (){},
-                                                  child: Text(
-                                                    'Confirmer',
-                                                    style: TextStyle(
-                                                        fontSize: 18
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-
-
-                                            ));
-                                          },
-                                          icon: Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                        )
-
                                       ],
                                     ),
                                     SizedBox(height: 15,),
@@ -611,51 +421,6 @@ class _prflState extends State<prfl> {
                                           ],
                                         ),
                                         SizedBox(width: 70,),
-                                        IconButton(
-                                          onPressed: (){
-                                            showDialog(context: context, builder: (context)=>AlertDialog(
-                                              title: Text('Changer votre mot de passe'),
-                                              actions: [
-                                                Card(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.all(8.0),
-                                                    child: TextFormField(
-                                                      controller: new_Password,
-                                                      keyboardType: TextInputType.visiblePassword,
-                                                      decoration: InputDecoration(
-                                                        hintText: 'Nouveau mot de passe',
-                                                        enabledBorder: InputBorder.none,
-                                                        focusedBorder: InputBorder.none,
-                                                      ),
-
-                                                    ),
-                                                  ),
-                                                  shape: OutlineInputBorder(
-                                                      borderSide: BorderSide(color: Colors.black,),
-                                                      borderRadius: BorderRadius.circular(14)
-                                                  ),
-                                                ),
-                                                ElevatedButton(
-                                                  onPressed: (){},
-                                                  child: Text(
-                                                    'Confirmer',
-                                                    style: TextStyle(
-                                                        fontSize: 18
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-
-
-                                            ));
-                                          },
-                                          icon: Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                        )
-
                                       ],
                                     ),
                                     SizedBox(height: 15,),
@@ -700,16 +465,6 @@ class _prflState extends State<prfl> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(width: 115,),
-                                        IconButton(
-                                          onPressed: (){},
-                                          icon: Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                        )
-
                                       ],
                                     ),
 
@@ -721,6 +476,7 @@ class _prflState extends State<prfl> {
                             Padding(
                               padding: EdgeInsets.only(left: WidthScreen/22,right: WidthScreen/22,top: HeightScreen/45),
                               child: Card(
+                                color: Colors.pink[50],
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
 
@@ -753,7 +509,9 @@ class _prflState extends State<prfl> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             TextButton(
-                                              onPressed: () {  },
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+                                              },
                                               child: Text(
                                                 'Se deconnecter',
                                                 style: TextStyle(

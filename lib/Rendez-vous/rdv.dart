@@ -61,7 +61,7 @@ class _rdv extends State<rdv> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Color(0xff053F5E),
+        backgroundColor: Colors.pinkAccent[100],
         centerTitle: true,
         leading: GestureDetector(
           onTap: () {
@@ -189,7 +189,7 @@ class _rdv extends State<rdv> {
                       Container(
                         height: 200,
                         decoration: BoxDecoration(
-                            color: Color(0xff053F5E),
+                            color: Colors.pinkAccent[100],
                             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
                         ),
                         child: Container(
@@ -250,7 +250,7 @@ class _rdv extends State<rdv> {
                                       icon: Icon(
                                         Icons.calendar_today_rounded,
                                         size: 40,
-                                        color: Colors.blue[800],
+                                        color: Colors.pinkAccent[100],
                                       ),
                                     ),
                                     SizedBox(width: 10,),
@@ -649,7 +649,7 @@ class _rdv extends State<rdv> {
                                     width: MediaQuery.of(context).size.width,
                                     margin: EdgeInsets.all(20),
                                     decoration: BoxDecoration(
-                                      color: Color(0xff107163),
+                                      color: Colors.pinkAccent[100],
                                       borderRadius: BorderRadius.circular(5),
                                       boxShadow: [
                                         BoxShadow(

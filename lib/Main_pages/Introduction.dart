@@ -13,9 +13,9 @@ class Introduction extends StatelessWidget {
               padding:  EdgeInsets.fromLTRB(0, 150, 0, 0),
               child: Center(
                 child: Image.asset(
-                    'assets/Logo circle.png',
-                      width: 100,
-                      height: 100,
+                    'assets/Logo_app.png',
+                      width: 400,
+                      height: 150,
                 ),
               ),
             ),
@@ -23,7 +23,7 @@ class Introduction extends StatelessWidget {
             Text(
                 'E-santé',
               style: TextStyle(
-                  color: Colors.cyan[900],
+                  color: Colors.pinkAccent[100],
                   fontSize: 40,
               ),
             ),
@@ -44,7 +44,7 @@ class Introduction extends StatelessWidget {
 
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.cyan[900],
+                  primary: Colors.pinkAccent[100],
                   minimumSize: Size(40, 40),
                   padding: EdgeInsets.symmetric(horizontal: 45, vertical: 13)
                 ),

@@ -20,7 +20,7 @@ class _EvaluationState extends State<Evaluation> {
     var evaluationcontroller = Evaluationcontroller(Evaluation_Data());
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.cyan[900],
+        backgroundColor: Colors.pinkAccent[100],
         title: Text(
           'Evaluation generale',
           style: TextStyle(
@@ -416,7 +416,7 @@ class _EvaluationState extends State<Evaluation> {
               padding:  EdgeInsets.only(left: 30,top: 50),
                   child:ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.cyan[900],
+                        primary: Colors.pinkAccent[100],
                         minimumSize: Size(40, 40),
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                     ),

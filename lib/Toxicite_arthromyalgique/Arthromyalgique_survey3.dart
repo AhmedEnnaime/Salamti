@@ -52,7 +52,7 @@ class _Arthromyalgique_survey3State extends State<Arthromyalgique_survey3> {
             Container(
               width: WidthScreen,
               height: HeightScreen/3.8,
-              color: Colors.cyan[900],
+              color: Colors.pinkAccent[100],
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -232,7 +232,7 @@ class _Arthromyalgique_survey3State extends State<Arthromyalgique_survey3> {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.cyan[900],
+                            primary: Colors.pinkAccent[100],
                             minimumSize: Size(40, 40),
                             padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                         ),
@@ -250,7 +250,7 @@ class _Arthromyalgique_survey3State extends State<Arthromyalgique_survey3> {
                       SizedBox(width: 40,),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.cyan[900],
+                            primary: Colors.pinkAccent[100],
                             minimumSize: Size(40, 40),
                             padding: EdgeInsets.symmetric(horizontal: WidthScreen/20, vertical: HeightScreen/50)
                         ),
