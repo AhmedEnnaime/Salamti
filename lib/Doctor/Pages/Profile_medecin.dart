@@ -38,7 +38,7 @@ class _Profile_medecinState extends State<Profile_medecin> {
     var doctorcontroller = Doctorcontroller(Doctor_Data());
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Color(0xff053F5E),
         elevation: 0,
       ),
       body: FutureBuilder<List<Doctor>>(
@@ -59,7 +59,7 @@ class _Profile_medecinState extends State<Profile_medecin> {
                       Container(
                         width: WidthScreen,
                         height: HeightScreen/3.8,
-                        color: Colors.blue[800],
+                        color: Color(0xff053F5E),
                         child: Column(
                           children: [
                             Center(
@@ -93,6 +93,7 @@ class _Profile_medecinState extends State<Profile_medecin> {
                               "Dr.${doctor?.Nom}",
                               style: TextStyle(
                                 fontSize: 22,
+                                color: Colors.white
 
                               ),
                             ),

@@ -72,7 +72,7 @@ class _SidebarState extends State<Sidebar> {
                       ),
 
                       decoration: BoxDecoration(
-                          color: Colors.blue[900]
+                          color: Color(0xff053F5E)
                       ),
                     ),
                     ListTile(

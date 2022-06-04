@@ -43,7 +43,7 @@ class Toxicity extends StatelessWidget {
               ),
               SizedBox(width: 20,),
               Text(
-                'E-sante',
+                'Salamti',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 25,

@@ -508,7 +508,7 @@ class _rdv_medecin extends State<rdv_medecin> {
                         height: 54,
                         margin: EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: Color(0xff107163),
+                          color: Color(0xff053F5E),
                           borderRadius: BorderRadius.circular(5),
                           boxShadow: [
                             BoxShadow(

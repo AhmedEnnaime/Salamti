@@ -46,7 +46,7 @@ class _historiqueState extends State<historique> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.blue[800],
+          backgroundColor: Color(0xff053F5E),
           title: Text(
             'Historique',
             style: TextStyle(

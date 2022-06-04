@@ -4,7 +4,7 @@ import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_controller.dart';
 import 'package:e_sante/Doctor/Pages/Ajouter_patient.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Doctor/Pages/Sidebar_medecin.dart';
-import 'package:e_sante/Doctor/Pages/Ajouter_rdv.dart';
+import 'package:e_sante/Doctor/Pages/Liste_rdv.dart';
 import 'package:e_sante/Doctor/Pages/Mes patients.dart';
 import 'package:e_sante/Doctor/Pages/Liste_cures.dart';
 
@@ -22,7 +22,7 @@ class _Acceuil_medecinState extends State<Acceuil_medecin> {
     return Scaffold(
       drawer: Sidebar(),
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        backgroundColor:  Color(0xff053F5E),
         leading: Builder(builder: (context) {
           return IconButton(
             onPressed: () => Scaffold.of(context).openDrawer(),
@@ -41,7 +41,7 @@ class _Acceuil_medecinState extends State<Acceuil_medecin> {
               Icon(
                 Icons.phone,
                 size: 20,
-                color: Colors.black,
+                color: Colors.white,
               ),
               SizedBox(
                 width: 20,
@@ -49,8 +49,8 @@ class _Acceuil_medecinState extends State<Acceuil_medecin> {
               Text(
                 "Rendez-vous d'aujourd'hui",
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 13
+                  color: Colors.white,
+                  fontSize: 13,
                 ),
               ),
             ],

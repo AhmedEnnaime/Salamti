@@ -22,7 +22,7 @@ class _Mes_patientsState extends State<Mes_patients> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Color(0xff053F5E),
         title: Text(
                 'Liste des patients',
                 style: TextStyle(

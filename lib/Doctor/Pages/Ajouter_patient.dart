@@ -32,7 +32,7 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
     var patientcontroller= Patientcontroller(Patients_data());
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Color(0xff053F5E),
         title: Padding(
           padding:  EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
           child: Row(
@@ -298,6 +298,10 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
               ),
               SizedBox(height: 30,),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xff053F5E),
+                  padding: EdgeInsets.all(16),
+                ),
                   onPressed: ()  {
                     Patient patient = Patient(Ip: Ip.text,Nom: Nom.text,Age: Age.text,Sexe:Sexe.text,Mail: Mail.text,Tel: Tel.text,Password: Password.text,Doctor_Ip: Ip_medecin.text );
                     patientcontroller.postPatient(patient);

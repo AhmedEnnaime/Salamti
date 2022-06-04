@@ -21,7 +21,7 @@ class Introduction extends StatelessWidget {
             ),
             SizedBox(height: 20,),
             Text(
-                'E-santé',
+                'Salamti',
               style: TextStyle(
                   color: Colors.pinkAccent[100],
                   fontSize: 40,

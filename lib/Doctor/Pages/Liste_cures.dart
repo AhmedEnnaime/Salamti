@@ -20,7 +20,7 @@ class _Liste_curesState extends State<Liste_cures> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.blue[800],
+          backgroundColor: Color(0xff053F5E),
           title: Text(
             'Liste des cures',
             style: TextStyle(
