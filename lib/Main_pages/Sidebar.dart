@@ -133,31 +133,6 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                       leading: CircleAvatar(
                         backgroundColor: Colors.white,
                         child: Image.asset(
-                          'assets/Treatment.png',
-                          fit: BoxFit.cover,
-                          width: 30,
-                          height: 30,
-                        ),
-                      ),
-                      title: TextButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Cures()));
-                        },
-                        child: Padding(
-                          padding:  EdgeInsets.fromLTRB(0, 0, 130, 0),
-                          child: Text(
-                            'Cures',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Image.asset(
                           'assets/Notifications.png',
                           fit: BoxFit.cover,
                           width: 30,
