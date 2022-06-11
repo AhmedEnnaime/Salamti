@@ -165,42 +165,6 @@ class _LoginState extends State<Login> {
                                 SizedBox(
                                   height: 40,
                                 ),
-
-                                    Container(
-                                      height: heightScreen/10,
-                                      width: widthScreen/0.4,
-
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: Text(
-                                                'Mot de passe\n oublie?',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  decoration: TextDecoration.underline,
-                                                  color: Color(0xff4c505b),
-                                                  fontSize: 18,
-                                                ),
-                                              ),
-                                            style: ButtonStyle(),
-                                          ),
-                                          SizedBox(width: 4,),
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: Text(
-                                                'Mode spectateur',
-                                                style: TextStyle(
-                                                  decoration: TextDecoration.underline,
-                                                  color: Color(0xff4c505b),
-                                                  fontSize: 18,
-                                                ),
-                                              ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
                               ],
                             ),
                           ),

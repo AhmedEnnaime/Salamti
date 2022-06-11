@@ -137,40 +137,6 @@ class _Login_medecinState extends State<Login_medecin> {
                               SizedBox(
                                 height: 40,
                               ),
-
-                              Container(
-                                height: heightScreen/10,
-                                width: widthScreen/0.4,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'Mot de passe\noublie?',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: Color(0xff4c505b),
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                      style: ButtonStyle(),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'Mode spectateur',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: Color(0xff4c505b),
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                             ],
                           ),
                         ),
