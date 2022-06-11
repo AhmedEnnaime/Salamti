@@ -8,6 +8,8 @@ import 'package:e_sante/Data/Doctor_Data/Doctor_controller.dart';
 import 'package:e_sante/Data/Doctor_Data/Implement_Doctor.dart';
 import 'package:e_sante/Data/Doctor_Data/Doctor_Model.dart';
 
+import '../../Main_pages/Roles.dart';
+
 
 class Profile_medecin extends StatefulWidget {
 
@@ -443,11 +445,18 @@ class _Profile_medecinState extends State<Profile_medecin> {
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              'Se deconnecter',
-                                              style: TextStyle(
-                                                fontSize: 18,
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Roles()));
+                                              },
+                                              child: Text(
+                                                'Se deconnecter',
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.black
+                                                ),
                                               ),
+
                                             ),
 
                                           ],

@@ -1,5 +1,6 @@
 import 'package:e_sante/Doctor/Login/login_medecin.dart';
 import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
+import 'package:e_sante/Main_pages/Roles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Doctor/Pages/Profile_medecin.dart';
@@ -224,7 +225,7 @@ class _SidebarState extends State<Sidebar> {
                         padding:  EdgeInsets.fromLTRB(0, 0, 80, 0),
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Login_medecin()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Roles()));
                           },
                           child: Text(
                             "Se deconnecter",
