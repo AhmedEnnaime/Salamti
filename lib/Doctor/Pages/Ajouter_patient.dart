@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:e_sante/Doctor/Pages/Acceuil_medecin.dart';
 import 'package:e_sante/variables.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
 import 'package:e_sante/Data/Patient_Data/patient_controller.dart';
@@ -305,7 +307,45 @@ class _Ajouter_patientState extends State<Ajouter_patient> {
                   onPressed: ()  {
                     Patient patient = Patient(Ip: Ip.text,Nom: Nom.text,Age: Age.text,Sexe:Sexe.text,Mail: Mail.text,Tel: Tel.text,Password: Password.text,Doctor_Ip: Ip_medecin.text );
                     patientcontroller.postPatient(patient);
-                    //adduser();
+                    showDialog(context: context, builder:  (_) =>AlertDialog(
+                      //title: Text('Attention'),
+                      content: Container(
+                        height: HeightScreen/4.5,
+                        child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Patient ajouté avec succes',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold
+                                  ),
+                                ),
+                                SizedBox(height: 20,),
+                                Icon(
+                                  Icons.done_outline_rounded,
+                                  size: 40,
+                                  color: Colors.green,
+                                ),
+                                SizedBox(height: 20,),
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xff053F5E),
+                                      padding: EdgeInsets.all(16),
+                                    ),
+                                    onPressed: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil_medecin()));
+                                    },
+                                    child: Text(
+                                      'Accueil',
+                                    )
+                                )
+                              ],
+                            ),
+                      ),
+                    ),
+                      barrierDismissible: true,
+                    );
                   },
                   child: Text(
                     'Confirmer',
