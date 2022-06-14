@@ -34,6 +34,17 @@ class Mains_grade3 extends StatelessWidget {
                 Center(
                   child: Padding(
                     padding: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20,top: HeightScreen/5),
+                    child: Icon(
+                      Icons.warning_amber_outlined,
+                      color: Colors.red,
+                      size: 70,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: WidthScreen/20,right: WidthScreen/20),
                     child: Text(
                       "Vous devez s'orienter a l'hopital au plus tot possible",
                       textAlign: TextAlign.center,
