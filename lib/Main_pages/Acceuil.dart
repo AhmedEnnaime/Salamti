@@ -755,10 +755,61 @@ class _AcceuilState extends State<Acceuil> {
                                                                                  primary: Colors.green,
                                                                              ),
                                                                              onPressed: (){
-                                                                               cure_day = DateTime.now();
-                                                                               next_cure= cure_day?.add(Duration(days: 21));
-                                                                               Cures_Model cure = Cures_Model(cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',Patient_Ip: IP.text,Patient_nom: Patient?.Nom);
-                                                                               curescontroller.postCures(cure);
+                                                                               showDialog(context: context, builder:  (_) =>AlertDialog(
+                                                                                 //title: Text('Attention'),
+                                                                                 content: Container(
+                                                                                   height: HeightScreen/4.5,
+                                                                                   child: Column(
+                                                                                     mainAxisAlignment: MainAxisAlignment.center,
+                                                                                     children: [
+                                                                                       Text(
+                                                                                         'Etes-vous sure que vous avez passé la cure dans cette date ${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year} ',
+                                                                                         style: TextStyle(
+                                                                                             fontSize: 16,
+                                                                                             fontWeight: FontWeight.bold
+                                                                                         ),
+                                                                                       ),
+                                                                                       SizedBox(height: 20,),
+                                                                                       Row(
+                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                         children: [
+                                                                                           ElevatedButton(
+                                                                                               style: ElevatedButton.styleFrom(
+                                                                                                 primary: Colors.green,
+                                                                                                 padding: EdgeInsets.all(16),
+                                                                                               ),
+                                                                                               onPressed: (){
+                                                                                                 cure_day = DateTime.now();
+                                                                                                 next_cure= cure_day?.add(Duration(days: 21));
+                                                                                                 Cures_Model cure = Cures_Model(cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',Patient_Ip: IP.text,Patient_nom: Patient?.Nom);
+                                                                                                 curescontroller.postCures(cure);
+                                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                                                                                               },
+                                                                                               child: Text(
+                                                                                                 'Oui',
+                                                                                               )
+                                                                                           ),
+                                                                                           ElevatedButton(
+                                                                                               style: ElevatedButton.styleFrom(
+                                                                                                 primary: Colors.red,
+                                                                                                 padding: EdgeInsets.all(16),
+                                                                                               ),
+                                                                                               onPressed: (){
+                                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
+                                                                                               },
+                                                                                               child: Text(
+                                                                                                 'Non',
+                                                                                               )
+                                                                                           ),
+                                                                                         ],
+                                                                                       )
+                                                                                     ],
+                                                                                   ),
+                                                                                 ),
+                                                                               ),
+                                                                                 barrierDismissible: true,
+                                                                               );
+
                                                                              },
                                                                              child: Text('Prochaine cure')
                                                                          ),
