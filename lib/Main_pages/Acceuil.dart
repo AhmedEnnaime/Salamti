@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:e_sante/Data/Doctor_Data/Doctor_Model.dart';
 import 'package:e_sante/Data/Patient_Data/User.dart';
@@ -5,6 +6,7 @@ import 'package:e_sante/Data/Rdv_patient_Data/Implement_Rdv_patient.dart';
 import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_Model.dart';
 import 'package:e_sante/Data/Rdv_patient_Data/Rdv_patient_controller.dart';
 import 'package:e_sante/Data/Toxicity_Data/Fievre_Data/Fievre_Model.dart';
+import 'package:e_sante/Bilan_intercure/Bilan_Intercure.dart';
 import 'package:e_sante/variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_sante/Data/Question_Libre_Data/Question_Model.dart';
 import 'package:e_sante/Data/Question_Libre_Data/Implement_Question.dart';
 import 'package:e_sante/Data/Question_Libre_Data/Question_controller.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../Data/Patient_Data/Patient_data.dart';
 import '../Data/Patient_Data/patient_controller.dart';
@@ -92,12 +96,39 @@ class _AcceuilState extends State<Acceuil> {
       return 'Decembre';
     }
   }
+  File ?image;
+  Future pickimage() async{
+    try{
+      final image = await ImagePicker().getImage(source: ImageSource.gallery);
+      if(image==null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+      });
+    }on PlatformException catch(e){
+      print('failed to pick image:$e');
+
+    }
+
+  }
+  Future pickimagecam() async{
+    try{
+      final image = await ImagePicker().getImage(source: ImageSource.camera);
+      if(image==null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+      });
+    }on PlatformException catch(e){
+      print('failed to pick image:$e');
+
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     double WidthScreen =MediaQuery.of(context).size.width;
     double HeightScreen =MediaQuery.of(context).size.height;
-    DateTime ?cure_day;
-    DateTime ?next_cure;
     var curecontroller = Curescontroller(Cures_Data());
     var rdv_patientcontroller = Rdv_patientcontroller(Rdv_patient_Data());
     var curescontroller = Curescontroller(Cures_Data());
@@ -758,7 +789,7 @@ class _AcceuilState extends State<Acceuil> {
                                                                                showDialog(context: context, builder:  (_) =>AlertDialog(
                                                                                  //title: Text('Attention'),
                                                                                  content: Container(
-                                                                                   height: HeightScreen/4.5,
+                                                                                   height: HeightScreen/4.2,
                                                                                    child: Column(
                                                                                      mainAxisAlignment: MainAxisAlignment.center,
                                                                                      children: [
@@ -781,8 +812,10 @@ class _AcceuilState extends State<Acceuil> {
                                                                                                onPressed: (){
                                                                                                  cure_day = DateTime.now();
                                                                                                  next_cure= cure_day?.add(Duration(days: 21));
-                                                                                                 Cures_Model cure = Cures_Model(cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',Patient_Ip: IP.text,Patient_nom: Patient?.Nom);
+                                                                                                 bilan_day = next_cure?.subtract(Duration(days: 3));
+                                                                                                 Cures_Model cure = Cures_Model(cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',bilan_day:'${bilan_day?.day.toString()} ${_getMonthDate(bilan_day!.month).toString()} ${bilan_day?.year.toString()}',Patient_Ip: IP.text,Patient_nom: Patient?.Nom);
                                                                                                  curescontroller.postCures(cure);
+
                                                                                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Acceuil()));
                                                                                                },
                                                                                                child: Text(
@@ -802,7 +835,37 @@ class _AcceuilState extends State<Acceuil> {
                                                                                                )
                                                                                            ),
                                                                                          ],
-                                                                                       )
+                                                                                       ),
+                                                                                       SizedBox(height: 10,),
+                                                                                       ElevatedButton(
+                                                                                           style: ElevatedButton.styleFrom(
+                                                                                             primary: Colors.yellow,
+                                                                                             padding: EdgeInsets.all(16),
+                                                                                           ),
+                                                                                           onPressed: (){
+                                                                                             showDatePicker(
+                                                                                               context: context,
+                                                                                               initialDate: DateTime.now(),
+                                                                                               firstDate: DateTime(2022),
+                                                                                               lastDate: DateTime(2060),
+                                                                                             ).then((date) {
+                                                                                               setState(() {
+                                                                                                 cure_day = date;
+                                                                                                 next_cure= date?.add(Duration(days: 21));
+                                                                                                 bilan_day = next_cure?.subtract(Duration(days: 3));
+                                                                                                 Cures_Model cure = Cures_Model(cure_day: '${cure_day?.day.toString()} ${_getMonthDate(cure_day!.month).toString()} ${cure_day?.year.toString()}',Next_cure: '${next_cure?.day.toString()} ${_getMonthDate(next_cure!.month).toString()} ${next_cure?.year.toString()}',bilan_day:'${bilan_day?.day.toString()} ${_getMonthDate(bilan_day!.month).toString()} ${bilan_day?.year.toString()}',Patient_Ip: IP.text,Patient_nom: Patient?.Nom);
+                                                                                                 curescontroller.postCures(cure);
+                                                                                               });
+                                                                                             });
+
+                                                                                           },
+                                                                                           child: Text(
+                                                                                             'Autre date',
+                                                                                             style: TextStyle(
+                                                                                               color: Colors.black
+                                                                                             ),
+                                                                                           )
+                                                                                       ),
                                                                                      ],
                                                                                    ),
                                                                                  ),
@@ -972,6 +1035,129 @@ class _AcceuilState extends State<Acceuil> {
                                    
                                  },
                                  
+                               ),
+                               FutureBuilder<List<Cures_Model>>(
+                                 future: curecontroller.getCures(),
+                                 builder: ( context, snapshot) {
+                                   if(snapshot.connectionState == ConnectionState.waiting){
+                                     return Center(child: CircularProgressIndicator(),);
+                                   }
+                                   if (snapshot.hasError){
+                                     return Center(child: Text('${snapshot.error}'),);
+                                   }
+                                   return ListView.separated(
+                                     itemBuilder: (context, index) {
+                                       var cures_bilan = snapshot.data?[index];
+                                       bool ButtonClickable = false;
+                                       void bilan_time(){
+                                         if(cures_bilan?.bilan_day == '${DateTime.now().day.toString()} ${_getMonthDate(DateTime.now().month)} ${DateTime.now().year.toString()}'){
+                                           ButtonClickable = true;
+                                         }
+                                       }
+                                       double Button_Opacity(){
+                                         if(ButtonClickable == true){
+                                           return 1;
+                                         }else return 0.2;
+                                       }
+                                       bilan_time();
+                                       return Column(
+                                         children: [
+                                           Padding(
+                                             padding:  EdgeInsets.only(right: WidthScreen/5),
+                                             child: Text(
+                                               'Bilan Intercure',
+                                               style: TextStyle(
+                                                   fontSize: 18,
+                                                   fontWeight: FontWeight.bold
+                                               ),
+                                             ),
+                                           ),
+                                           Container(
+                                             child: Card(
+                                               elevation: 10,
+                                               color: Colors.pink[50],
+                                               shape: RoundedRectangleBorder(
+                                                 borderRadius: BorderRadius.circular(20),
+
+                                               ),
+                                               child: Column(
+                                                 children: [
+                                                   Padding(
+                                                     padding:  EdgeInsets.only(top: HeightScreen/30,left: WidthScreen/20,right: WidthScreen/20),
+                                                     child: Text(
+                                                       'Vous pouvez passer votre bilan dans cette date ${cures_bilan?.bilan_day}',
+                                                       textAlign: TextAlign.center,
+                                                       style: TextStyle(
+                                                           fontSize: 16,
+                                                           fontWeight: FontWeight.bold,
+                                                       ),
+                                                     ),
+                                                   ),
+                                                   SizedBox(height: 30,),
+                                                   Row(
+                                                     mainAxisAlignment: MainAxisAlignment.center,
+                                                     children: [
+                                                       Opacity(
+                                                         opacity: Button_Opacity(),
+                                                         child: ElevatedButton(
+                                                             onPressed: (){
+                                                               if(ButtonClickable){
+                                                                 pickimagecam();
+                                                               }
+
+                                                             },
+                                                             child: Text(
+                                                               'Prendre\n une photo',
+                                                               textAlign: TextAlign.center,
+                                                             )
+                                                         ),
+                                                       ),
+                                                       SizedBox(width: 20,),
+                                                       Opacity(
+                                                         opacity: Button_Opacity(),
+                                                         child: ElevatedButton(
+                                                             onPressed: (){
+                                                               if(ButtonClickable){
+                                                                 pickimage();
+                                                               }
+                                                             },
+                                                             child: Text(
+                                                               'Télecharger\n une photo',
+                                                               textAlign: TextAlign.center,
+                                                             )
+                                                         ),
+                                                       ),
+                                                     ],
+                                                   ),
+                                                   SizedBox(height: 20,),
+                                                   Opacity(
+
+                                                     child: ElevatedButton(
+                                                         onPressed: (){
+                                                           if(ButtonClickable){
+                                                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Bilan_Intercure()));
+                                                           }
+
+                                                         },
+
+                                                         child: Text(
+                                                           'Passer Bilan',
+                                                         )
+                                                     ),
+                                                     opacity: Button_Opacity(),
+                                                   )
+                                                   
+                                                 ],
+                                               ),
+                                             ),
+                                           ),
+                                         ],
+                                       );
+
+                                     }, separatorBuilder: (BuildContext context, int index) { return Divider(); }, itemCount:  snapshot.data?.length ?? 0,
+                                   );
+                                 },
+
                                ),
                              ],
                              options: CarouselOptions(

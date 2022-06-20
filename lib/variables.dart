@@ -362,3 +362,14 @@ String Neurologique_grade(){
   }else return 'Rassurement';
 
 }
+///////Acceuil////////
+DateTime ?bilan_day;
+DateTime ?next_cure;
+DateTime ?cure_day;
+///////Bilan_intercure////////
+String val28 = '';
+//////Bilan_intercure2/////////
+String val29 = '';
+/////////Bilan_intercure3//////
+String val30 = '';
+

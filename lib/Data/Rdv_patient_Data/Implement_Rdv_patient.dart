@@ -82,4 +82,15 @@ class Rdv_patient_Data implements Rdv_patien_Data{
     return rdv_medecinList;
   }
 
+  @override
+  Future<String> deleteRdv_patient(Rdv_patient rdv_patient) async{
+    var url=Uri.parse('$dataUrl/Rdv_patient?Patient_Ip=C123456');
+    var result = 'false';
+    await http.delete(url).then((value) {
+      print(value.body);
+      return result = 'true';
+    });
+    return result;
+  }
+
 }

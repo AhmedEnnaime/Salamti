@@ -119,11 +119,7 @@ class _CuresState extends State<Cures> {
       return true;
     }else return false;
   }
-  @override
-  /*void initState() {
-    super.initState();
-    LoadData();
-  }*/
+
   @override
   Widget build(BuildContext context) {
     double WidthScreen=MediaQuery.of(context).size.width;

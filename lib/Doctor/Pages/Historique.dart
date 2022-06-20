@@ -99,9 +99,9 @@ class _historiqueState extends State<historique> {
                     if(Toxicity_history?.Nausees_grade == 'Grade 4' || Toxicity_history?.Nausees_grade == 'Grade 3'){
                       return Colors.redAccent;
                     }else if(Toxicity_history?.Nausees_grade == 'Grade 2'){
-                      return Colors.orange;
+                      return Colors.orangeAccent;
                     }else if(Toxicity_history?.Nausees_grade == 'Grade 1'){
-                      return Colors.green;
+                      return Colors.greenAccent;
                     }else return Colors.white;
 
                   }
@@ -109,9 +109,9 @@ class _historiqueState extends State<historique> {
                     if(Toxicity_history?.Diarrhees_grade == 'Grade 3'){
                       return Colors.redAccent;
                     }else if(Toxicity_history?.Diarrhees_grade == 'Grade 2'){
-                      return Colors.orange;
+                      return Colors.orangeAccent;
                     }else if(Toxicity_history?.Diarrhees_grade == 'Grade 1'){
-                      return Colors.green;
+                      return Colors.greenAccent;
                     }else return Colors.white;
 
                   }
@@ -119,9 +119,9 @@ class _historiqueState extends State<historique> {
                     if(Toxicity_history?.Constipation_grade == 'Grade 3'){
                       return Colors.redAccent;
                     }else if(Toxicity_history?.Constipation_grade == 'Grade 2'){
-                      return Colors.orange;
+                      return Colors.orangeAccent;
                     }else if(Toxicity_history?.Constipation_grade == 'Grade 1'){
-                      return Colors.green;
+                      return Colors.greenAccent;
                     }else return Colors.white;
 
                   }
@@ -129,9 +129,9 @@ class _historiqueState extends State<historique> {
                     if(Toxicity_history?.Mucite_grade == 'Grade 3'){
                       return Colors.redAccent;
                     }else if(Toxicity_history?.Mucite_grade == 'Grade 2'){
-                      return Colors.orange;
+                      return Colors.orangeAccent;
                     }else if(Toxicity_history?.Mucite_grade == 'Grade 1'){
-                      return Colors.green;
+                      return Colors.greenAccent;
                     }else return Colors.white;
 
                   }
@@ -146,7 +146,8 @@ class _historiqueState extends State<historique> {
                                   'Date',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 18
+                                    fontSize: 18,
+                                      color: Colors.grey[600]
                                   ),
                                 )),
                                 Center(child: Text(
@@ -154,14 +155,16 @@ class _historiqueState extends State<historique> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 18
+                                      fontSize: 18,
+                                      color: Colors.grey[600]
                                   ),
                                 )),
                                 Center(child: Text(
                                   'Grade',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 18
+                                      fontSize: 18,
+                                      color: Colors.grey[600]
                                   ),
                                 )),
                               ]
@@ -249,9 +252,9 @@ class _historiqueState extends State<historique> {
                                   if(cutane_symptome?.Rash_grade == 'Grade 3'){
                                     return Colors.redAccent;
                                   }else if(cutane_symptome?.Rash_grade  == 'Grade 2'){
-                                    return Colors.orange;
+                                    return Colors.orangeAccent;
                                   }else if(cutane_symptome?.Rash_grade  == 'Grade 1'){
-                                    return Colors.green;
+                                    return Colors.greenAccent;
                                   }else return Colors.white;
 
                                 }
@@ -259,9 +262,9 @@ class _historiqueState extends State<historique> {
                                   if(cutane_symptome?.Mains_grade == 'Grade 3'){
                                     return Colors.redAccent;
                                   }else if(cutane_symptome?.Mains_grade  == 'Grade 2'){
-                                    return Colors.orange;
+                                    return Colors.orangeAccent;
                                   }else if(cutane_symptome?.Mains_grade  == 'Grade 1'){
-                                    return Colors.green;
+                                    return Colors.greenAccent;
                                   }else return Colors.white;
 
                                 }
@@ -282,7 +285,8 @@ class _historiqueState extends State<historique> {
                                                 'Date',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    fontSize: 18
+                                                    fontSize: 18,
+                                                    color: Colors.grey[600]
                                                 ),
                                               )),
                                               Center(child: Text(
@@ -290,14 +294,16 @@ class _historiqueState extends State<historique> {
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    fontSize: 18
+                                                    fontSize: 18,
+                                                    color: Colors.grey[600]
                                                 ),
                                               )),
                                               Center(child: Text(
                                                 'Grade',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    fontSize: 18
+                                                    fontSize: 18,
+                                                    color: Colors.grey[600]
                                                 ),
                                               )),
                                             ]
@@ -375,7 +381,8 @@ class _historiqueState extends State<historique> {
                                               'Date',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                             Center(child: Text(
@@ -383,14 +390,16 @@ class _historiqueState extends State<historique> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                             Center(child: Text(
                                               'Conduite',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                           ]
@@ -439,7 +448,7 @@ class _historiqueState extends State<historique> {
                                 Color getOculairecolor(){
                                   if(oculaire?.Grade == 'Hopital'){
                                     return Colors.redAccent;
-                                  }else return Colors.white;
+                                  }else return Colors.orangeAccent;
 
                                 }
                                 return Column(
@@ -453,7 +462,8 @@ class _historiqueState extends State<historique> {
                                              'Date',
                                              style: TextStyle(
                                                  fontWeight: FontWeight.bold,
-                                                 fontSize: 18
+                                                 fontSize: 18,
+                                                 color: Colors.grey[600]
                                              ),
                                            )),
                                            Center(child: Text(
@@ -461,14 +471,16 @@ class _historiqueState extends State<historique> {
                                              textAlign: TextAlign.center,
                                              style: TextStyle(
                                                  fontWeight: FontWeight.bold,
-                                                 fontSize: 18
+                                                 fontSize: 18,
+                                                 color: Colors.grey[600]
                                              ),
                                            )),
                                            Center(child: Text(
                                              'Conduite',
                                              style: TextStyle(
                                                  fontWeight: FontWeight.bold,
-                                                 fontSize: 18
+                                                 fontSize: 18,
+                                                 color: Colors.grey[600]
                                              ),
                                            )),
                                          ]
@@ -481,7 +493,7 @@ class _historiqueState extends State<historique> {
                                                '${Oculaire_declaration()}',
                                                textAlign: TextAlign.center,
                                              )),
-                                             Center(child: Text('${oculaire?.Grade}')),
+                                             Center(child: Text('${oculaire?.Grade}',)),
                                            ]
                                        ),
 
@@ -516,7 +528,7 @@ class _historiqueState extends State<historique> {
                               }
                               Color getNeurologiquecolor(){
                                 if(neurologique?.Grade == 'Ordonnance'){
-                                  return Colors.orange;
+                                  return Colors.orangeAccent;
                                 }else return Colors.white;
 
                               }
@@ -531,7 +543,8 @@ class _historiqueState extends State<historique> {
                                               'Date',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                             Center(child: Text(
@@ -539,14 +552,16 @@ class _historiqueState extends State<historique> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                             Center(child: Text(
                                               'Conduite',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                           ]
@@ -604,7 +619,8 @@ class _historiqueState extends State<historique> {
                                               'Date',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                             Center(child: Text(
@@ -612,14 +628,16 @@ class _historiqueState extends State<historique> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                             Center(child: Text(
                                               'Conduite',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                           ]
@@ -680,17 +698,31 @@ class _historiqueState extends State<historique> {
                                           children: [
                                             Center(child: Text(
                                               'Date de derniere cure',
+                                              textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
 
                                             Center(child: Text(
-                                              'Date de prochaine cure',
+                                              'Date de bilan intercure',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 18
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            )),
+
+                                            Center(child: Text(
+                                              'Date de prochaine cure',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                  color: Colors.grey[600]
                                               ),
                                             )),
                                           ]
@@ -698,7 +730,7 @@ class _historiqueState extends State<historique> {
                                       TableRow(
                                           children: [
                                             Center(child: Text('${cures?.cure_day}')),
-
+                                            Center(child: Text('${cures?.bilan_day}')),
                                             Center(child: Text('${cures?.Next_cure}')),
                                           ]
                                       ),

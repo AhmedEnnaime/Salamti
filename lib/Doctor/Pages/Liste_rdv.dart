@@ -82,16 +82,31 @@ class _Ajouter_rdvState extends State<Ajouter_rdv> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TextButton(
-                              onPressed: (){},
-                              child: Text(
-                                '${Listrdvmedecin?.Patient_nom}',
-                                style: TextStyle(
-                                  color: Colors.red[300],
-                                  fontSize: 16,
-                                ),
-                              ),
+                            Row(
+                              children: [
+                                TextButton(
+                                  onPressed: (){},
+                                  child: Text(
+                                    '${Listrdvmedecin?.Patient_nom}',
+                                    style: TextStyle(
+                                      color: Colors.red[300],
+                                      fontSize: 16,
+                                    ),
+                                  ),
 
+                                ),
+                                SizedBox(width: 80,),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.red,
+                                  ),
+                                    onPressed: (){
+                                      //rdvpatientcontroller.deleteRdv_patient(Listrdvmedecin!);
+
+                                    },
+                                    child: Text('Annuler')
+                                )
+                              ],
                             ),
                             Row(
                               children: [

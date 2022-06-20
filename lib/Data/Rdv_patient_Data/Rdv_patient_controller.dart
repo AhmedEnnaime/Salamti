@@ -17,4 +17,7 @@ class Rdv_patientcontroller{
   Future<List<Rdv_patient>> getRdv_patient_today() async{
     return _rdv_patien_data.getRdv_patient_today();
   }
+  Future <String> deleteRdv_patient(Rdv_patient rdv_patient) async{
+    return _rdv_patien_data.deleteRdv_patient(rdv_patient);
+  }
 }
