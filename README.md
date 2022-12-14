@@ -1,6 +1,6 @@
 # e_sante
 
-A new Flutter project.
+This application has 2 versions (Patient version , Doctor version). The goal of this application is to facilitate the process of chemotherapy sessions and give the doctors a good management to their appointments and a general idea of the state of his patients. The application has multiple features to help patients to control themeselves without the need to moove to the hospital. The application provides patients with quizzes to know their state and based on this latter the application generates a medical prescription.
 
 ## Getting Started
 
