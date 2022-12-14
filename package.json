@@ -6,7 +6,7 @@
   "scripts": {
     "json:server": "json-server --watch db.json"
   },
-  "author": "Mohamed Elfadil",
+  "author": "Ahmed Ennaime",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.0",
