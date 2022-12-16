@@ -14,7 +14,11 @@ You can choose your simulator and run the application in your favorite ide (andr
 
 You can get authentified with one of the Ips and passwords listed in the db.json file because the account creation for patients is available only for doctors or admins.
 
+## Tech Stack
 
+**Client:** DART, FLUTTER
+
+**Server:** NodeJs
 
 ## Support
 
