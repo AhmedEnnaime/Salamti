@@ -20,6 +20,10 @@ You can get authentified with one of the Ips and passwords listed in the db.json
 
 **Server:** NodeJs
 
+## Authors
+
+- [@Ahmed Ennaime](https://www.linkedin.com/in/ahmed-ennaime-731171225/)
+
 ## Support
 
 For support, email ahmedennaime20@gmail.com or contact me on Linkedin Ahmed Ennaime.
