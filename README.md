@@ -24,6 +24,11 @@ You can get authentified with one of the Ips and passwords listed in the db.json
 
 - [@Ahmed Ennaime](https://www.linkedin.com/in/ahmed-ennaime-731171225/)
 
+
+## Feedback
+
+If you have any feedback, please reach out to me at ahmedennaime20@gmail.com
+
 ## Support
 
 For support, email ahmedennaime20@gmail.com or contact me on Linkedin Ahmed Ennaime.
